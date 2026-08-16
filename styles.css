@@ -1,62 +1,101 @@
 /* ==========================================================================
-   StudioMistri × Neobrutalism Design System
-   High-Contrast, Bold, Tactile Master Stylesheet
+   StudioMistri × Material Design 3 (M3) Master Design System
+   Modern, Clean, Tonal Palette with Soft Elevation & Pill Radii
    ========================================================================== */
 
-:root {
-  /* Dark Mode & Neon Palette */
-  --nb-bg: #0a0a0a;
-  --nb-surface: #111111;
-  --nb-surface-alt: #1a1a1a;
-  --nb-black: #ffffff;
-  
-  /* Neon Accents */
-  --nb-orange: #ff5500;
-  --nb-orange-hover: #ff7733;
-  --nb-yellow: #ccff00;
-  --nb-yellow-hover: #d4ff33;
-  --nb-mint: #00ff66;
-  --nb-mint-light: #33ff85;
-  --nb-cyan: #00f3ff;
-  --nb-cyan-light: #33f5ff;
-  --nb-pink: #ff00ff;
-  --nb-pink-light: #ff33ff;
-  --nb-purple: #b026ff;
-  --nb-red: #ff0055;
-  
-  /* Gradients */
-  --neon-gradient-1: linear-gradient(135deg, #00f3ff, #ff00ff);
-  --neon-gradient-2: linear-gradient(135deg, #b026ff, #00f3ff);
-  --neon-gradient-3: linear-gradient(135deg, #ccff00, #00ff66);
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
 
-  /* Text & Ink */
-  --nb-text-main: #f3f4f6;
-  --nb-text-muted: #9ca3af;
-  --nb-text-dim: #6b7280;
+:root {
+  /* ========================================================================
+     1. Material Design 3 (M3) Core Tokens (Light Tonal Palette)
+     ======================================================================== */
   
-  /* Geometry & Borders (Less cluttered) */
-  --border-thick: 1px solid rgba(255, 255, 255, 0.1);
-  --border-medium: 1px solid rgba(255, 255, 255, 0.1);
-  --border-heavy: 1px solid rgba(255, 255, 255, 0.15);
+  /* Primary Tonal Group (Deep Material Blue / Indigo) */
+  --md-sys-color-primary: #0b57d0;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d3e3fd;
+  --md-sys-color-on-primary-container: #041e49;
+  --md-sys-color-primary-hover: #0842a0;
+
+  /* Secondary Tonal Group (Slate / Tech Neutral) */
+  --md-sys-color-secondary: #535f70;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #d7e3f8;
+  --md-sys-color-on-secondary-container: #101c2b;
+
+  /* Tertiary Brand Accent (Studio Flame Orange) */
+  --md-sys-color-tertiary: #ea580c;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #ffede6;
+  --md-sys-color-on-tertiary-container: #7c2d12;
+  --md-sys-color-tertiary-hover: #c2410c;
+
+  /* Neutral Surface System */
+  --md-sys-color-background: #f8fafd;
+  --md-sys-color-on-background: #191c20;
   
-  /* Soft Glow Shadows */
-  --shadow-sm: 0 0 10px rgba(0, 243, 255, 0.1);
-  --shadow-md: 0 0 15px rgba(0, 243, 255, 0.15);
-  --shadow-lg: 0 0 25px rgba(0, 243, 255, 0.2);
-  --shadow-xl: 0 0 40px rgba(0, 243, 255, 0.3);
-  --shadow-press: 0 0 5px rgba(0, 243, 255, 0.3);
+  --md-sys-color-surface: #f8fafd;
+  --md-sys-color-on-surface: #191c20;
+  --md-sys-color-on-surface-variant: #44474e;
   
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-pill: 9999px;
+  /* Surface Containers (M3 Elevation Hierarchy) */
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f2f5f9;
+  --md-sys-color-surface-container: #eaf0f7;
+  --md-sys-color-surface-container-high: #e3ebf4;
+  --md-sys-color-surface-container-highest: #dbe4ee;
   
+  /* Outlines & Dividers */
+  --md-sys-color-outline: #74777f;
+  --md-sys-color-outline-variant: #c4c7d0;
+  --md-sys-color-divider: #e2e8f0;
+
+  /* Semantic Feedback Colors */
+  --md-sys-color-success: #146c2e;
+  --md-sys-color-success-container: #c4eed0;
+  --md-sys-color-on-success-container: #072710;
+  
+  --md-sys-color-warning: #b45309;
+  --md-sys-color-warning-container: #fef3c7;
+  --md-sys-color-on-warning-container: #451a03;
+  
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+
+  --md-sys-color-info: #0284c7;
+  --md-sys-color-info-container: #e0f2fe;
+  --md-sys-color-on-info-container: #0369a1;
+
+  /* M3 Elevation Shadows (Soft layered ambient shadows) */
+  --md-sys-elevation-0: none;
+  --md-sys-elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  --md-sys-elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  --md-sys-elevation-3: 0px 4px 14px 3px rgba(0, 0, 0, 0.07), 0px 1px 3px 0px rgba(0, 0, 0, 0.04);
+  --md-sys-elevation-4: 0px 6px 20px 4px rgba(0, 0, 0, 0.08), 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  --md-sys-elevation-5: 0px 8px 30px 6px rgba(0, 0, 0, 0.10), 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+
+  /* M3 Shape Corner Radii */
+  --md-shape-corner-extra-small: 4px;
+  --md-shape-corner-small: 8px;
+  --md-shape-corner-medium: 12px;
+  --md-shape-corner-large: 16px;
+  --md-shape-corner-extra-large: 24px;
+  --md-shape-corner-card: 20px;
+  --md-shape-corner-full: 9999px;
+
+  /* Typography System */
+  --font-family-brand: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+
   /* Layout Dimensions */
-  --sidebar-width: 255px;
-  --header-height: 70px;
+  --sidebar-width: 270px;
+  --header-height: 72px;
 }
 
-/* Base Reset */
+/* ==========================================================================
+   2. Global Reset & Base Typography
+   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -66,40 +105,53 @@
 html {
   font-size: 15px;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--nb-bg);
-  color: var(--nb-text-main);
+  font-family: var(--font-family-brand);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface);
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
 }
 
-/* Monospace Helpers */
-.mono, .font-mono, code {
-  font-family: 'JetBrains Mono', monospace;
+.font-mono {
+  font-family: var(--font-family-mono);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--md-sys-color-on-surface);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
-/* App Container */
+p {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+a {
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* ==========================================================================
+   3. Material 3 Layout Architecture (Navigation Drawer + Main Content)
+   ========================================================================== */
 .app-container {
   display: flex;
   min-height: 100vh;
 }
 
-/* --------------------------------------------------------------------------
-   Sidebar Navigation (Neobrutalist Paperboard)
-   -------------------------------------------------------------------------- */
+/* M3 Navigation Drawer (Sidebar) */
 .sidebar {
   width: var(--sidebar-width);
-  background-color: var(--nb-surface);
-  border-right: var(--border-heavy);
+  background-color: var(--md-sys-color-surface-container-low);
+  border-right: 1px solid var(--md-sys-color-divider);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -107,184 +159,168 @@ body {
   bottom: 0;
   left: 0;
   z-index: 100;
-  transition: transform 0.2s ease;
+  padding: 1rem 0.85rem;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .sidebar-header {
-  padding: 1.25rem 1rem;
+  padding: 0.5rem 0.65rem 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: var(--border-thick);
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  cursor: pointer;
-  box-shadow: 0 4px 0 var(--nb-cyan);
+  border-bottom: 1px solid var(--md-sys-color-divider);
+  margin-bottom: 1rem;
 }
 
-.brand-logo-img {
+.sidebar-logo {
   height: 38px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(2px 2px 0px var(--nb-cyan));
 }
 
-.brand-text {
+.sidebar-brand-text {
   display: flex;
   flex-direction: column;
 }
 
-.brand-name {
-  font-size: 1.2rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: var(--nb-text-main);
-  line-height: 1;
-}
-
-.brand-name span {
-  color: var(--nb-orange);
-  background: var(--nb-surface-alt);
-  padding: 0 0.25rem;
-  border-radius: 2px;
-}
-
-.brand-tagline {
-  font-size: 0.68rem;
-  font-family: 'JetBrains Mono', monospace;
+.sidebar-brand-name {
+  font-size: 1.1rem;
   font-weight: 800;
-  color: var(--nb-text-main);
-  margin-top: 3px;
-  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.02em;
 }
 
+.sidebar-brand-tagline {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--md-sys-color-tertiary);
+  font-family: var(--font-family-mono);
+}
+
+/* M3 Navigation Items (Pill Highlight Style) */
 .sidebar-nav {
-  padding: 1.25rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
   flex: 1;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .nav-section-title {
-  font-size: 0.7rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--nb-text-main);
-  font-weight: 900;
-  padding: 0.6rem 0.4rem 0.2rem;
+  letter-spacing: 0.6px;
+  color: var(--md-sys-color-outline);
+  padding: 0.85rem 1rem 0.35rem;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.7rem 0.85rem;
-  color: var(--nb-text-main);
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 0.88rem;
-  border-radius: var(--radius-sm);
-  background: var(--nb-surface);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.1s ease;
+  gap: 0.85rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: var(--md-shape-corner-full); /* M3 Active Pill Radius */
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  font-family: 'JetBrains Mono', monospace;
+  user-select: none;
+  position: relative;
 }
 
-.nav-link i {
-  width: 18px;
-  height: 18px;
-  stroke-width: 2.5px;
+.nav-link i, .nav-link svg {
+  width: 19px;
+  height: 19px;
   flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  background-color: var(--nb-surface);
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
 }
 
 .nav-link.active {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  color: var(--nb-text-main);
-  border-color: var(--nb-text-main);
-  box-shadow: var(--shadow-md);
-  font-weight: 900;
-  transform: translate(-1px, -1px);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-weight: 700;
+}
+
+.nav-link.active i, .nav-link.active svg {
+  color: var(--md-sys-color-primary);
 }
 
 .nav-badge {
   margin-left: auto;
-  background-color: var(--nb-text-main);
-  color: var(--nb-yellow);
-  font-size: 0.7rem;
-  padding: 0.15rem 0.45rem;
-  border-radius: var(--radius-sm);
-  font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--md-sys-color-tertiary);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--md-shape-corner-full);
+  font-family: var(--font-family-mono);
 }
 
 .sidebar-footer {
-  padding: 1rem;
-  border-top: var(--border-thick);
-  background-color: var(--nb-surface);
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--md-sys-color-divider);
 }
 
 .studio-status-card {
-  background: var(--nb-mint-light);
-  border: var(--border-medium);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem;
-  box-shadow: var(--shadow-sm);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-large);
+  padding: 0.85rem 1rem;
+  box-shadow: var(--md-sys-elevation-1);
+  border: 1px solid var(--md-sys-color-divider);
 }
 
 .status-indicator-wrap {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--md-sys-color-success);
+  margin-bottom: 0.25rem;
 }
 
 .pulse-dot {
-  width: 9px;
-  height: 9px;
-  background-color: var(--nb-mint);
-  border: 2px solid rgba(255,255,255,0.1);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  background-color: var(--md-sys-color-success);
+  display: inline-block;
+  box-shadow: 0 0 0 2px var(--md-sys-color-success-container);
 }
 
 .studio-status-desc {
-  font-size: 0.7rem;
-  color: var(--nb-text-main);
-  font-weight: 700;
-  margin-top: 0.35rem;
-  line-height: 1.3;
-  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.35;
 }
 
-/* --------------------------------------------------------------------------
-   Top Header (Neobrutalist)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   4. Main Content & M3 Top App Bar
+   ========================================================================== */
 .main-wrapper {
   margin-left: var(--sidebar-width);
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
   min-height: 100vh;
-  width: calc(100% - var(--sidebar-width));
 }
 
+/* M3 Top App Bar */
 .top-header {
   height: var(--header-height);
-  background-color: var(--nb-surface);
-  border-bottom: var(--border-heavy);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-bottom: 1px solid var(--md-sys-color-divider);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -292,7 +328,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 90;
-  box-shadow: 0 4px 0px var(--nb-cyan);
+  box-shadow: var(--md-sys-elevation-1);
 }
 
 .header-left {
@@ -303,33 +339,32 @@ body {
 
 .mobile-menu-btn {
   display: none;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  color: var(--nb-text-main);
-  padding: 0.45rem;
-  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-on-surface);
   cursor: pointer;
-  font-weight: 900;
+  padding: 0.5rem;
+  border-radius: var(--md-shape-corner-full);
+}
+
+.mobile-menu-btn:hover {
+  background-color: var(--md-sys-color-surface-container);
 }
 
 .page-breadcrumb {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--nb-surface-alt);
-  border: var(--border-medium);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--md-sys-color-outline);
 }
 
 .page-title-display {
-  color: var(--nb-text-main);
-  font-weight: 900;
+  color: var(--md-sys-color-on-surface);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .header-right {
@@ -339,28 +374,25 @@ body {
 }
 
 .header-stat-pill {
-  background: var(--nb-surface);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-sm);
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-shape-corner-full);
+  padding: 0.4rem 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.84rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
 }
 
 .header-stat-pill .label {
-  color: var(--nb-text-main);
+  font-weight: 700;
+  color: var(--md-sys-color-outline);
   text-transform: uppercase;
-  font-weight: 800;
-  font-size: 0.72rem;
+  letter-spacing: 0.4px;
 }
 
 .header-stat-pill .value {
-  font-weight: 900;
-  color: var(--nb-orange);
+  font-weight: 800;
+  color: var(--md-sys-color-primary);
 }
 
 .header-actions {
@@ -369,379 +401,308 @@ body {
   gap: 0.65rem;
 }
 
-/* --------------------------------------------------------------------------
-   Neobrutalist Buttons
-   -------------------------------------------------------------------------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  font-size: 0.88rem;
-  font-weight: 900;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: -0.01em;
-  border-radius: var(--radius-sm);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: all 0.1s ease;
-  text-decoration: none;
-  line-height: 1.2;
-  user-select: none;
-  color: var(--nb-text-main);
-}
-
-.btn i {
-  stroke-width: 2.5px;
-}
-
-.btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-press);
-}
-
-.btn-primary {
-  background: var(--neon-gradient-1); color: #0a0a0a;
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  background-color: var(--nb-orange-hover);
-}
-
-.btn-secondary {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  color: var(--nb-text-main);
-}
-
-.btn-secondary:hover {
-  background-color: var(--nb-yellow-hover);
-}
-
-.btn-outline {
-  background-color: var(--nb-surface);
-  color: var(--nb-text-main);
-}
-
-.btn-outline:hover {
-  background-color: var(--nb-surface-alt);
-}
-
-.btn-glow {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  color: var(--nb-text-main);
-  box-shadow: 5px 5px 0px var(--nb-cyan);
-}
-
-.btn-glow:hover {
-  background-color: #ffd000;
-  box-shadow: 7px 7px 0px var(--nb-cyan);
-}
-
-.btn-success {
-  background-color: var(--nb-mint);
-  color: var(--nb-text-main);
-}
-
-.btn-danger {
-  background-color: #fecaca;
-  color: #dc2626;
-}
-
-.btn-danger:hover {
-  background-color: #ef4444;
-  color: #ffffff;
-}
-
-.btn-sm {
-  padding: 0.4rem 0.75rem;
-  font-size: 0.76rem;
-  border-width: 2px;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-sm:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.btn-lg {
-  padding: 0.85rem 1.65rem;
-  font-size: 1rem;
-  border-width: 3px;
-  box-shadow: var(--shadow-lg);
-}
-
-.btn-icon-only {
-  padding: 0.45rem;
-  border-radius: var(--radius-sm);
-}
-
-/* --------------------------------------------------------------------------
-   Neobrutalist Form Inputs
-   -------------------------------------------------------------------------- */
-.form-group {
-  margin-bottom: 1.15rem;
-}
-
-.form-label {
-  display: block;
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--nb-text-main);
-  margin-bottom: 0.4rem;
-}
-
-.form-label span.req {
-  color: var(--nb-orange);
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.65rem 0.85rem;
-  background-color: var(--nb-surface);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
-  color: var(--nb-text-main);
-  font-size: 0.92rem;
-  font-weight: 700;
-  font-family: inherit;
-  transition: all 0.1s ease;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--nb-text-main);
-  background-color: var(--nb-surface);
-  box-shadow: 4px 4px 0px var(--nb-orange);
-}
-
-.form-control::placeholder {
-  color: #9ca3af;
-  font-weight: 500;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 1rem;
-}
-
-select.form-control {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 1rem;
-  padding-right: 2.25rem;
-}
-
-/* --------------------------------------------------------------------------
-   Content Area & View Containers
-   -------------------------------------------------------------------------- */
 .content-body {
-  padding: 2rem 2rem 4rem;
+  padding: 2.25rem 2rem;
   flex: 1;
 }
 
+/* View Sections */
 .view-section {
   display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
 }
 
 .view-section.active {
   display: block;
+  opacity: 1;
 }
 
 /* ==========================================================================
-   NEOBRUTALISM LANDING PAGE & SHOWCASE
+   5. M3 Buttons System (Filled, Tonal, Outlined & Text)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-family-brand);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border-radius: var(--md-shape-corner-full); /* M3 Standard Pill Radius */
+  padding: 0.6rem 1.35rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  line-height: 1.2;
+}
+
+.btn i, .btn svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+/* M3 Filled Button (Primary Brand Action) */
+.btn-primary {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.btn-primary:hover {
+  background-color: var(--md-sys-color-primary-hover);
+  box-shadow: var(--md-sys-elevation-2);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+/* M3 Tonal Button (Secondary Action) */
+.btn-secondary {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.btn-secondary:hover {
+  background-color: #c2d7fc;
+  box-shadow: var(--md-sys-elevation-1);
+  transform: translateY(-1px);
+}
+
+/* M3 Tertiary / Brand Accent Button */
+.btn-accent {
+  background-color: var(--md-sys-color-tertiary);
+  color: #ffffff;
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.btn-accent:hover {
+  background-color: var(--md-sys-color-tertiary-hover);
+  box-shadow: var(--md-sys-elevation-2);
+  transform: translateY(-1px);
+}
+
+/* M3 Outlined Button */
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--md-sys-color-primary-container);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+/* M3 Danger Button */
+.btn-danger {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-error);
+}
+
+.btn-danger:hover {
+  background-color: #fbcbcb;
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+/* Button Sizing */
+.btn-sm {
+  padding: 0.42rem 0.95rem;
+  font-size: 0.82rem;
+}
+
+.btn-lg {
+  padding: 0.85rem 1.85rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.btn-icon-only {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   6. M3 Cards & Surfaces
+   ========================================================================== */
+.card, .metric-card, .data-table-card, .chart-card {
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-card);
+  border: 1px solid var(--md-sys-color-divider);
+  box-shadow: var(--md-sys-elevation-1);
+  padding: 1.5rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover, .metric-card:hover, .service-card:hover, .printer-card:hover {
+  box-shadow: var(--md-sys-elevation-2);
+}
+
+/* ==========================================================================
+   7. M3 Form Controls & Inputs
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.form-label .req {
+  color: var(--md-sys-color-error);
+}
+
+.form-control {
+  width: 100%;
+  font-family: var(--font-family-brand);
+  font-size: 0.92rem;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-shape-corner-medium);
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-control:focus {
+  background-color: #ffffff;
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 3px rgba(11, 87, 208, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   8. Material 3 Hero Section & Landing Page
    ========================================================================== */
 .landing-hero {
   position: relative;
-  border-radius: var(--radius-md);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-xl);
-  margin-bottom: 2.5rem;
-  background: var(--nb-surface);
+  border-radius: var(--md-shape-corner-extra-large);
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+  box-shadow: var(--md-sys-elevation-2);
   min-height: 440px;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  background-color: #0f172a;
 }
 
 .landing-hero-bg-cover {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 50%;
+  left: 0;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  border-left: var(--border-heavy);
-  filter: contrast(1.1);
-}
-
-.landing-hero-overlay {
-  display: none;
+  opacity: 0.35;
+  filter: saturate(1.2);
 }
 
 .landing-hero-content {
   position: relative;
-  z-index: 2;
-  padding: 3rem 2.5rem;
-  max-width: 58%;
+  z-index: 10;
+  padding: 3.5rem 3rem;
+  max-width: 800px;
+  color: #ffffff;
 }
 
 .landing-pill-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  color: var(--nb-text-main);
-  font-size: 0.76rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-pill);
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--md-shape-corner-full);
+  padding: 0.35rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
   margin-bottom: 1.25rem;
+  font-family: var(--font-family-mono);
 }
 
 .landing-hero-title {
-  font-size: 3rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -0.03em;
   margin-bottom: 1rem;
-  text-transform: uppercase;
 }
 
-.landing-hero-title span {
-  color: #fff;
-  background: var(--neon-gradient-1); color: #0a0a0a;
-  padding: 0 0.35rem;
-  border: 3px solid rgba(255,255,255,0.1);
-  box-shadow: 3px 3px 0px var(--nb-cyan);
-  display: inline-block;
-}
-
-.landing-hero-lead {
+.landing-hero-desc {
   font-size: 1.05rem;
-  color: var(--nb-text-main);
-  font-weight: 600;
-  line-height: 1.5;
-  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
 }
 
-.landing-hero-cta-row {
+.landing-hero-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
 }
 
-.landing-features-ribbon {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 0.85rem;
-  padding-top: 1.5rem;
-  border-top: var(--border-thick);
+.feature-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+  flex-wrap: wrap;
 }
 
 .feature-ribbon-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  color: var(--nb-text-main);
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--nb-bg);
-  border: var(--border-medium);
-  padding: 0.4rem 0.6rem;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-}
-
-.feature-ribbon-item i {
-  color: var(--nb-orange);
-  stroke-width: 3px;
-}
-
-/* Section Headings */
-.section-header-block {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 2.5rem;
-}
-
-.section-tag-label {
-  font-size: 0.76rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  color: var(--nb-text-main);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
-  display: inline-block;
-  margin-bottom: 0.6rem;
-}
-
-.section-main-heading {
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-}
-
-.section-sub-desc {
-  font-size: 0.95rem;
-  color: var(--nb-text-muted);
+  font-size: 0.82rem;
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-ribbon-item i, .feature-ribbon-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--md-sys-color-tertiary);
 }
 
 /* ==========================================================================
-   MATERIAL DESIGN 3 (M3) 3D PRINT ESTIMATOR COMPONENT SYSTEM
+   9. Material Design 3 (M3) 3D Print Cost Estimator Card
    ========================================================================== */
-
-/* M3 Soft Elevated Card */
 .m3-estimator-card {
-  background: var(--nb-surface);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 28px; /* M3 Extra Large Corner */
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border: 1px solid var(--md-sys-color-divider);
+  border-radius: var(--md-shape-corner-extra-large);
   padding: 2.5rem;
   margin-bottom: 3.5rem;
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4), 0 1px 6px 0 rgba(0, 0, 0, 0.2), 0 16px 40px -4px rgba(0, 243, 255, 0.05);
-  position: relative;
-  overflow: hidden;
+  box-shadow: var(--md-sys-elevation-2);
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.m3-estimator-card:hover {
-  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 2px 10px 0 rgba(0, 0, 0, 0.25), 0 20px 48px -4px rgba(0, 243, 255, 0.08);
-}
-
-/* Card Header */
 .m3-card-header {
   margin-bottom: 2rem;
   text-align: left;
@@ -751,15 +712,14 @@ select.form-control {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 85, 0, 0.12);
-  color: var(--nb-orange);
-  border: 1px solid rgba(255, 85, 0, 0.25);
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px; /* M3 Full Pill */
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--md-shape-corner-full);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-family: var(--font-family-mono);
   margin-bottom: 0.75rem;
 }
 
@@ -770,21 +730,18 @@ select.form-control {
 
 .m3-card-title {
   font-size: 2rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
   letter-spacing: -0.02em;
-  line-height: 1.15;
   margin-bottom: 0.5rem;
 }
 
 .m3-card-subtitle {
   font-size: 0.95rem;
-  color: var(--nb-text-muted);
-  line-height: 1.5;
-  max-width: 720px;
+  color: var(--md-sys-color-on-surface-variant);
+  max-width: 680px;
 }
 
-/* Quoter 2-Column Responsive Layout */
 .m3-quoter-layout {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -804,7 +761,7 @@ select.form-control {
   gap: 1rem;
 }
 
-/* M3 Text Fields & Select Containers */
+/* M3 Outlined/Filled Text Fields */
 .m3-text-field {
   display: flex;
   flex-direction: column;
@@ -814,32 +771,31 @@ select.form-control {
 .m3-field-container {
   display: flex;
   align-items: center;
-  background: var(--nb-surface-alt);
-  border: 1.5px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px; /* M3 Medium Corner */
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-shape-corner-medium);
   padding: 0.65rem 1rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
 }
 
 .m3-field-container:focus-within {
-  border-color: var(--nb-orange);
-  background: rgba(255, 85, 0, 0.04);
-  box-shadow: 0 0 0 3px rgba(255, 85, 0, 0.18);
+  background-color: #ffffff;
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 3px rgba(11, 87, 208, 0.15);
 }
 
 .m3-field-leading-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--nb-orange);
+  width: 19px;
+  height: 19px;
+  color: var(--md-sys-color-primary);
   flex-shrink: 0;
-  margin-right: 0.85rem;
+  margin-right: 0.75rem;
 }
 
 .m3-field-trailing-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--nb-text-muted);
+  width: 16px;
+  height: 16px;
+  color: var(--md-sys-color-outline);
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -856,58 +812,52 @@ select.form-control {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  color: var(--nb-text-muted);
+  color: var(--md-sys-color-outline);
   margin-bottom: 0.15rem;
   user-select: none;
-  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .m3-field-container:focus-within .m3-floating-label {
-  color: var(--nb-orange);
+  color: var(--md-sys-color-primary);
 }
 
 .m3-input, .m3-select {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--nb-text-main);
+  color: var(--md-sys-color-on-surface);
   font-size: 0.95rem;
   font-weight: 600;
   padding: 0;
   width: 100%;
   appearance: none;
   cursor: pointer;
-}
-
-.m3-input::placeholder {
-  color: var(--nb-text-dim);
-  font-weight: 400;
+  font-family: inherit;
 }
 
 .m3-number-input {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--nb-text-main);
+  color: var(--md-sys-color-on-surface);
 }
 
 .m3-unit-suffix {
   font-size: 0.75rem;
   font-weight: 800;
-  color: var(--nb-orange);
-  background: rgba(255, 85, 0, 0.12);
+  color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-primary-container);
   padding: 0.25rem 0.6rem;
-  border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.5px;
+  border-radius: var(--md-shape-corner-small);
+  font-family: var(--font-family-mono);
 }
 
 .m3-helper-text {
   font-size: 0.72rem;
-  color: var(--nb-text-dim);
-  padding-left: 0.35rem;
+  color: var(--md-sys-color-outline);
+  padding-left: 0.25rem;
 }
 
-/* M3 Segmented Buttons (Weight Presets) */
+/* M3 Segmented Buttons */
 .m3-segmented-button-bar {
   display: flex;
   align-items: center;
@@ -918,16 +868,16 @@ select.form-control {
 
 .m3-segment-label {
   font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--nb-text-muted);
-  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--md-sys-color-outline);
+  font-family: var(--font-family-mono);
 }
 
 .m3-segmented-buttons {
   display: inline-flex;
-  background: var(--nb-surface-alt);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 9999px; /* Full Stadium Shape */
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-shape-corner-full);
   padding: 3px;
   gap: 2px;
 }
@@ -939,9 +889,9 @@ select.form-control {
   justify-content: center;
   background: transparent;
   border: none;
-  border-radius: 9999px;
+  border-radius: var(--md-shape-corner-full);
   padding: 0.35rem 0.9rem;
-  color: var(--nb-text-muted);
+  color: var(--md-sys-color-on-surface-variant);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   line-height: 1.1;
@@ -950,32 +900,32 @@ select.form-control {
 .m3-seg-val {
   font-size: 0.85rem;
   font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-family-mono);
 }
 
 .m3-seg-desc {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .m3-segment-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--nb-text-main);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
 }
 
-.m3-segment-btn.active, .m3-segment-btn:focus-visible {
-  background: var(--nb-orange);
+.m3-segment-btn.active {
+  background-color: var(--md-sys-color-primary);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(255, 85, 0, 0.4);
+  box-shadow: var(--md-sys-elevation-1);
 }
 
 /* Contact Subcard */
 .m3-contact-subcard {
-  background: var(--nb-surface-alt);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-divider);
+  border-radius: var(--md-shape-corner-large);
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -988,28 +938,26 @@ select.form-control {
   gap: 0.5rem;
   font-size: 0.76rem;
   font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--nb-text-main);
+  font-family: var(--font-family-mono);
+  color: var(--md-sys-color-primary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
-/* Action Row (Calculate Trigger) */
 .m3-action-row {
   display: flex;
   justify-content: flex-start;
 }
 
-/* M3 Elevated Summary Card */
+/* M3 Tonal Summary Card */
 .m3-summary-card {
-  background: linear-gradient(180deg, rgba(255, 85, 0, 0.08) 0%, rgba(20, 20, 24, 0.95) 100%), var(--nb-surface);
-  border: 1px solid rgba(255, 85, 0, 0.25);
-  border-radius: 24px; /* M3 Large Corner */
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-divider);
+  border-radius: var(--md-shape-corner-extra-large);
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 85, 0, 0.1);
-  position: relative;
+  box-shadow: var(--md-sys-elevation-1);
 }
 
 .m3-summary-header {
@@ -1022,9 +970,9 @@ select.form-control {
 .m3-summary-overline {
   font-size: 0.74rem;
   text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  color: var(--nb-text-muted);
+  font-family: var(--font-family-mono);
+  font-weight: 700;
+  color: var(--md-sys-color-outline);
   letter-spacing: 0.5px;
 }
 
@@ -1032,45 +980,42 @@ select.form-control {
   display: inline-flex;
   align-items: center;
   font-size: 0.76rem;
-  color: #00f3ff;
-  background: rgba(0, 243, 255, 0.12);
-  border: 1px solid rgba(0, 243, 255, 0.3);
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
+  color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-primary-container);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--md-shape-corner-full);
   font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-family-mono);
 }
 
-/* Price Hero */
 .m3-price-hero {
   margin-bottom: 1.5rem;
 }
 
 .m3-price-value {
-  font-size: 3rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
+  font-size: 2.85rem;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
   line-height: 1;
   letter-spacing: -0.03em;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-family-mono);
   margin-bottom: 0.35rem;
 }
 
 .m3-price-caption {
   font-size: 0.76rem;
-  color: var(--nb-text-muted);
-  font-family: 'JetBrains Mono', monospace;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--font-family-mono);
 }
 
-/* Breakdown List */
 .m3-breakdown-list {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
   font-size: 0.85rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-family-mono);
   margin-bottom: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--md-sys-color-divider);
   padding-top: 1rem;
 }
 
@@ -1084,22 +1029,23 @@ select.form-control {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--nb-text-muted);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .m3-item-icon {
   width: 16px;
   height: 16px;
+  color: var(--md-sys-color-primary);
 }
 
 .m3-company-pool-pill {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 243, 255, 0.08);
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  padding: 0.6rem 0.85rem;
-  border-radius: 12px;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border: 1px solid var(--md-sys-color-divider);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--md-shape-corner-medium);
   margin-top: 0.35rem;
 }
 
@@ -1107,8 +1053,8 @@ select.form-control {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-weight: 800;
-  color: var(--nb-text-main);
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
 }
 
 /* Prominent Rounded Action Buttons */
@@ -1117,50 +1063,47 @@ select.form-control {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  border-radius: 9999px; /* M3 Full Stadium Button */
+  border-radius: var(--md-shape-corner-full);
   border: none;
   cursor: pointer;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
+  font-family: var(--font-family-brand);
+  font-weight: 700;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
 }
 
 .m3-btn-prominent {
   width: 100%;
-  height: 56px;
+  height: 54px;
   font-size: 0.95rem;
-  letter-spacing: 0.3px;
-  background: linear-gradient(135deg, #ff5500 0%, #ff7733 100%);
+  letter-spacing: 0.2px;
+  background-color: var(--md-sys-color-primary);
   color: #ffffff;
-  box-shadow: 0 4px 18px rgba(255, 85, 0, 0.4);
+  box-shadow: var(--md-sys-elevation-1);
 }
 
 .m3-btn-prominent:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(255, 85, 0, 0.55);
-  filter: brightness(1.05);
+  background-color: var(--md-sys-color-primary-hover);
+  box-shadow: var(--md-sys-elevation-2);
+  transform: translateY(-1px);
 }
 
 .m3-btn-prominent:active {
-  transform: scale(0.98);
-  box-shadow: 0 2px 8px rgba(255, 85, 0, 0.3);
+  transform: scale(0.99);
+  box-shadow: var(--md-sys-elevation-1);
 }
 
 .m3-btn-tonal {
-  height: 44px;
-  padding: 0 1.35rem;
+  height: 42px;
+  padding: 0 1.25rem;
   font-size: 0.85rem;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--nb-text-main);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
 }
 
 .m3-btn-tonal:hover {
-  background: rgba(255, 85, 0, 0.15);
-  color: var(--nb-orange);
-  border-color: rgba(255, 85, 0, 0.3);
-  transform: translateY(-1px);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
 }
 
 .m3-btn-icon {
@@ -1175,32 +1118,47 @@ select.form-control {
   justify-content: center;
   gap: 0.45rem;
   font-size: 0.76rem;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--nb-text-muted);
-  font-weight: 700;
+  font-family: var(--font-family-mono);
+  color: var(--md-sys-color-outline);
+  font-weight: 600;
   text-align: center;
   margin-top: 1rem;
 }
 
-/* Responsive adjustment for Mobile screens */
-@media (max-width: 900px) {
-  .m3-estimator-card {
-    padding: 1.5rem;
-    border-radius: 20px;
-  }
-  .m3-quoter-layout {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-  .m3-form-grid-2 {
-    grid-template-columns: 1fr;
-  }
-  .m3-price-value {
-    font-size: 2.35rem;
-  }
+/* ==========================================================================
+   10. Services Grid & Hardware Showcase
+   ========================================================================== */
+.section-header-block {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-/* Services Matrix */
+.section-tag-label {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  font-family: var(--font-family-mono);
+  margin-bottom: 0.5rem;
+}
+
+.section-main-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub-desc {
+  font-size: 0.95rem;
+  color: var(--md-sys-color-on-surface-variant);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .services-showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1209,475 +1167,144 @@ select.form-control {
 }
 
 .service-card {
-  background: var(--nb-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-card);
+  border: 1px solid var(--md-sys-color-divider);
   padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
-  transition: all 0.1s ease;
+  box-shadow: var(--md-sys-elevation-1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--nb-surface-alt);
+  box-shadow: var(--md-sys-elevation-2);
+  transform: translateY(-2px);
 }
 
 .service-icon-wrap {
   width: 48px;
   height: 48px;
-  border-radius: var(--radius-sm);
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  color: var(--nb-text-main);
+  border-radius: var(--md-shape-corner-medium);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 1.25rem;
 }
 
 .service-title {
   font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
   margin-bottom: 0.5rem;
 }
 
-.service-description {
+.service-desc {
   font-size: 0.88rem;
-  color: var(--nb-text-muted);
-  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
   line-height: 1.5;
-  margin-bottom: 1.25rem;
 }
 
-.service-tags-list {
-  display: flex;
-  gap: 0.45rem;
-  flex-wrap: wrap;
-  margin-top: auto;
-}
-
-.service-tag-item {
-  font-size: 0.72rem;
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--nb-bg);
-  border: var(--border-medium);
-  color: var(--nb-text-main);
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 800;
-}
-
-/* Machine Fleet Grid */
-.fleet-grid {
+/* Hardware Fleet */
+.hardware-fleet-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
   margin-bottom: 3.5rem;
 }
 
-.fleet-card {
-  background: var(--nb-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
+.printer-card {
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-card);
+  border: 1px solid var(--md-sys-color-divider);
+  padding: 1.25rem;
+  box-shadow: var(--md-sys-elevation-1);
 }
 
-.fleet-header {
+.printer-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.6rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
 }
 
-.fleet-name {
-  font-size: 1.05rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
+.printer-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
 }
 
-.fleet-specs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  background: var(--nb-bg);
-  border: var(--border-medium);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem;
-  margin-top: 1rem;
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
+.printer-type {
+  font-size: 0.72rem;
+  font-family: var(--font-family-mono);
+  color: var(--md-sys-color-outline);
 }
 
-.fleet-spec-label {
-  color: var(--nb-text-dim);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  font-weight: 800;
-}
-
-.fleet-spec-val {
-  font-weight: 900;
-  color: var(--nb-text-main);
-}
-
-/* Workflow Cards */
-.workflow-grid {
+/* Workflow Steps */
+.workflow-steps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
   margin-bottom: 3.5rem;
 }
 
-.workflow-card {
-  background: var(--nb-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  padding: 1.5rem 1.25rem;
-  display: flex;
-  flex-direction: column;
+.step-card {
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-card);
+  border: 1px solid var(--md-sys-color-divider);
+  padding: 1.5rem;
+  box-shadow: var(--md-sys-elevation-1);
+  position: relative;
 }
 
-.workflow-number {
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
+.step-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--md-sys-color-primary);
+  opacity: 0.35;
+  font-family: var(--font-family-mono);
   line-height: 1;
   margin-bottom: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: var(--border-medium);
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  width: fit-content;
-  box-shadow: var(--shadow-sm);
 }
 
-.workflow-step-title {
+.step-title {
   font-size: 1rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  margin-bottom: 0.4rem;
-  text-transform: uppercase;
-}
-
-.workflow-step-desc {
-  font-size: 0.84rem;
-  color: var(--nb-text-muted);
-  font-weight: 600;
-}
-
-/* Landing Footer */
-.landing-footer {
-  border-top: var(--border-heavy);
-  padding: 3rem 0 1.5rem;
-  margin-top: 3.5rem;
-}
-
-.footer-top-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-brand-info p {
-  color: var(--nb-text-muted);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-top: 0.75rem;
-}
-
-.footer-col-title {
-  font-size: 0.8rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--nb-text-main);
-  margin-bottom: 1rem;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: var(--border-medium);
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-}
-
-.footer-links-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  font-size: 0.88rem;
-  font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 0.35rem;
 }
 
-.footer-links-list a {
-  color: var(--nb-text-main);
-  text-decoration: none;
+.step-desc {
+  font-size: 0.82rem;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.45;
 }
 
-.footer-links-list a:hover {
-  color: var(--nb-orange);
-  text-decoration: underline;
-}
-
-.footer-bottom-row {
+/* ==========================================================================
+   11. Inventory Management & Filament Cards
+   ========================================================================== */
+.inventory-header-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1.5rem;
-  border-top: var(--border-thick);
-  font-size: 0.8rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  color: var(--nb-text-main);
+  margin-bottom: 1.75rem;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-/* --------------------------------------------------------------------------
-   Neobrutalist KPI Metric Cards (Studio OS)
-   -------------------------------------------------------------------------- */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
-}
-
-.metric-card {
-  background: var(--nb-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  padding: 1.25rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: all 0.1s ease;
-}
-
-.metric-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.metric-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.6rem;
-}
-
-.metric-title {
-  font-size: 0.76rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.metric-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--card-accent, var(--nb-yellow));
-  border: var(--border-medium);
-  box-shadow: 2px 2px 0px var(--nb-cyan);
-  color: var(--nb-text-main);
-  font-size: 1.1rem;
-}
-
-.metric-value {
-  font-size: 1.85rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 0.35rem;
-}
-
-.metric-subtext {
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  color: var(--nb-text-muted);
-}
-
-.metric-subtext.positive {
-  color: #15803d;
-}
-
-.metric-subtext.highlight-split {
-  color: #0284c7;
-}
-
-/* --------------------------------------------------------------------------
-   Company Account & Salary Split Spotlight Card
-   -------------------------------------------------------------------------- */
-.split-spotlight-box {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: var(--border-heavy);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-lg);
-  padding: 1.5rem 1.75rem;
-  margin-bottom: 1.75rem;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: center;
-}
-
-.split-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.split-label {
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 900;
-  margin-bottom: 0.35rem;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.split-label.company {
-  color: var(--nb-text-main);
-}
-
-.split-label.salary {
-  color: var(--nb-text-main);
-}
-
-.split-amount {
-  font-size: 1.85rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  letter-spacing: -0.02em;
-}
-
-.split-desc {
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--nb-text-main);
-  margin-top: 0.2rem;
-}
-
-.split-divider-v {
-  width: 3px;
-  height: 60px;
-  background-color: var(--nb-text-main);
-}
-
-/* --------------------------------------------------------------------------
-   Neobrutalist Panels & Tables
-   -------------------------------------------------------------------------- */
-.panel {
-  background: var(--nb-surface);
-  border: var(--border-heavy);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: 1.75rem;
-  overflow: hidden;
-}
-
-.panel-header {
-  padding: 1.15rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: var(--border-thick);
-  background-color: var(--nb-surface-alt);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.panel-title-wrap {
+.inventory-filters-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.panel-title {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-
-.panel-subtitle {
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--nb-text-muted);
-  font-weight: 600;
-  margin-top: 2px;
-}
-
-.panel-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
   flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
-.panel-body {
-  padding: 1.5rem;
-}
-
-/* Toolbar & Filters */
-.toolbar-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.search-box {
-  position: relative;
-  min-width: 250px;
-  flex: 1;
-  max-width: 400px;
-}
-
-.search-box input {
-  padding-left: 2.4rem;
-}
-
-.search-box i {
-  position: absolute;
-  left: 0.85rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--nb-text-main);
-  pointer-events: none;
-  stroke-width: 3px;
-  width: 16px;
-  height: 16px;
-}
-
-.filter-group {
+/* M3 Filter Chips */
+.filter-chips-group {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1685,164 +1312,59 @@ select.form-control {
 }
 
 .filter-chip {
-  padding: 0.4rem 0.75rem;
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  border-radius: var(--radius-sm);
-  background: var(--nb-surface);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  color: var(--nb-text-main);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-shape-corner-small);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
   cursor: pointer;
-  transition: all 0.1s ease;
-  text-transform: uppercase;
+  transition: all 0.2s ease;
 }
 
 .filter-chip:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--shadow-md);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
 }
 
 .filter-chip.active {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  box-shadow: var(--shadow-sm);
-  transform: translate(1px, 1px);
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-color: transparent;
+  font-weight: 700;
 }
 
-/* Data Tables */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  background: var(--nb-surface);
-}
-
-.custom-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.88rem;
-}
-
-.custom-table th {
-  padding: 0.85rem 1rem;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  color: var(--nb-text-main);
-  font-weight: 900;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  font-size: 0.74rem;
-  letter-spacing: 0.04em;
-  border-bottom: var(--border-thick);
-  border-right: 2px solid rgba(255,255,255,0.1);
-  white-space: nowrap;
-}
-
-.custom-table th:last-child {
-  border-right: none;
-}
-
-.custom-table td {
-  padding: 0.85rem 1rem;
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  border-right: 2px solid rgba(255,255,255,0.1);
-  color: var(--nb-text-main);
-  font-weight: 600;
-  vertical-align: middle;
-}
-
-.custom-table td:last-child {
-  border-right: none;
-}
-
-.custom-table tr:hover td {
-  background-color: rgba(204, 255, 0, 0.1);
-}
-
-.custom-table tr:last-child td {
-  border-bottom: none;
-}
-
-/* Badges */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.55rem;
-  font-size: 0.72rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  border-radius: var(--radius-sm);
-  border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: 2px 2px 0px var(--nb-cyan);
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--nb-text-main);
-}
-
-.badge-in-stock {
-  background: var(--nb-mint-light);
-}
-
-.badge-low-stock {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-}
-
-.badge-out-stock {
-  background: #fca5a5;
-}
-
-.badge-printing {
-  background: var(--neon-gradient-1); color: #0a0a0a;
-  color: #fff;
-}
-
-.badge-completed {
-  background: var(--nb-cyan-light);
-}
-
-.badge-paid {
-  background: var(--nb-mint-light);
-}
-
-.badge-pending {
-  background: #e5e7eb;
-}
-
-/* --------------------------------------------------------------------------
-   Filament Cards (Inventory)
-   -------------------------------------------------------------------------- */
+/* Filament Cards Grid */
 .filament-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1.35rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .filament-card {
-  background: var(--nb-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  padding: 1.25rem;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-card);
+  border: 1px solid var(--md-sys-color-divider);
+  padding: 1.35rem;
+  box-shadow: var(--md-sys-elevation-1);
   display: flex;
   flex-direction: column;
-  transition: all 0.1s ease;
+  gap: 1rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filament-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--md-sys-elevation-2);
 }
 
 .filament-card-top {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .filament-color-indicator {
@@ -1852,11 +1374,11 @@ select.form-control {
 }
 
 .color-swatch-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: 2px 2px 0px var(--nb-cyan);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px var(--md-sys-color-outline-variant);
   flex-shrink: 0;
 }
 
@@ -1866,66 +1388,60 @@ select.form-control {
 }
 
 .filament-color-name {
-  font-weight: 900;
-  font-size: 1rem;
-  color: var(--nb-text-main);
-  line-height: 1.2;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
 }
 
 .filament-brand-type {
-  font-size: 0.76rem;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--nb-text-muted);
-  font-weight: 700;
+  font-size: 0.74rem;
+  color: var(--md-sys-color-outline);
+  font-family: var(--font-family-mono);
 }
 
+/* M3 Progress Indicator */
 .filament-stock-bar-wrap {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .stock-labels {
   display: flex;
   justify-content: space-between;
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  margin-bottom: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .stock-progress-track {
-  height: 10px;
-  background-color: var(--nb-surface);
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-sm);
-  box-shadow: inset 1px 1px 0px var(--nb-cyan);
+  height: 8px;
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-shape-corner-full);
   overflow: hidden;
 }
 
 .stock-progress-fill {
   height: 100%;
-  background: var(--neon-gradient-1); color: #0a0a0a;
-  border-right: 2px solid rgba(255,255,255,0.1);
+  background-color: var(--md-sys-color-primary);
+  border-radius: var(--md-shape-corner-full);
   transition: width 0.3s ease;
 }
 
 .stock-progress-fill.low {
-  background: var(--neon-gradient-3); color: #0a0a0a;
+  background-color: var(--md-sys-color-warning);
 }
 
 .stock-progress-fill.empty {
-  background: var(--nb-red);
+  background-color: var(--md-sys-color-error);
 }
 
 .filament-card-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  background: var(--nb-surface-alt);
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-sm);
+  gap: 0.5rem;
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-shape-corner-medium);
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  font-family: 'JetBrains Mono', monospace;
 }
 
 .f-detail-item {
@@ -1935,389 +1451,259 @@ select.form-control {
 
 .f-detail-label {
   font-size: 0.68rem;
+  color: var(--md-sys-color-outline);
   text-transform: uppercase;
-  color: var(--nb-text-dim);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .f-detail-val {
-  font-size: 0.88rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
 }
 
 .filament-card-actions {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 0.65rem;
-  border-top: 2px solid rgba(255,255,255,0.1);
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--md-sys-color-divider);
 }
 
 .quick-stock-stepper {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+  display: inline-flex;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-shape-corner-full);
+  padding: 2px;
+  gap: 2px;
 }
 
 .stepper-btn {
-  padding: 0.3rem 0.55rem;
+  background: transparent;
+  border: none;
+  padding: 0.25rem 0.55rem;
   font-size: 0.74rem;
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: 2px 2px 0px var(--nb-cyan);
-  color: var(--nb-text-main);
-  border-radius: var(--radius-sm);
-  font-weight: 900;
+  font-weight: 700;
+  border-radius: var(--md-shape-corner-full);
+  color: var(--md-sys-color-on-surface-variant);
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
+  font-family: var(--font-family-mono);
 }
 
 .stepper-btn:hover {
-  background: #ffd000;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px var(--nb-cyan);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
 }
 
-.stepper-btn:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px var(--nb-cyan);
+/* ==========================================================================
+   12. M3 Data Tables (Orders & Ledger)
+   ========================================================================== */
+.data-table-card {
+  padding: 0;
+  overflow: hidden;
 }
 
-/* --------------------------------------------------------------------------
-   Order Calculator & Split Box
-   -------------------------------------------------------------------------- */
-.calculator-box {
-  background: var(--nb-surface-alt);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
-  padding: 1.25rem;
-  margin-top: 1.25rem;
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
 }
 
-.calc-breakdown-row {
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+thead {
+  background-color: var(--md-sys-color-surface-container-low);
+  border-bottom: 1px solid var(--md-sys-color-divider);
+}
+
+th {
+  padding: 0.95rem 1.15rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--md-sys-color-outline);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--md-sys-color-divider);
+  transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+  background-color: var(--md-sys-color-surface-container-low);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding: 0.9rem 1.15rem;
+  color: var(--md-sys-color-on-surface);
+  vertical-align: middle;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--md-shape-corner-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.badge-in-stock, .badge-paid, .badge-completed {
+  background-color: var(--md-sys-color-success-container);
+  color: var(--md-sys-color-success);
+}
+
+.badge-low-stock, .badge-pending {
+  background-color: var(--md-sys-color-warning-container);
+  color: var(--md-sys-color-warning);
+}
+
+.badge-out-stock {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-error);
+}
+
+.badge-printing {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
+}
+
+/* ==========================================================================
+   13. Metrics & Financial Analytics Cards
+   ========================================================================== */
+.metric-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metric-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 0;
-  font-size: 0.88rem;
-  color: var(--nb-text-main);
-  font-family: 'JetBrains Mono', monospace;
+}
+
+.metric-title {
+  font-size: 0.78rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--md-sys-color-outline);
 }
 
-.calc-breakdown-row.total-row {
-  border-top: 2px solid rgba(255,255,255,0.1);
-  margin-top: 0.5rem;
-  padding-top: 0.75rem;
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
+.metric-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.calc-split-highlight {
-  background: var(--nb-surface);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-top: 0.85rem;
+.metric-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-family: var(--font-family-mono);
+}
+
+.metric-subtitle {
+  font-size: 0.75rem;
+  color: var(--md-sys-color-outline);
+}
+
+.charts-row-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  font-family: 'JetBrains Mono', monospace;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.split-pill-calc {
+.chart-card {
+  height: 340px;
   display: flex;
   flex-direction: column;
 }
 
-.split-pill-calc .title {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  font-weight: 900;
-  margin-bottom: 2px;
+.chart-container-relative {
+  flex: 1;
+  position: relative;
+  min-height: 0;
 }
 
-.split-pill-calc.company .title {
-  color: #0284c7;
-}
-
-.split-pill-calc.salary .title {
-  color: #16a34a;
-}
-
-.split-pill-calc .val {
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-}
-
-.split-pill-calc .formula {
-  font-size: 0.68rem;
-  color: var(--nb-text-dim);
-  font-weight: 700;
-}
-
-/* --------------------------------------------------------------------------
-   Neobrutalist Invoices
-   -------------------------------------------------------------------------- */
-.invoice-wrapper {
-  background-color: var(--nb-surface);
-  color: var(--nb-text-main);
-  border-radius: var(--radius-sm);
-  padding: 2.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-xl);
-  font-size: 14px;
-}
-
-.invoice-header {
+/* Financial Split Banner */
+.financial-split-banner {
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-divider);
+  border-radius: var(--md-shape-corner-large);
+  padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 3px solid rgba(255,255,255,0.1);
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.invoice-logo-area {
-  display: flex;
   align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.invoice-logo-img {
-  height: 56px;
-  width: auto;
-  object-fit: contain;
-}
-
-.invoice-studio-details {
-  font-size: 0.82rem;
-  color: var(--nb-text-main);
-  font-weight: 600;
-  line-height: 1.35;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.invoice-studio-name {
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.invoice-meta-block {
-  text-align: right;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.invoice-badge-title {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: 2px 2px 0px var(--nb-cyan);
-  padding: 0.2rem 0.75rem;
-  display: inline-block;
-  line-height: 1;
-  margin-bottom: 0.4rem;
-}
-
-.invoice-number-tag {
-  font-weight: 900;
-  font-size: 1rem;
-  color: var(--nb-text-main);
-}
-
-.invoice-dates {
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--nb-text-muted);
-}
-
-.invoice-parties-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.25rem;
-  background-color: var(--nb-surface-alt);
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-}
-
-.party-box h4 {
-  font-size: 0.74rem;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: var(--nb-text-main);
-  margin-bottom: 0.35rem;
-}
-
-.party-box .party-name {
-  font-size: 1rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
-}
-
-.party-box .party-info {
-  font-size: 0.82rem;
-  color: var(--nb-text-main);
-  font-weight: 600;
-}
-
-.invoice-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
-  border: 2px solid rgba(255,255,255,0.1);
-}
-
-.invoice-table th {
-  background: var(--neon-gradient-3); color: #0a0a0a;
-  color: var(--nb-text-main);
-  font-size: 0.76rem;
-  font-weight: 900;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  padding: 0.75rem 0.85rem;
-  text-align: left;
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  border-right: 2px solid rgba(255,255,255,0.1);
-}
-
-.invoice-table th:last-child {
-  border-right: none;
-  text-align: right;
-}
-
-.invoice-table td {
-  padding: 0.85rem;
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  border-right: 2px solid rgba(255,255,255,0.1);
-  color: var(--nb-text-main);
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.invoice-table td:last-child {
-  border-right: none;
-  text-align: right;
-  font-weight: 900;
-}
-
-.invoice-summary-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.payment-instructions-box {
-  background-color: #fff7ed;
-  border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
-  padding: 1rem 1.15rem;
-}
-
-.pay-inst-title {
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--nb-text-main);
-  margin-bottom: 0.35rem;
+.split-col {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  flex-direction: column;
 }
 
-.pay-inst-desc {
-  font-size: 0.78rem;
-  color: var(--nb-text-main);
-  font-weight: 600;
-  line-height: 1.4;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.invoice-totals-table {
-  width: 100%;
-  font-size: 0.88rem;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.invoice-totals-table td {
-  padding: 0.4rem 0.5rem;
-  color: var(--nb-text-main);
-  font-weight: 700;
-}
-
-.invoice-totals-table td:last-child {
-  text-align: right;
-  font-weight: 900;
-}
-
-.invoice-totals-table tr.grand-total td {
-  border-top: 3px solid rgba(255,255,255,0.1);
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: var(--nb-orange);
-  padding-top: 0.6rem;
-}
-
-.invoice-footer {
-  border-top: 2px solid rgba(255,255,255,0.1);
-  padding-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.split-label {
   font-size: 0.74rem;
-  font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
-  color: var(--nb-text-muted);
+  text-transform: uppercase;
+  color: var(--md-sys-color-outline);
+  margin-bottom: 0.2rem;
 }
 
-.invoice-seal-box {
-  text-align: right;
+.split-amount {
+  font-size: 1.45rem;
+  font-weight: 800;
+  font-family: var(--font-family-mono);
 }
 
-.invoice-seal-line {
-  width: 140px;
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  margin-bottom: 0.35rem;
-}
-
-/* --------------------------------------------------------------------------
-   Neobrutalist Modals
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   14. Material 3 Dialogs & Modals
+   ========================================================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
+  z-index: 1000;
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
   padding: 1.5rem;
-  overflow-y: auto;
 }
 
 .modal-overlay.active {
@@ -2325,91 +1711,124 @@ select.form-control {
 }
 
 .modal-container {
-  background: var(--nb-surface);
-  border: var(--border-heavy);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-xl);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-shape-corner-extra-large);
   width: 100%;
-  max-width: 600px;
+  max-width: 620px;
+  box-shadow: var(--md-sys-elevation-4);
+  border: 1px solid var(--md-sys-color-divider);
+  overflow: hidden;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  animation: modalScaleIn 0.25s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.modal-container.modal-lg {
-  max-width: 860px;
-}
-
-.modal-container.modal-xl {
-  max-width: 940px;
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .modal-header {
-  padding: 1.25rem 1.5rem;
-  border-bottom: var(--border-thick);
+  padding: 1.5rem 1.75rem 1rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: var(--neon-gradient-3); color: #0a0a0a;
+  align-items: center;
 }
 
 .modal-title {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--nb-text-main);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  text-transform: uppercase;
+  gap: 0.65rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
 }
 
 .modal-close-btn {
-  background: var(--nb-surface);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  color: var(--nb-text-main);
-  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-outline);
   cursor: pointer;
   padding: 0.35rem;
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.1s ease;
-  font-weight: 900;
 }
 
 .modal-close-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--shadow-md);
-  background-color: #fee2e2;
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: 0.5rem 1.75rem 1.5rem;
   overflow-y: auto;
   flex: 1;
 }
 
 .modal-footer {
-  padding: 1.15rem 1.5rem;
-  border-top: var(--border-thick);
+  padding: 1rem 1.75rem 1.5rem;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
   gap: 0.75rem;
-  background-color: var(--nb-surface-alt);
+  background-color: var(--md-sys-color-surface-container-low);
+  border-top: 1px solid var(--md-sys-color-divider);
 }
 
-/* --------------------------------------------------------------------------
-   Neobrutalist Toast Alerts
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   15. Invoice Preview Card (Printable)
+   ========================================================================== */
+.invoice-preview-card {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-divider);
+  border-radius: var(--md-shape-corner-large);
+  padding: 2.25rem;
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.invoice-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid var(--md-sys-color-divider);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.invoice-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.invoice-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 2px solid var(--md-sys-color-divider);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--md-sys-color-outline);
+}
+
+/* ==========================================================================
+   16. Toast Notifications System
+   ========================================================================== */
 .toast-container {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 9999;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -2417,151 +1836,55 @@ select.form-control {
 }
 
 .toast {
-  background: var(--nb-surface);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--radius-sm);
+  pointer-events: auto;
+  background-color: var(--md-sys-color-on-surface);
+  color: var(--md-sys-color-surface);
   padding: 0.85rem 1.25rem;
-  color: var(--nb-text-main);
-  font-size: 0.86rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
+  border-radius: var(--md-shape-corner-full);
+  box-shadow: var(--md-sys-elevation-3);
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  pointer-events: auto;
-  animation: slideIn 0.2s ease, fadeOut 0.25s ease 3.7s forwards;
-  max-width: 380px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  animation: toastSlideUp 0.25s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.toast.toast-success {
-  background-color: var(--nb-mint-light);
-}
-.toast.toast-error {
-  background-color: #fecaca;
-}
-.toast.toast-info {
-  background-color: var(--nb-cyan-light);
-}
-
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(8px); }
-}
-
-/* --------------------------------------------------------------------------
-   Chart Cards
-   -------------------------------------------------------------------------- */
-.charts-grid {
-  display: grid;
-  grid-template-columns: 2fr 1.2fr;
-  gap: 1.5rem;
-  margin-bottom: 1.75rem;
-}
-
-.chart-card {
-  background: var(--nb-surface);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--radius-sm);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.chart-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-
-.chart-title {
-  font-size: 0.95rem;
-  font-weight: 900;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--nb-text-main);
-  text-transform: uppercase;
-}
-
-.chart-canvas-wrap {
-  position: relative;
-  height: 270px;
-  width: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   Print Stylesheet
-   -------------------------------------------------------------------------- */
-@media print {
-  body {
-    background: #fff !important;
-    background-image: none !important;
-    color: #000 !important;
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
-  .sidebar, .top-header, .panel-actions, .btn, .modal-header, .modal-footer, .toast-container {
-    display: none !important;
-  }
-  .main-wrapper {
-    margin-left: 0 !important;
-    width: 100% !important;
-  }
-  .modal-overlay {
-    position: static !important;
-    background: none !important;
-    padding: 0 !important;
-    display: block !important;
-  }
-  .modal-container {
-    max-width: 100% !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  .invoice-wrapper {
-    box-shadow: none !important;
-    padding: 0 !important;
-    max-width: 100% !important;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* --------------------------------------------------------------------------
-   Responsive Media Queries
-   -------------------------------------------------------------------------- */
+.toast-success {
+  background-color: var(--md-sys-color-success);
+  color: #ffffff;
+}
+
+.toast-error {
+  background-color: var(--md-sys-color-error);
+  color: #ffffff;
+}
+
+.toast-info {
+  background-color: var(--md-sys-color-primary);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   17. Responsive Media Queries
+   ========================================================================== */
 @media (max-width: 1024px) {
-  .landing-hero {
-    flex-direction: column-reverse;
-  }
-  .landing-hero-bg-cover {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    border-left: none;
-    border-bottom: var(--border-heavy);
-  }
-  .landing-hero-content {
-    max-width: 100%;
-    padding: 2rem 1.5rem;
-  }
-  .quoter-layout-grid {
+  .charts-row-grid {
     grid-template-columns: 1fr;
   }
-  .footer-top-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .charts-grid {
+  .m3-quoter-layout {
     grid-template-columns: 1fr;
-  }
-  .split-spotlight-box {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .split-divider-v {
-    display: none;
   }
 }
 
@@ -2571,30 +1894,27 @@ select.form-control {
   }
   .sidebar.mobile-open {
     transform: translateX(0);
+    box-shadow: var(--md-sys-elevation-5);
   }
   .main-wrapper {
     margin-left: 0;
-    width: 100%;
   }
   .mobile-menu-btn {
     display: flex;
   }
-  .content-body {
-    padding: 1.25rem 1rem 3rem;
-  }
   .top-header {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
+  }
+  .content-body {
+    padding: 1.5rem 1rem;
+  }
+  .form-row, .m3-form-grid-2 {
+    grid-template-columns: 1fr;
   }
   .landing-hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
-  .footer-top-grid {
-    grid-template-columns: 1fr;
-  }
-  .invoice-parties-grid, .invoice-summary-grid {
-    grid-template-columns: 1fr;
-  }
-  .metrics-grid {
-    grid-template-columns: 1fr;
+  .m3-price-value {
+    font-size: 2.25rem;
   }
 }

@@ -1586,13 +1586,12 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
           label: 'Amount (৳)',
           data: [totalRevenue, totalInventoryCost, totalProfit],
           backgroundColor: [
-            '#ff5500',
-            '#f87171',
-            '#22c55e'
+            '#0b57d0', // M3 Primary Blue
+            '#ba1a1a', // M3 Expense Red
+            '#146c2e'  // M3 Profit Green
           ],
-          borderColor: '#000000',
-          borderWidth: 3,
-          borderRadius: 4
+          borderRadius: 8,
+          borderSkipped: false
         }]
       },
       options: {
@@ -1601,6 +1600,11 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: { display: false },
           tooltip: {
+            backgroundColor: '#191c20',
+            titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
+            bodyFont: { family: 'JetBrains Mono', size: 12 },
+            padding: 10,
+            cornerRadius: 8,
             callbacks: {
               label: (context) => ` ৳ ${context.raw.toLocaleString()}`
             }
@@ -1608,16 +1612,16 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         },
         scales: {
           y: {
-            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+            grid: { color: 'rgba(0, 0, 0, 0.06)' },
             ticks: {
-              color: '#000000',
-              font: { family: 'JetBrains Mono', size: 11, weight: '700' },
+              color: '#535f70',
+              font: { family: 'JetBrains Mono', size: 11, weight: '600' },
               callback: (val) => `৳ ${val}`
             }
           },
           x: {
             grid: { display: false },
-            ticks: { color: '#000000', font: { family: 'Plus Jakarta Sans', size: 12, weight: '900' } }
+            ticks: { color: '#191c20', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
           }
         }
       }
@@ -1635,12 +1639,12 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         datasets: [{
           data: [totalCompanyPool, totalSalaryPool, totalInventoryCost],
           backgroundColor: [
-            '#00d2ff',
-            '#22c55e',
-            '#ff69b4'
+            '#0b57d0', // M3 Blue
+            '#146c2e', // M3 Green
+            '#ea580c'  // M3 Orange
           ],
-          borderColor: '#000000',
-          borderWidth: 3
+          borderColor: '#ffffff',
+          borderWidth: 2
         }]
       },
       options: {
@@ -1649,15 +1653,20 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: '#000000', font: { family: 'JetBrains Mono', size: 11, weight: '800' }, boxWidth: 14, padding: 12 }
+            labels: { color: '#191c20', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' }, boxWidth: 12, padding: 12 }
           },
           tooltip: {
+            backgroundColor: '#191c20',
+            titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
+            bodyFont: { family: 'JetBrains Mono', size: 12 },
+            padding: 10,
+            cornerRadius: 8,
             callbacks: {
               label: (context) => ` ${context.label}: ৳ ${context.raw.toLocaleString()}`
             }
           }
         },
-        cutout: '68%'
+        cutout: '70%'
       }
     });
   }
@@ -1682,10 +1691,9 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         datasets: [{
           label: 'Grams Printed (g)',
           data: data.length > 0 ? data : [530, 95, 0, 140, 185],
-          backgroundColor: '#ffe600',
-          borderColor: '#000000',
-          borderWidth: 3,
-          borderRadius: 4
+          backgroundColor: '#0b57d0',
+          borderRadius: 8,
+          borderSkipped: false
         }]
       },
       options: {
@@ -1695,6 +1703,11 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: { display: false },
           tooltip: {
+            backgroundColor: '#191c20',
+            titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
+            bodyFont: { family: 'JetBrains Mono', size: 12 },
+            padding: 10,
+            cornerRadius: 8,
             callbacks: {
               label: (context) => ` ${context.raw.toLocaleString()} grams`
             }
@@ -1702,16 +1715,16 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         },
         scales: {
           x: {
-            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+            grid: { color: 'rgba(0, 0, 0, 0.06)' },
             ticks: {
-              color: '#000000',
-              font: { family: 'JetBrains Mono', size: 11, weight: '700' },
+              color: '#535f70',
+              font: { family: 'JetBrains Mono', size: 11, weight: '600' },
               callback: (val) => `${val}g`
             }
           },
           y: {
             grid: { display: false },
-            ticks: { color: '#000000', font: { family: 'JetBrains Mono', size: 11, weight: '900' } }
+            ticks: { color: '#191c20', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
           }
         }
       }

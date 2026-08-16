@@ -661,9 +661,9 @@
         <footer class="landing-footer">
           <div class="footer-top-grid">
             <div class="footer-brand-info">
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <img src="brand_logo.png" alt="Studio Mistri" style="height: 38px; width: auto; filter: drop-shadow(2px 2px 0px var(--nb-cyan));">
-                <strong style="font-size: 1.3rem; font-weight: 900; color: var(--nb-text-main);">Studio Mistri</strong>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                <img src="brand_logo.png" alt="Studio Mistri" style="height: 38px; width: auto;">
+                <strong style="font-size: 1.3rem; font-weight: 800; color: var(--md-sys-color-on-surface);">Studio Mistri</strong>
               </div>
               <p>High-precision 3D printing studio, rapid prototyping lab, and additive manufacturing solutions in Dhaka, Bangladesh. THINK • DESIGN • MAKE.</p>
             </div>
@@ -681,7 +681,7 @@
 
             <div>
               <div class="footer-col-title">WORKSHOP CONTACT</div>
-              <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--nb-text-main);">
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; font-family: var(--font-family-mono); font-weight: 600; color: var(--md-sys-color-on-surface);">
                 <div>Location: Dhaka, Bangladesh</div>
                 <div>Phone: +880 1700-000000</div>
                 <div>Email: contact@studiomistri.com</div>
@@ -707,30 +707,31 @@
            ==================================================================== -->
       <section class="view-section" id="view-dashboard">
         <!-- Hero Studio Banner with fb cover.png -->
-        <div class="studio-hero-banner" style="background: var(--nb-surface); border: var(--border-heavy); box-shadow: var(--shadow-lg); border-radius: var(--radius-sm); margin-bottom: 1.75rem; position: relative; overflow: hidden; min-height: 180px; display: flex; align-items: center;">
-          <img src="fb cover.png" alt="Studio Mistri 3D Printing Cover" class="hero-cover-img" style="position: absolute; top: 0; right: 0; width: 45%; height: 100%; object-fit: cover; border-left: var(--border-thick);">
-          <div class="hero-content" style="position: relative; z-index: 2; padding: 2rem 2.25rem; max-width: 58%;">
-            <div class="hero-tag" style="font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; font-weight: 900; background: var(--nb-yellow); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); padding: 0.2rem 0.5rem; display: inline-block; margin-bottom: 0.5rem;">
-              ★ STUDIO TELEMETRY • THINK DESIGN MAKE ★
+        <div class="studio-hero-banner card" style="margin-bottom: 2rem; position: relative; overflow: hidden; min-height: 180px; display: flex; align-items: center; padding: 0;">
+          <img src="fb cover.png" alt="Studio Mistri 3D Printing Cover" class="hero-cover-img" style="position: absolute; top: 0; right: 0; width: 45%; height: 100%; object-fit: cover; opacity: 0.4;">
+          <div class="hero-content" style="position: relative; z-index: 2; padding: 2.25rem; max-width: 58%;">
+            <div class="hero-tag m3-badge-pill">
+              <i data-lucide="activity" style="width: 14px; height: 14px;"></i>
+              <span>STUDIO TELEMETRY • THINK DESIGN MAKE</span>
             </div>
-            <h2 style="font-size: 2rem; font-weight: 900; color: var(--nb-text-main); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.35rem;">
+            <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--md-sys-color-on-surface); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.35rem;">
               Studio Mistri | 3D Studio OS
             </h2>
-            <p style="color: var(--nb-text-muted); font-size: 0.92rem; font-weight: 600; margin-bottom: 1.25rem;">
+            <p style="color: var(--md-sys-color-on-surface-variant); font-size: 0.92rem; margin-bottom: 1.25rem;">
               High-precision additive manufacturing, prototyping & custom fabrication studio.
             </p>
-            <div class="hero-stats-row" style="display: flex; gap: 1.25rem;">
-              <div class="hero-mini-stat" style="background: var(--nb-bg); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.35rem 0.75rem; border-radius: 4px; box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);">
-                <span class="num font-mono" id="hero-stat-total-grams" style="font-size: 1.2rem; font-weight: 900; color: var(--nb-text-main);">0g</span>
-                <span class="label" style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--nb-text-main); text-transform: uppercase;"> Printed</span>
+            <div class="hero-stats-row" style="display: flex; gap: 1rem;">
+              <div class="hero-mini-stat" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-divider); padding: 0.4rem 0.85rem; border-radius: var(--md-shape-corner-medium);">
+                <span class="num font-mono" id="hero-stat-total-grams" style="font-size: 1.15rem; font-weight: 800; color: var(--md-sys-color-primary);">0g</span>
+                <span class="label" style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: var(--md-sys-color-outline); text-transform: uppercase;"> Printed</span>
               </div>
-              <div class="hero-mini-stat" style="background: var(--nb-bg); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.35rem 0.75rem; border-radius: 4px; box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);">
-                <span class="num font-mono" id="hero-stat-orders-completed" style="font-size: 1.2rem; font-weight: 900; color: var(--nb-text-main);">0</span>
-                <span class="label" style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--nb-text-main); text-transform: uppercase;"> Completed</span>
+              <div class="hero-mini-stat" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-divider); padding: 0.4rem 0.85rem; border-radius: var(--md-shape-corner-medium);">
+                <span class="num font-mono" id="hero-stat-orders-completed" style="font-size: 1.15rem; font-weight: 800; color: var(--md-sys-color-success);">0</span>
+                <span class="label" style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: var(--md-sys-color-outline); text-transform: uppercase;"> Completed</span>
               </div>
-              <div class="hero-mini-stat" style="background: var(--nb-bg); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.35rem 0.75rem; border-radius: 4px; box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);">
-                <span class="num font-mono" id="hero-stat-available-colors" style="font-size: 1.2rem; font-weight: 900; color: var(--nb-text-main);">0</span>
-                <span class="label" style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--nb-text-main); text-transform: uppercase;"> Colors</span>
+              <div class="hero-mini-stat" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-divider); padding: 0.4rem 0.85rem; border-radius: var(--md-shape-corner-medium);">
+                <span class="num font-mono" id="hero-stat-available-colors" style="font-size: 1.15rem; font-weight: 800; color: var(--md-sys-color-tertiary);">0</span>
+                <span class="label" style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: var(--md-sys-color-outline); text-transform: uppercase;"> Colors</span>
               </div>
             </div>
           </div>
