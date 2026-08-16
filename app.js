@@ -1586,7 +1586,7 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
           label: 'Amount (৳)',
           data: [totalRevenue, totalInventoryCost, totalProfit],
           backgroundColor: [
-            '#0b57d0', // M3 Primary Blue
+            '#ea580c', // M3 Brand Flame Orange
             '#ba1a1a', // M3 Expense Red
             '#146c2e'  // M3 Profit Green
           ],
@@ -1600,7 +1600,7 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#191c20',
+            backgroundColor: '#191c1f',
             titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
             bodyFont: { family: 'JetBrains Mono', size: 12 },
             padding: 10,
@@ -1612,16 +1612,16 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         },
         scales: {
           y: {
-            grid: { color: 'rgba(0, 0, 0, 0.06)' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
             ticks: {
-              color: '#535f70',
+              color: '#77574e',
               font: { family: 'JetBrains Mono', size: 11, weight: '600' },
               callback: (val) => `৳ ${val}`
             }
           },
           x: {
             grid: { display: false },
-            ticks: { color: '#191c20', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
+            ticks: { color: '#191c1f', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
           }
         }
       }
@@ -1639,9 +1639,9 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         datasets: [{
           data: [totalCompanyPool, totalSalaryPool, totalInventoryCost],
           backgroundColor: [
-            '#0b57d0', // M3 Blue
-            '#146c2e', // M3 Green
-            '#ea580c'  // M3 Orange
+            '#00639b', // M3 Cobalt Blue
+            '#146c2e', // M3 Success Green
+            '#ea580c'  // M3 Brand Flame Orange
           ],
           borderColor: '#ffffff',
           borderWidth: 2
@@ -1653,10 +1653,10 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: '#191c20', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' }, boxWidth: 12, padding: 12 }
+            labels: { color: '#191c1f', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' }, boxWidth: 12, padding: 12 }
           },
           tooltip: {
-            backgroundColor: '#191c20',
+            backgroundColor: '#191c1f',
             titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
             bodyFont: { family: 'JetBrains Mono', size: 12 },
             padding: 10,
@@ -1691,7 +1691,7 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         datasets: [{
           label: 'Grams Printed (g)',
           data: data.length > 0 ? data : [530, 95, 0, 140, 185],
-          backgroundColor: '#0b57d0',
+          backgroundColor: '#ea580c',
           borderRadius: 8,
           borderSkipped: false
         }]
@@ -1703,7 +1703,7 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#191c20',
+            backgroundColor: '#191c1f',
             titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
             bodyFont: { family: 'JetBrains Mono', size: 12 },
             padding: 10,
@@ -1715,16 +1715,16 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         },
         scales: {
           x: {
-            grid: { color: 'rgba(0, 0, 0, 0.06)' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
             ticks: {
-              color: '#535f70',
+              color: '#77574e',
               font: { family: 'JetBrains Mono', size: 11, weight: '600' },
               callback: (val) => `${val}g`
             }
           },
           y: {
             grid: { display: false },
-            ticks: { color: '#191c20', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
+            ticks: { color: '#191c1f', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
           }
         }
       }
