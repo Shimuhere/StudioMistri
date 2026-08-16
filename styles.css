@@ -4,46 +4,51 @@
    ========================================================================== */
 
 :root {
-  /* Neobrutalism Signature Palette */
-  --nb-bg: #f4f0ea;
-  --nb-surface: #ffffff;
-  --nb-surface-alt: #fbf9f5;
-  --nb-black: #000000;
+  /* Dark Mode & Neon Palette */
+  --nb-bg: #0a0a0a;
+  --nb-surface: #111111;
+  --nb-surface-alt: #1a1a1a;
+  --nb-black: #ffffff;
   
-  /* Vibrant Saturated Accents */
+  /* Neon Accents */
   --nb-orange: #ff5500;
-  --nb-orange-hover: #ff3c00;
-  --nb-yellow: #ffe600;
-  --nb-yellow-hover: #ffd000;
-  --nb-mint: #22c55e;
-  --nb-mint-light: #86efac;
-  --nb-cyan: #00d2ff;
-  --nb-cyan-light: #7dd3fc;
-  --nb-pink: #ff69b4;
-  --nb-pink-light: #f472b6;
-  --nb-purple: #a855f7;
-  --nb-red: #ef4444;
+  --nb-orange-hover: #ff7733;
+  --nb-yellow: #ccff00;
+  --nb-yellow-hover: #d4ff33;
+  --nb-mint: #00ff66;
+  --nb-mint-light: #33ff85;
+  --nb-cyan: #00f3ff;
+  --nb-cyan-light: #33f5ff;
+  --nb-pink: #ff00ff;
+  --nb-pink-light: #ff33ff;
+  --nb-purple: #b026ff;
+  --nb-red: #ff0055;
   
+  /* Gradients */
+  --neon-gradient-1: linear-gradient(135deg, #00f3ff, #ff00ff);
+  --neon-gradient-2: linear-gradient(135deg, #b026ff, #00f3ff);
+  --neon-gradient-3: linear-gradient(135deg, #ccff00, #00ff66);
+
   /* Text & Ink */
-  --nb-text-main: #000000;
-  --nb-text-muted: #4b5563;
+  --nb-text-main: #f3f4f6;
+  --nb-text-muted: #9ca3af;
   --nb-text-dim: #6b7280;
   
-  /* Neobrutalist Geometry & Borders */
-  --border-thick: 3px solid #000000;
-  --border-medium: 2px solid #000000;
-  --border-heavy: 4px solid #000000;
+  /* Geometry & Borders (Less cluttered) */
+  --border-thick: 1px solid rgba(255, 255, 255, 0.1);
+  --border-medium: 1px solid rgba(255, 255, 255, 0.1);
+  --border-heavy: 1px solid rgba(255, 255, 255, 0.15);
   
-  /* Hard Solid Shadows (No Blur) */
-  --shadow-sm: 2px 2px 0px #000000;
-  --shadow-md: 4px 4px 0px #000000;
-  --shadow-lg: 6px 6px 0px #000000;
-  --shadow-xl: 8px 8px 0px #000000;
-  --shadow-press: 1px 1px 0px #000000;
+  /* Soft Glow Shadows */
+  --shadow-sm: 0 0 10px rgba(0, 243, 255, 0.1);
+  --shadow-md: 0 0 15px rgba(0, 243, 255, 0.15);
+  --shadow-lg: 0 0 25px rgba(0, 243, 255, 0.2);
+  --shadow-xl: 0 0 40px rgba(0, 243, 255, 0.3);
+  --shadow-press: 0 0 5px rgba(0, 243, 255, 0.3);
   
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   --radius-pill: 9999px;
   
   /* Layout Dimensions */
@@ -71,7 +76,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  background-image: radial-gradient(#000000 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -111,16 +116,16 @@ body {
   align-items: center;
   gap: 0.75rem;
   border-bottom: var(--border-thick);
-  background-color: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   cursor: pointer;
-  box-shadow: 0 4px 0 #000;
+  box-shadow: 0 4px 0 var(--nb-cyan);
 }
 
 .brand-logo-img {
   height: 38px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(2px 2px 0px #000);
+  filter: drop-shadow(2px 2px 0px var(--nb-cyan));
 }
 
 .brand-text {
@@ -132,13 +137,13 @@ body {
   font-size: 1.2rem;
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: #000;
+  color: var(--nb-text-main);
   line-height: 1;
 }
 
 .brand-name span {
   color: var(--nb-orange);
-  background: #000;
+  background: var(--nb-surface-alt);
   padding: 0 0.25rem;
   border-radius: 2px;
 }
@@ -147,7 +152,7 @@ body {
   font-size: 0.68rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
-  color: #000;
+  color: var(--nb-text-main);
   margin-top: 3px;
   text-transform: uppercase;
 }
@@ -166,7 +171,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 900;
   padding: 0.6rem 0.4rem 0.2rem;
 }
@@ -176,7 +181,7 @@ body {
   align-items: center;
   gap: 0.75rem;
   padding: 0.7rem 0.85rem;
-  color: #000;
+  color: var(--nb-text-main);
   text-decoration: none;
   font-weight: 800;
   font-size: 0.88rem;
@@ -197,15 +202,15 @@ body {
 }
 
 .nav-link:hover {
-  background-color: #fff;
+  background-color: var(--nb-surface);
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow-md);
 }
 
 .nav-link.active {
-  background-color: var(--nb-yellow);
-  color: #000;
-  border-color: #000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  color: var(--nb-text-main);
+  border-color: var(--nb-text-main);
   box-shadow: var(--shadow-md);
   font-weight: 900;
   transform: translate(-1px, -1px);
@@ -213,7 +218,7 @@ body {
 
 .nav-badge {
   margin-left: auto;
-  background-color: #000;
+  background-color: var(--nb-text-main);
   color: var(--nb-yellow);
   font-size: 0.7rem;
   padding: 0.15rem 0.45rem;
@@ -242,7 +247,7 @@ body {
   gap: 0.5rem;
   font-size: 0.8rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
 }
@@ -251,13 +256,13 @@ body {
   width: 9px;
   height: 9px;
   background-color: var(--nb-mint);
-  border: 2px solid #000;
+  border: 2px solid rgba(255,255,255,0.1);
   border-radius: 50%;
 }
 
 .studio-status-desc {
   font-size: 0.7rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 700;
   margin-top: 0.35rem;
   line-height: 1.3;
@@ -287,7 +292,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 90;
-  box-shadow: 0 4px 0px #000000;
+  box-shadow: 0 4px 0px var(--nb-cyan);
 }
 
 .header-left {
@@ -298,10 +303,10 @@ body {
 
 .mobile-menu-btn {
   display: none;
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
-  color: #000;
+  color: var(--nb-text-main);
   padding: 0.45rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -323,7 +328,7 @@ body {
 }
 
 .page-title-display {
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 900;
 }
 
@@ -334,7 +339,7 @@ body {
 }
 
 .header-stat-pill {
-  background: #ffffff;
+  background: var(--nb-surface);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
   padding: 0.4rem 0.85rem;
@@ -347,7 +352,7 @@ body {
 }
 
 .header-stat-pill .label {
-  color: #000;
+  color: var(--nb-text-main);
   text-transform: uppercase;
   font-weight: 800;
   font-size: 0.72rem;
@@ -385,7 +390,7 @@ body {
   text-decoration: none;
   line-height: 1.2;
   user-select: none;
-  color: #000000;
+  color: var(--nb-text-main);
 }
 
 .btn i {
@@ -403,7 +408,7 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--nb-orange);
+  background: var(--neon-gradient-1); color: #0a0a0a;
   color: #ffffff;
 }
 
@@ -412,8 +417,8 @@ body {
 }
 
 .btn-secondary {
-  background-color: var(--nb-yellow);
-  color: #000000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  color: var(--nb-text-main);
 }
 
 .btn-secondary:hover {
@@ -422,7 +427,7 @@ body {
 
 .btn-outline {
   background-color: var(--nb-surface);
-  color: #000000;
+  color: var(--nb-text-main);
 }
 
 .btn-outline:hover {
@@ -430,19 +435,19 @@ body {
 }
 
 .btn-glow {
-  background-color: var(--nb-yellow);
-  color: #000000;
-  box-shadow: 5px 5px 0px #000000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  color: var(--nb-text-main);
+  box-shadow: 5px 5px 0px var(--nb-cyan);
 }
 
 .btn-glow:hover {
   background-color: #ffd000;
-  box-shadow: 7px 7px 0px #000000;
+  box-shadow: 7px 7px 0px var(--nb-cyan);
 }
 
 .btn-success {
   background-color: var(--nb-mint);
-  color: #000000;
+  color: var(--nb-text-main);
 }
 
 .btn-danger {
@@ -492,7 +497,7 @@ body {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #000;
+  color: var(--nb-text-main);
   margin-bottom: 0.4rem;
 }
 
@@ -503,11 +508,11 @@ body {
 .form-control {
   width: 100%;
   padding: 0.65rem 0.85rem;
-  background-color: #ffffff;
+  background-color: var(--nb-surface);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius-sm);
-  color: #000000;
+  color: var(--nb-text-main);
   font-size: 0.92rem;
   font-weight: 700;
   font-family: inherit;
@@ -516,8 +521,8 @@ body {
 
 .form-control:focus {
   outline: none;
-  border-color: #000000;
-  background-color: #fff;
+  border-color: var(--nb-text-main);
+  background-color: var(--nb-surface);
   box-shadow: 4px 4px 0px var(--nb-orange);
 }
 
@@ -599,10 +604,10 @@ select.form-control {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
-  color: #000;
+  color: var(--nb-text-main);
   font-size: 0.76rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 900;
@@ -616,7 +621,7 @@ select.form-control {
 .landing-hero-title {
   font-size: 3rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin-bottom: 1rem;
@@ -625,16 +630,16 @@ select.form-control {
 
 .landing-hero-title span {
   color: #fff;
-  background-color: var(--nb-orange);
+  background: var(--neon-gradient-1); color: #0a0a0a;
   padding: 0 0.35rem;
-  border: 3px solid #000;
-  box-shadow: 3px 3px 0px #000;
+  border: 3px solid rgba(255,255,255,0.1);
+  box-shadow: 3px 3px 0px var(--nb-cyan);
   display: inline-block;
 }
 
 .landing-hero-lead {
   font-size: 1.05rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 600;
   line-height: 1.5;
   margin-bottom: 1.75rem;
@@ -662,7 +667,7 @@ select.form-control {
   gap: 0.5rem;
   font-size: 0.78rem;
   font-weight: 800;
-  color: #000;
+  color: var(--nb-text-main);
   font-family: 'JetBrains Mono', monospace;
   background: var(--nb-bg);
   border: var(--border-medium);
@@ -689,8 +694,8 @@ select.form-control {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: var(--nb-yellow);
-  color: #000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  color: var(--nb-text-main);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
   padding: 0.25rem 0.65rem;
@@ -702,7 +707,7 @@ select.form-control {
 .section-main-heading {
   font-size: 2.2rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 0.5rem;
@@ -733,7 +738,7 @@ select.form-control {
 }
 
 .quoter-summary-box {
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-thick);
   border-radius: var(--radius-sm);
   padding: 1.75rem;
@@ -745,7 +750,7 @@ select.form-control {
 .quote-price-display {
   font-size: 2.7rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   line-height: 1;
   letter-spacing: -0.03em;
   margin: 0.5rem 0 1rem;
@@ -757,7 +762,7 @@ select.form-control {
   align-items: center;
   gap: 0.35rem;
   font-size: 0.78rem;
-  color: #000;
+  color: var(--nb-text-main);
   background: var(--nb-cyan);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
@@ -796,10 +801,10 @@ select.form-control {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
-  color: #000;
+  color: var(--nb-text-main);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -810,7 +815,7 @@ select.form-control {
 .service-title {
   font-size: 1.15rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
@@ -835,7 +840,7 @@ select.form-control {
   font-family: 'JetBrains Mono', monospace;
   background: var(--nb-bg);
   border: var(--border-medium);
-  color: #000;
+  color: var(--nb-text-main);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   font-weight: 800;
@@ -869,7 +874,7 @@ select.form-control {
 .fleet-name {
   font-size: 1.05rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .fleet-specs-grid {
@@ -894,7 +899,7 @@ select.form-control {
 
 .fleet-spec-val {
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 /* Workflow Cards */
@@ -918,11 +923,11 @@ select.form-control {
 .workflow-number {
   font-size: 2.2rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   line-height: 1;
   margin-bottom: 0.5rem;
   font-family: 'JetBrains Mono', monospace;
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-medium);
   display: inline-block;
   padding: 0.2rem 0.5rem;
@@ -933,7 +938,7 @@ select.form-control {
 .workflow-step-title {
   font-size: 1rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   margin-bottom: 0.4rem;
   text-transform: uppercase;
 }
@@ -971,9 +976,9 @@ select.form-control {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #000;
+  color: var(--nb-text-main);
   margin-bottom: 1rem;
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-medium);
   display: inline-block;
   padding: 0.2rem 0.5rem;
@@ -990,7 +995,7 @@ select.form-control {
 }
 
 .footer-links-list a {
-  color: #000;
+  color: var(--nb-text-main);
   text-decoration: none;
 }
 
@@ -1008,7 +1013,7 @@ select.form-control {
   font-size: 0.8rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
-  color: #000;
+  color: var(--nb-text-main);
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -1051,7 +1056,7 @@ select.form-control {
   font-size: 0.76rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1065,15 +1070,15 @@ select.form-control {
   justify-content: center;
   background-color: var(--card-accent, var(--nb-yellow));
   border: var(--border-medium);
-  box-shadow: 2px 2px 0px #000;
-  color: #000;
+  box-shadow: 2px 2px 0px var(--nb-cyan);
+  color: var(--nb-text-main);
   font-size: 1.1rem;
 }
 
 .metric-value {
   font-size: 1.85rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 0.35rem;
@@ -1098,7 +1103,7 @@ select.form-control {
    Company Account & Salary Split Spotlight Card
    -------------------------------------------------------------------------- */
 .split-spotlight-box {
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   border: var(--border-heavy);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-lg);
@@ -1128,31 +1133,31 @@ select.form-control {
 }
 
 .split-label.company {
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .split-label.salary {
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .split-amount {
   font-size: 1.85rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   letter-spacing: -0.02em;
 }
 
 .split-desc {
   font-size: 0.76rem;
   font-weight: 700;
-  color: #000;
+  color: var(--nb-text-main);
   margin-top: 0.2rem;
 }
 
 .split-divider-v {
   width: 3px;
   height: 60px;
-  background-color: #000;
+  background-color: var(--nb-text-main);
 }
 
 /* --------------------------------------------------------------------------
@@ -1187,7 +1192,7 @@ select.form-control {
 .panel-title {
   font-size: 1.1rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
@@ -1237,7 +1242,7 @@ select.form-control {
   left: 0.85rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #000;
+  color: var(--nb-text-main);
   pointer-events: none;
   stroke-width: 3px;
   width: 16px;
@@ -1260,7 +1265,7 @@ select.form-control {
   background: var(--nb-surface);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
-  color: #000;
+  color: var(--nb-text-main);
   cursor: pointer;
   transition: all 0.1s ease;
   text-transform: uppercase;
@@ -1272,7 +1277,7 @@ select.form-control {
 }
 
 .filter-chip.active {
-  background-color: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
   box-shadow: var(--shadow-sm);
   transform: translate(1px, 1px);
 }
@@ -1284,7 +1289,7 @@ select.form-control {
   border: var(--border-thick);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-md);
-  background: #fff;
+  background: var(--nb-surface);
 }
 
 .custom-table {
@@ -1296,15 +1301,15 @@ select.form-control {
 
 .custom-table th {
   padding: 0.85rem 1rem;
-  background-color: var(--nb-yellow);
-  color: #000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  color: var(--nb-text-main);
   font-weight: 900;
   font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
   font-size: 0.74rem;
   letter-spacing: 0.04em;
   border-bottom: var(--border-thick);
-  border-right: 2px solid #000;
+  border-right: 2px solid rgba(255,255,255,0.1);
   white-space: nowrap;
 }
 
@@ -1314,9 +1319,9 @@ select.form-control {
 
 .custom-table td {
   padding: 0.85rem 1rem;
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
-  color: #000;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  color: var(--nb-text-main);
   font-weight: 600;
   vertical-align: middle;
 }
@@ -1326,7 +1331,7 @@ select.form-control {
 }
 
 .custom-table tr:hover td {
-  background-color: #fefce8;
+  background-color: rgba(204, 255, 0, 0.1);
 }
 
 .custom-table tr:last-child td {
@@ -1343,11 +1348,11 @@ select.form-control {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 900;
   border-radius: var(--radius-sm);
-  border: 2px solid #000;
-  box-shadow: 2px 2px 0px #000;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 2px 2px 0px var(--nb-cyan);
   text-transform: uppercase;
   white-space: nowrap;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .badge-in-stock {
@@ -1355,7 +1360,7 @@ select.form-control {
 }
 
 .badge-low-stock {
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
 }
 
 .badge-out-stock {
@@ -1363,7 +1368,7 @@ select.form-control {
 }
 
 .badge-printing {
-  background: var(--nb-orange);
+  background: var(--neon-gradient-1); color: #0a0a0a;
   color: #fff;
 }
 
@@ -1422,8 +1427,8 @@ select.form-control {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-sm);
-  border: 2px solid #000;
-  box-shadow: 2px 2px 0px #000;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 2px 2px 0px var(--nb-cyan);
   flex-shrink: 0;
 }
 
@@ -1435,7 +1440,7 @@ select.form-control {
 .filament-color-name {
   font-weight: 900;
   font-size: 1rem;
-  color: #000;
+  color: var(--nb-text-main);
   line-height: 1.2;
 }
 
@@ -1461,22 +1466,22 @@ select.form-control {
 
 .stock-progress-track {
   height: 10px;
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: var(--nb-surface);
+  border: 2px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-sm);
-  box-shadow: inset 1px 1px 0px #000;
+  box-shadow: inset 1px 1px 0px var(--nb-cyan);
   overflow: hidden;
 }
 
 .stock-progress-fill {
   height: 100%;
-  background: var(--nb-orange);
-  border-right: 2px solid #000;
+  background: var(--neon-gradient-1); color: #0a0a0a;
+  border-right: 2px solid rgba(255,255,255,0.1);
   transition: width 0.3s ease;
 }
 
 .stock-progress-fill.low {
-  background: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
 }
 
 .stock-progress-fill.empty {
@@ -1488,7 +1493,7 @@ select.form-control {
   grid-template-columns: 1fr 1fr;
   gap: 0.6rem;
   background: var(--nb-surface-alt);
-  border: 2px solid #000;
+  border: 2px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-sm);
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -1510,7 +1515,7 @@ select.form-control {
 .f-detail-val {
   font-size: 0.88rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .filament-card-actions {
@@ -1520,7 +1525,7 @@ select.form-control {
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.65rem;
-  border-top: 2px solid #000;
+  border-top: 2px solid rgba(255,255,255,0.1);
 }
 
 .quick-stock-stepper {
@@ -1533,10 +1538,10 @@ select.form-control {
   padding: 0.3rem 0.55rem;
   font-size: 0.74rem;
   font-family: 'JetBrains Mono', monospace;
-  background: var(--nb-yellow);
-  border: 2px solid #000;
-  box-shadow: 2px 2px 0px #000;
-  color: #000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 2px 2px 0px var(--nb-cyan);
+  color: var(--nb-text-main);
   border-radius: var(--radius-sm);
   font-weight: 900;
   cursor: pointer;
@@ -1546,12 +1551,12 @@ select.form-control {
 .stepper-btn:hover {
   background: #ffd000;
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000;
+  box-shadow: 3px 3px 0px var(--nb-cyan);
 }
 
 .stepper-btn:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #000;
+  box-shadow: 1px 1px 0px var(--nb-cyan);
 }
 
 /* --------------------------------------------------------------------------
@@ -1572,22 +1577,22 @@ select.form-control {
   align-items: center;
   padding: 0.4rem 0;
   font-size: 0.88rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
 }
 
 .calc-breakdown-row.total-row {
-  border-top: 2px solid #000;
+  border-top: 2px solid rgba(255,255,255,0.1);
   margin-top: 0.5rem;
   padding-top: 0.75rem;
   font-size: 1.15rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .calc-split-highlight {
-  background: #ffffff;
+  background: var(--nb-surface);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius-sm);
@@ -1622,7 +1627,7 @@ select.form-control {
 .split-pill-calc .val {
   font-size: 1.25rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .split-pill-calc .formula {
@@ -1635,8 +1640,8 @@ select.form-control {
    Neobrutalist Invoices
    -------------------------------------------------------------------------- */
 .invoice-wrapper {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--nb-surface);
+  color: var(--nb-text-main);
   border-radius: var(--radius-sm);
   padding: 2.5rem;
   max-width: 800px;
@@ -1650,7 +1655,7 @@ select.form-control {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 3px solid #000;
+  border-bottom: 3px solid rgba(255,255,255,0.1);
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -1669,7 +1674,7 @@ select.form-control {
 
 .invoice-studio-details {
   font-size: 0.82rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 600;
   line-height: 1.35;
   font-family: 'JetBrains Mono', monospace;
@@ -1678,7 +1683,7 @@ select.form-control {
 .invoice-studio-name {
   font-size: 1.3rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -1690,10 +1695,10 @@ select.form-control {
 .invoice-badge-title {
   font-size: 1.8rem;
   font-weight: 900;
-  color: #000;
-  background: var(--nb-yellow);
-  border: 2px solid #000;
-  box-shadow: 2px 2px 0px #000;
+  color: var(--nb-text-main);
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 2px 2px 0px var(--nb-cyan);
   padding: 0.2rem 0.75rem;
   display: inline-block;
   line-height: 1;
@@ -1703,7 +1708,7 @@ select.form-control {
 .invoice-number-tag {
   font-weight: 900;
   font-size: 1rem;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .invoice-dates {
@@ -1720,7 +1725,7 @@ select.form-control {
   margin-bottom: 1.5rem;
   padding: 1rem 1.25rem;
   background-color: var(--nb-surface-alt);
-  border: 2px solid #000;
+  border: 2px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
 }
@@ -1730,19 +1735,19 @@ select.form-control {
   font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   margin-bottom: 0.35rem;
 }
 
 .party-box .party-name {
   font-size: 1rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
 }
 
 .party-box .party-info {
   font-size: 0.82rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 600;
 }
 
@@ -1750,20 +1755,20 @@ select.form-control {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1.5rem;
-  border: 2px solid #000;
+  border: 2px solid rgba(255,255,255,0.1);
 }
 
 .invoice-table th {
-  background-color: var(--nb-yellow);
-  color: #000000;
+  background: var(--neon-gradient-3); color: #0a0a0a;
+  color: var(--nb-text-main);
   font-size: 0.76rem;
   font-weight: 900;
   font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
   padding: 0.75rem 0.85rem;
   text-align: left;
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  border-right: 2px solid rgba(255,255,255,0.1);
 }
 
 .invoice-table th:last-child {
@@ -1773,9 +1778,9 @@ select.form-control {
 
 .invoice-table td {
   padding: 0.85rem;
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
-  color: #000;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  color: var(--nb-text-main);
   font-size: 0.85rem;
   font-weight: 600;
 }
@@ -1795,7 +1800,7 @@ select.form-control {
 
 .payment-instructions-box {
   background-color: #fff7ed;
-  border: 2px solid #000;
+  border: 2px solid rgba(255,255,255,0.1);
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius-sm);
   padding: 1rem 1.15rem;
@@ -1806,7 +1811,7 @@ select.form-control {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 900;
   text-transform: uppercase;
-  color: #000;
+  color: var(--nb-text-main);
   margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
@@ -1815,7 +1820,7 @@ select.form-control {
 
 .pay-inst-desc {
   font-size: 0.78rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 600;
   line-height: 1.4;
   font-family: 'JetBrains Mono', monospace;
@@ -1829,7 +1834,7 @@ select.form-control {
 
 .invoice-totals-table td {
   padding: 0.4rem 0.5rem;
-  color: #000;
+  color: var(--nb-text-main);
   font-weight: 700;
 }
 
@@ -1839,7 +1844,7 @@ select.form-control {
 }
 
 .invoice-totals-table tr.grand-total td {
-  border-top: 3px solid #000;
+  border-top: 3px solid rgba(255,255,255,0.1);
   font-size: 1.25rem;
   font-weight: 900;
   color: var(--nb-orange);
@@ -1847,7 +1852,7 @@ select.form-control {
 }
 
 .invoice-footer {
-  border-top: 2px solid #000;
+  border-top: 2px solid rgba(255,255,255,0.1);
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
@@ -1864,7 +1869,7 @@ select.form-control {
 
 .invoice-seal-line {
   width: 140px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
   margin-bottom: 0.35rem;
 }
 
@@ -1918,13 +1923,13 @@ select.form-control {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--nb-yellow);
+  background: var(--neon-gradient-3); color: #0a0a0a;
 }
 
 .modal-title {
   font-size: 1.15rem;
   font-weight: 900;
-  color: #000;
+  color: var(--nb-text-main);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1935,7 +1940,7 @@ select.form-control {
   background: var(--nb-surface);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
-  color: #000;
+  color: var(--nb-text-main);
   font-size: 1.1rem;
   cursor: pointer;
   padding: 0.35rem;
@@ -1984,12 +1989,12 @@ select.form-control {
 }
 
 .toast {
-  background: #ffffff;
+  background: var(--nb-surface);
   border: var(--border-thick);
   box-shadow: var(--shadow-md);
   border-radius: var(--radius-sm);
   padding: 0.85rem 1.25rem;
-  color: #000000;
+  color: var(--nb-text-main);
   font-size: 0.86rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
@@ -2052,7 +2057,7 @@ select.form-control {
   font-size: 0.95rem;
   font-weight: 900;
   font-family: 'JetBrains Mono', monospace;
-  color: #000;
+  color: var(--nb-text-main);
   text-transform: uppercase;
 }
 
