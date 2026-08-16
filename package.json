@@ -1,0 +1,20 @@
+{
+  "name": "studiomistri-management",
+  "version": "1.0.0",
+  "description": "StudioMistri 3D Printing Studio - Inventory, Order Management & Financial Analytics",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "3d-printing",
+    "inventory-management",
+    "studiomistri",
+    "order-management",
+    "invoice-generator",
+    "sales-reports"
+  ],
+  "author": "StudioMistri",
+  "license": "MIT"
+}

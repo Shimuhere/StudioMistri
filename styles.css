@@ -1,0 +1,2167 @@
+/* ==========================================================================
+   StudioMistri × Neobrutalism Design System
+   High-Contrast, Bold, Tactile Master Stylesheet
+   ========================================================================== */
+
+:root {
+  /* Neobrutalism Signature Palette */
+  --nb-bg: #f4f0ea;
+  --nb-surface: #ffffff;
+  --nb-surface-alt: #fbf9f5;
+  --nb-black: #000000;
+  
+  /* Vibrant Saturated Accents */
+  --nb-orange: #ff5500;
+  --nb-orange-hover: #ff3c00;
+  --nb-yellow: #ffe600;
+  --nb-yellow-hover: #ffd000;
+  --nb-mint: #22c55e;
+  --nb-mint-light: #86efac;
+  --nb-cyan: #00d2ff;
+  --nb-cyan-light: #7dd3fc;
+  --nb-pink: #ff69b4;
+  --nb-pink-light: #f472b6;
+  --nb-purple: #a855f7;
+  --nb-red: #ef4444;
+  
+  /* Text & Ink */
+  --nb-text-main: #000000;
+  --nb-text-muted: #4b5563;
+  --nb-text-dim: #6b7280;
+  
+  /* Neobrutalist Geometry & Borders */
+  --border-thick: 3px solid #000000;
+  --border-medium: 2px solid #000000;
+  --border-heavy: 4px solid #000000;
+  
+  /* Hard Solid Shadows (No Blur) */
+  --shadow-sm: 2px 2px 0px #000000;
+  --shadow-md: 4px 4px 0px #000000;
+  --shadow-lg: 6px 6px 0px #000000;
+  --shadow-xl: 8px 8px 0px #000000;
+  --shadow-press: 1px 1px 0px #000000;
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  
+  /* Layout Dimensions */
+  --sidebar-width: 255px;
+  --header-height: 70px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--nb-bg);
+  color: var(--nb-text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(#000000 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Monospace Helpers */
+.mono, .font-mono, code {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Navigation (Neobrutalist Paperboard)
+   -------------------------------------------------------------------------- */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--nb-surface);
+  border-right: var(--border-heavy);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-header {
+  padding: 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: var(--border-thick);
+  background-color: var(--nb-yellow);
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+}
+
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 0px #000);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #000;
+  line-height: 1;
+}
+
+.brand-name span {
+  color: var(--nb-orange);
+  background: #000;
+  padding: 0 0.25rem;
+  border-radius: 2px;
+}
+
+.brand-tagline {
+  font-size: 0.68rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  color: #000;
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.sidebar-nav {
+  padding: 1.25rem 0.85rem;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-section-title {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000;
+  font-weight: 900;
+  padding: 0.6rem 0.4rem 0.2rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  color: #000;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.88rem;
+  border-radius: var(--radius-sm);
+  background: var(--nb-surface);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.1s ease;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.nav-link i {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.5px;
+  flex-shrink: 0;
+}
+
+.nav-link:hover {
+  background-color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-link.active {
+  background-color: var(--nb-yellow);
+  color: #000;
+  border-color: #000;
+  box-shadow: var(--shadow-md);
+  font-weight: 900;
+  transform: translate(-1px, -1px);
+}
+
+.nav-badge {
+  margin-left: auto;
+  background-color: #000;
+  color: var(--nb-yellow);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.sidebar-footer {
+  padding: 1rem;
+  border-top: var(--border-thick);
+  background-color: var(--nb-surface);
+}
+
+.studio-status-card {
+  background: var(--nb-mint-light);
+  border: var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.status-indicator-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #000;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  background-color: var(--nb-mint);
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
+.studio-status-desc {
+  font-size: 0.7rem;
+  color: #000;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  line-height: 1.3;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   Top Header (Neobrutalist)
+   -------------------------------------------------------------------------- */
+.main-wrapper {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - var(--sidebar-width));
+}
+
+.top-header {
+  height: var(--header-height);
+  background-color: var(--nb-surface);
+  border-bottom: var(--border-heavy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  box-shadow: 0 4px 0px #000000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--nb-yellow);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  color: #000;
+  padding: 0.45rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.page-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--nb-surface-alt);
+  border: var(--border-medium);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-title-display {
+  color: #000;
+  font-weight: 900;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-stat-pill {
+  background: #ffffff;
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.header-stat-pill .label {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.72rem;
+}
+
+.header-stat-pill .value {
+  font-weight: 900;
+  color: var(--nb-orange);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.01em;
+  border-radius: var(--radius-sm);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-decoration: none;
+  line-height: 1.2;
+  user-select: none;
+  color: #000000;
+}
+
+.btn i {
+  stroke-width: 2.5px;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-press);
+}
+
+.btn-primary {
+  background-color: var(--nb-orange);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--nb-orange-hover);
+}
+
+.btn-secondary {
+  background-color: var(--nb-yellow);
+  color: #000000;
+}
+
+.btn-secondary:hover {
+  background-color: var(--nb-yellow-hover);
+}
+
+.btn-outline {
+  background-color: var(--nb-surface);
+  color: #000000;
+}
+
+.btn-outline:hover {
+  background-color: var(--nb-surface-alt);
+}
+
+.btn-glow {
+  background-color: var(--nb-yellow);
+  color: #000000;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+.btn-glow:hover {
+  background-color: #ffd000;
+  box-shadow: 7px 7px 0px #000000;
+}
+
+.btn-success {
+  background-color: var(--nb-mint);
+  color: #000000;
+}
+
+.btn-danger {
+  background-color: #fecaca;
+  color: #dc2626;
+}
+
+.btn-danger:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.76rem;
+  border-width: 2px;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-sm:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn-lg {
+  padding: 0.85rem 1.65rem;
+  font-size: 1rem;
+  border-width: 3px;
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-icon-only {
+  padding: 0.45rem;
+  border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist Form Inputs
+   -------------------------------------------------------------------------- */
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #000;
+  margin-bottom: 0.4rem;
+}
+
+.form-label span.req {
+  color: var(--nb-orange);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  background-color: #ffffff;
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  color: #000000;
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: inherit;
+  transition: all 0.1s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #000000;
+  background-color: #fff;
+  box-shadow: 4px 4px 0px var(--nb-orange);
+}
+
+.form-control::placeholder {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Content Area & View Containers
+   -------------------------------------------------------------------------- */
+.content-body {
+  padding: 2rem 2rem 4rem;
+  flex: 1;
+}
+
+.view-section {
+  display: none;
+}
+
+.view-section.active {
+  display: block;
+}
+
+/* ==========================================================================
+   NEOBRUTALISM LANDING PAGE & SHOWCASE
+   ========================================================================== */
+.landing-hero {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 2.5rem;
+  background: var(--nb-surface);
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.landing-hero-bg-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  border-left: var(--border-heavy);
+  filter: contrast(1.1);
+}
+
+.landing-hero-overlay {
+  display: none;
+}
+
+.landing-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 2.5rem;
+  max-width: 58%;
+}
+
+.landing-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--nb-yellow);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  color: #000;
+  font-size: 0.76rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+}
+
+.landing-hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.landing-hero-title span {
+  color: #fff;
+  background-color: var(--nb-orange);
+  padding: 0 0.35rem;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  display: inline-block;
+}
+
+.landing-hero-lead {
+  font-size: 1.05rem;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+.landing-hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.landing-features-ribbon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+  padding-top: 1.5rem;
+  border-top: var(--border-thick);
+}
+
+.feature-ribbon-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #000;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--nb-bg);
+  border: var(--border-medium);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-ribbon-item i {
+  color: var(--nb-orange);
+  stroke-width: 3px;
+}
+
+/* Section Headings */
+.section-header-block {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.section-tag-label {
+  font-size: 0.76rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--nb-yellow);
+  color: #000;
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.section-main-heading {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.section-sub-desc {
+  font-size: 0.95rem;
+  color: var(--nb-text-muted);
+  font-weight: 600;
+}
+
+/* Neobrutalist Instant Quoter Card */
+.instant-quoter-card {
+  background: var(--nb-surface);
+  border: var(--border-heavy);
+  border-radius: var(--radius-md);
+  padding: 2.25rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-xl);
+}
+
+.quoter-layout-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.quoter-summary-box {
+  background: var(--nb-yellow);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+}
+
+.quote-price-display {
+  font-size: 2.7rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0.5rem 0 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.quote-per-gram-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: #000;
+  background: var(--nb-cyan);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Services Matrix */
+.services-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.service-card {
+  background: var(--nb-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.1s ease;
+}
+
+.service-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--nb-surface-alt);
+}
+
+.service-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--nb-yellow);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.service-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.service-description {
+  font-size: 0.88rem;
+  color: var(--nb-text-muted);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.service-tags-list {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.service-tag-item {
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--nb-bg);
+  border: var(--border-medium);
+  color: #000;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+}
+
+/* Machine Fleet Grid */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.fleet-card {
+  background: var(--nb-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.fleet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.fleet-name {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #000;
+}
+
+.fleet-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  background: var(--nb-bg);
+  border: var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.fleet-spec-label {
+  color: var(--nb-text-dim);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.fleet-spec-val {
+  font-weight: 900;
+  color: #000;
+}
+
+/* Workflow Cards */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.workflow-card {
+  background: var(--nb-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.workflow-number {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--nb-yellow);
+  border: var(--border-medium);
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+
+.workflow-step-title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.workflow-step-desc {
+  font-size: 0.84rem;
+  color: var(--nb-text-muted);
+  font-weight: 600;
+}
+
+/* Landing Footer */
+.landing-footer {
+  border-top: var(--border-heavy);
+  padding: 3rem 0 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand-info p {
+  color: var(--nb-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.footer-col-title {
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000;
+  margin-bottom: 1rem;
+  background: var(--nb-yellow);
+  border: var(--border-medium);
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+.footer-links-list a {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-links-list a:hover {
+  color: var(--nb-orange);
+  text-decoration: underline;
+}
+
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: var(--border-thick);
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #000;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist KPI Metric Cards (Studio OS)
+   -------------------------------------------------------------------------- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.metric-card {
+  background: var(--nb-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.1s ease;
+}
+
+.metric-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.metric-title {
+  font-size: 0.76rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-accent, var(--nb-yellow));
+  border: var(--border-medium);
+  box-shadow: 2px 2px 0px #000;
+  color: #000;
+  font-size: 1.1rem;
+}
+
+.metric-value {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.metric-subtext {
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--nb-text-muted);
+}
+
+.metric-subtext.positive {
+  color: #15803d;
+}
+
+.metric-subtext.highlight-split {
+  color: #0284c7;
+}
+
+/* --------------------------------------------------------------------------
+   Company Account & Salary Split Spotlight Card
+   -------------------------------------------------------------------------- */
+.split-spotlight-box {
+  background: var(--nb-yellow);
+  border: var(--border-heavy);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.split-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-label {
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 900;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.split-label.company {
+  color: #000;
+}
+
+.split-label.salary {
+  color: #000;
+}
+
+.split-amount {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.split-desc {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #000;
+  margin-top: 0.2rem;
+}
+
+.split-divider-v {
+  width: 3px;
+  height: 60px;
+  background-color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist Panels & Tables
+   -------------------------------------------------------------------------- */
+.panel {
+  background: var(--nb-surface);
+  border: var(--border-heavy);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 1.75rem;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 1.15rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border-thick);
+  background-color: var(--nb-surface-alt);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.panel-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.panel-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.panel-subtitle {
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--nb-text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.panel-body {
+  padding: 1.5rem;
+}
+
+/* Toolbar & Filters */
+.toolbar-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  position: relative;
+  min-width: 250px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-box input {
+  padding-left: 2.4rem;
+}
+
+.search-box i {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  pointer-events: none;
+  stroke-width: 3px;
+  width: 16px;
+  height: 16px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  background: var(--nb-surface);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  color: #000;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+}
+
+.filter-chip:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-md);
+}
+
+.filter-chip.active {
+  background-color: var(--nb-yellow);
+  box-shadow: var(--shadow-sm);
+  transform: translate(1px, 1px);
+}
+
+/* Data Tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  background: #fff;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.custom-table th {
+  padding: 0.85rem 1rem;
+  background-color: var(--nb-yellow);
+  color: #000;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  border-bottom: var(--border-thick);
+  border-right: 2px solid #000;
+  white-space: nowrap;
+}
+
+.custom-table th:last-child {
+  border-right: none;
+}
+
+.custom-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  color: #000;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.custom-table td:last-child {
+  border-right: none;
+}
+
+.custom-table tr:hover td {
+  background-color: #fefce8;
+}
+
+.custom-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  border-radius: var(--radius-sm);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #000;
+}
+
+.badge-in-stock {
+  background: var(--nb-mint-light);
+}
+
+.badge-low-stock {
+  background: var(--nb-yellow);
+}
+
+.badge-out-stock {
+  background: #fca5a5;
+}
+
+.badge-printing {
+  background: var(--nb-orange);
+  color: #fff;
+}
+
+.badge-completed {
+  background: var(--nb-cyan-light);
+}
+
+.badge-paid {
+  background: var(--nb-mint-light);
+}
+
+.badge-pending {
+  background: #e5e7eb;
+}
+
+/* --------------------------------------------------------------------------
+   Filament Cards (Inventory)
+   -------------------------------------------------------------------------- */
+.filament-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.35rem;
+}
+
+.filament-card {
+  background: var(--nb-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.1s ease;
+}
+
+.filament-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.filament-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filament-color-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color-swatch-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+  flex-shrink: 0;
+}
+
+.filament-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.filament-color-name {
+  font-weight: 900;
+  font-size: 1rem;
+  color: #000;
+  line-height: 1.2;
+}
+
+.filament-brand-type {
+  font-size: 0.76rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--nb-text-muted);
+  font-weight: 700;
+}
+
+.filament-stock-bar-wrap {
+  margin-bottom: 1rem;
+}
+
+.stock-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+.stock-progress-track {
+  height: 10px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 1px 1px 0px #000;
+  overflow: hidden;
+}
+
+.stock-progress-fill {
+  height: 100%;
+  background: var(--nb-orange);
+  border-right: 2px solid #000;
+  transition: width 0.3s ease;
+}
+
+.stock-progress-fill.low {
+  background: var(--nb-yellow);
+}
+
+.stock-progress-fill.empty {
+  background: var(--nb-red);
+}
+
+.filament-card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  background: var(--nb-surface-alt);
+  border: 2px solid #000;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.f-detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.f-detail-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--nb-text-dim);
+  font-weight: 800;
+}
+
+.f-detail-val {
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: #000;
+}
+
+.filament-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 2px solid #000;
+}
+
+.quick-stock-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.stepper-btn {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.74rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--nb-yellow);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+  color: #000;
+  border-radius: var(--radius-sm);
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.stepper-btn:hover {
+  background: #ffd000;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000;
+}
+
+.stepper-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000;
+}
+
+/* --------------------------------------------------------------------------
+   Order Calculator & Split Box
+   -------------------------------------------------------------------------- */
+.calculator-box {
+  background: var(--nb-surface-alt);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.calc-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  font-size: 0.88rem;
+  color: #000;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+.calc-breakdown-row.total-row {
+  border-top: 2px solid #000;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #000;
+}
+
+.calc-split-highlight {
+  background: #ffffff;
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin-top: 0.85rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.split-pill-calc {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-pill-calc .title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 2px;
+}
+
+.split-pill-calc.company .title {
+  color: #0284c7;
+}
+
+.split-pill-calc.salary .title {
+  color: #16a34a;
+}
+
+.split-pill-calc .val {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #000;
+}
+
+.split-pill-calc .formula {
+  font-size: 0.68rem;
+  color: var(--nb-text-dim);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist Invoices
+   -------------------------------------------------------------------------- */
+.invoice-wrapper {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: var(--radius-sm);
+  padding: 2.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-xl);
+  font-size: 14px;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #000;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.invoice-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.invoice-logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+
+.invoice-studio-details {
+  font-size: 0.82rem;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.35;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.invoice-studio-name {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #000;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.invoice-meta-block {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.invoice-badge-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #000;
+  background: var(--nb-yellow);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+  padding: 0.2rem 0.75rem;
+  display: inline-block;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.invoice-number-tag {
+  font-weight: 900;
+  font-size: 1rem;
+  color: #000;
+}
+
+.invoice-dates {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--nb-text-muted);
+}
+
+.invoice-parties-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--nb-surface-alt);
+  border: 2px solid #000;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.party-box h4 {
+  font-size: 0.74rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 0.35rem;
+}
+
+.party-box .party-name {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #000;
+}
+
+.party-box .party-info {
+  font-size: 0.82rem;
+  color: #000;
+  font-weight: 600;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  border: 2px solid #000;
+}
+
+.invoice-table th {
+  background-color: var(--nb-yellow);
+  color: #000000;
+  font-size: 0.76rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  padding: 0.75rem 0.85rem;
+  text-align: left;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+.invoice-table th:last-child {
+  border-right: none;
+  text-align: right;
+}
+
+.invoice-table td {
+  padding: 0.85rem;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  color: #000;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.invoice-table td:last-child {
+  border-right: none;
+  text-align: right;
+  font-weight: 900;
+}
+
+.invoice-summary-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.payment-instructions-box {
+  background-color: #fff7ed;
+  border: 2px solid #000;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+}
+
+.pay-inst-title {
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pay-inst-desc {
+  font-size: 0.78rem;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.4;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.invoice-totals-table {
+  width: 100%;
+  font-size: 0.88rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.invoice-totals-table td {
+  padding: 0.4rem 0.5rem;
+  color: #000;
+  font-weight: 700;
+}
+
+.invoice-totals-table td:last-child {
+  text-align: right;
+  font-weight: 900;
+}
+
+.invoice-totals-table tr.grand-total td {
+  border-top: 3px solid #000;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--nb-orange);
+  padding-top: 0.6rem;
+}
+
+.invoice-footer {
+  border-top: 2px solid #000;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--nb-text-muted);
+}
+
+.invoice-seal-box {
+  text-align: right;
+}
+
+.invoice-seal-line {
+  width: 140px;
+  border-bottom: 2px solid #000;
+  margin-bottom: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist Modals
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-container {
+  background: var(--nb-surface);
+  border: var(--border-heavy);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-container.modal-lg {
+  max-width: 860px;
+}
+
+.modal-container.modal-xl {
+  max-width: 940px;
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: var(--border-thick);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--nb-yellow);
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+}
+
+.modal-close-btn {
+  background: var(--nb-surface);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  color: #000;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+  font-weight: 900;
+}
+
+.modal-close-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-md);
+  background-color: #fee2e2;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-footer {
+  padding: 1.15rem 1.5rem;
+  border-top: var(--border-thick);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background-color: var(--nb-surface-alt);
+}
+
+/* --------------------------------------------------------------------------
+   Neobrutalist Toast Alerts
+   -------------------------------------------------------------------------- */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: #ffffff;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.25rem;
+  color: #000000;
+  font-size: 0.86rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  pointer-events: auto;
+  animation: slideIn 0.2s ease, fadeOut 0.25s ease 3.7s forwards;
+  max-width: 380px;
+}
+
+.toast.toast-success {
+  background-color: var(--nb-mint-light);
+}
+.toast.toast-error {
+  background-color: #fecaca;
+}
+.toast.toast-info {
+  background-color: var(--nb-cyan-light);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(8px); }
+}
+
+/* --------------------------------------------------------------------------
+   Chart Cards
+   -------------------------------------------------------------------------- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.chart-card {
+  background: var(--nb-surface);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.chart-canvas-wrap {
+  position: relative;
+  height: 270px;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Print Stylesheet
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+  }
+  .sidebar, .top-header, .panel-actions, .btn, .modal-header, .modal-footer, .toast-container {
+    display: none !important;
+  }
+  .main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .modal-overlay {
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  .modal-container {
+    max-width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .invoice-wrapper {
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .landing-hero {
+    flex-direction: column-reverse;
+  }
+  .landing-hero-bg-cover {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-left: none;
+    border-bottom: var(--border-heavy);
+  }
+  .landing-hero-content {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+  .quoter-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .split-spotlight-box {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .split-divider-v {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .main-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .content-body {
+    padding: 1.25rem 1rem 3rem;
+  }
+  .top-header {
+    padding: 0 1rem;
+  }
+  .landing-hero-title {
+    font-size: 2.2rem;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+  }
+  .invoice-parties-grid, .invoice-summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
