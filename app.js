@@ -736,11 +736,6 @@ async function handleLandingOrderSubmit() {
 // 5. Inventory Module: CRUD, Quick Stock Stepper, Filters
 // ============================================================================
 function renderInventory() {
-  const container = document.getElementById('filament-cards-container');
-  const tbody = document.getElementById('filament-table-tbody');
-  const emptyState = document.getElementById('inv-empty-state');
-  const tableContainer = document.getElementById('filament-table-container');
-
   const searchTerm = (document.getElementById('inv-search-input')?.value || '').toLowerCase().trim();
   const activeMaterialChip = document.querySelector('#inv-material-filters .filter-chip.active')?.getAttribute('data-material') || 'all';
   const brandFilter = document.getElementById('inv-brand-filter')?.value || 'all';
@@ -781,13 +776,24 @@ function renderInventory() {
   const lowStockCount = state.filaments.filter(f => f.currentStock <= 250).length;
   const uniqueColors = new Set(state.filaments.map(f => f.colorName)).size;
 
-  document.getElementById('inv-stat-spools').textContent = totalSpools;
-  document.getElementById('inv-stat-colors').textContent = `${uniqueColors} unique colors`;
-  document.getElementById('inv-stat-weight').textContent = `${totalKg} kg`;
-  document.getElementById('inv-stat-grams').textContent = `${totalGrams.toLocaleString()}g ready`;
-  document.getElementById('inv-stat-value').textContent = formatBDT(totalValue);
-  document.getElementById('inv-stat-low-stock').textContent = lowStockCount;
-  document.getElementById('sidebar-filament-count').textContent = totalSpools;
+  const setElemText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+
+  setElemText('inv-stat-spools', totalSpools);
+  setElemText('inv-stat-colors', `${uniqueColors} unique colors`);
+  setElemText('inv-stat-weight', `${totalKg} kg`);
+  setElemText('inv-stat-grams', `${totalGrams.toLocaleString()}g ready`);
+  setElemText('inv-stat-value', formatBDT(totalValue));
+  setElemText('inv-stat-low-stock', lowStockCount);
+  setElemText('sidebar-filament-count', totalSpools);
+  setElemText('sidebar-active-spools', totalSpools);
+
+  const container = document.getElementById('inv-grid-container') || document.getElementById('filament-cards-container');
+  const tbody = document.getElementById('inv-table-tbody') || document.getElementById('filament-table-tbody');
+  const emptyState = document.getElementById('inv-empty-state');
+  const tableContainer = document.getElementById('inv-table-container') || document.getElementById('filament-table-container');
 
   if (filtered.length === 0) {
     if (container) container.innerHTML = '';
@@ -1789,25 +1795,37 @@ function renderDashboard() {
   const availableColorsCount = new Set(state.filaments.map(f => f.colorName)).size;
   const completedOrdersCount = state.orders.filter(o => o.status === 'Paid' || o.status === 'Delivered').length;
 
-  document.getElementById('header-stat-revenue').textContent = formatBDT(totalRevenue);
-  document.getElementById('header-stat-company').textContent = formatBDT(totalCompanyPool);
+  const setElemText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
 
-  document.getElementById('hero-stat-total-grams').textContent = `${totalGrams.toLocaleString()}g`;
-  document.getElementById('hero-stat-orders-completed').textContent = completedOrdersCount;
-  document.getElementById('hero-stat-available-colors').textContent = availableColorsCount;
+  setElemText('header-stat-revenue', formatBDT(totalRevenue));
+  setElemText('header-stat-company', formatBDT(totalCompanyPool));
+  setElemText('header-company-pool', formatBDT(totalCompanyPool));
 
-  document.getElementById('dash-split-company').textContent = formatBDT(totalCompanyPool);
-  document.getElementById('dash-split-salary').textContent = formatBDT(totalSalaryPool);
+  setElemText('hero-stat-total-grams', `${totalGrams.toLocaleString()}g`);
+  setElemText('hero-stat-orders-completed', completedOrdersCount);
+  setElemText('hero-stat-available-colors', availableColorsCount);
 
-  document.getElementById('dash-metric-revenue').textContent = formatBDT(totalRevenue);
-  document.getElementById('dash-metric-order-count').textContent = `${state.orders.length} total orders`;
-  document.getElementById('dash-metric-cost').textContent = formatBDT(totalInventoryCost);
-  document.getElementById('dash-metric-profit').textContent = formatBDT(totalProfit);
-  document.getElementById('dash-metric-margin').textContent = `Margin: ${netMargin}%`;
-  document.getElementById('dash-metric-filament-weight').textContent = `${totalFilamentKg} kg`;
-  document.getElementById('dash-metric-spool-count').textContent = `${state.filaments.length} spools available`;
+  setElemText('dash-split-company', formatBDT(totalCompanyPool));
+  setElemText('dash-company-pool-val', formatBDT(totalCompanyPool));
+  setElemText('dash-split-salary', formatBDT(totalSalaryPool));
+  setElemText('dash-salary-pool-val', formatBDT(totalSalaryPool));
 
-  const queueTbody = document.getElementById('dash-queue-tbody');
+  setElemText('dash-metric-revenue', formatBDT(totalRevenue));
+  setElemText('dash-total-revenue', formatBDT(totalRevenue));
+  setElemText('dash-metric-order-count', `${state.orders.length} total orders`);
+  setElemText('dash-metric-cost', formatBDT(totalInventoryCost));
+  setElemText('dash-material-cost', formatBDT(totalInventoryCost));
+  setElemText('dash-metric-profit', formatBDT(totalProfit));
+  setElemText('dash-net-profit', formatBDT(totalProfit));
+  setElemText('dash-metric-margin', `Margin: ${netMargin}%`);
+  setElemText('dash-metric-filament-weight', `${totalFilamentKg} kg`);
+  setElemText('dash-metric-spool-count', `${state.filaments.length} spools`);
+  setElemText('dash-active-spools', state.filaments.length);
+
+  const queueTbody = document.getElementById('dash-recent-orders-table-body') || document.getElementById('dash-queue-tbody');
   const activeOrders = state.orders.filter(o => o.status !== 'Paid');
   if (queueTbody) {
     if (activeOrders.length === 0) {

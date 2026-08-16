@@ -6,16 +6,17 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>StudioMistri | 3D Studio OS • Material Design 3</title>
-  <meta name="description" content="StudioMistri - High-Precision 3D Printing, Multi-Color Fabrication, Engineering Prototyping & Studio OS in Dhaka, Bangladesh">
+  <title>StudioMistri | 3D Studio OS • Strict Material Design 3</title>
+  <meta name="description" content="StudioMistri - High-Precision 3D Printing, Multi-Color Fabrication, Prototyping & Inventory OS in Dhaka, Bangladesh">
   
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="logo.jpeg">
   
-  <!-- Fonts -->
+  <!-- Google Fonts: Roboto & Material Symbols Outlined -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
   
   <!-- Icons (Lucide) -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -26,53 +27,57 @@
   <!-- html2pdf.js for 1-Click PDF Invoice Export -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   
-  <!-- Master Stylesheet (Cache-Busted) -->
-  <link rel="stylesheet" href="styles.css?v=m3_dynamic_v3">
+  <!-- Strict M3 Master Stylesheet (Cache-Busted) -->
+  <link rel="stylesheet" href="styles.css?v=m3_strict_v4">
 </head>
 <body>
 
 <div class="app-container">
-  <!-- Sidebar Navigation (Neobrutalist Paperboard) -->
+  
+  <!-- ========================================================================
+       1. M3 Navigation Drawer (Sidebar)
+       ======================================================================== -->
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header" onclick="switchView('landing')">
-      <img src="brand_logo.png" alt="Studio Mistri Logo" class="brand-logo-img">
-      <div class="brand-text">
-        <span class="brand-name">Studio<span>Mistri</span></span>
-        <span class="brand-tagline">3D STUDIO OS</span>
+    <div class="sidebar-header">
+      <!-- Fixed Logo Constraint: max-height: 40px; width: auto; -->
+      <img src="brand_logo.png" alt="Studio Mistri Logo" class="sidebar-logo" style="max-height: 40px; width: auto; object-fit: contain;">
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">Studio Mistri</span>
+        <span class="sidebar-brand-tagline">3D FABRICATION OS</span>
       </div>
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-section-title">★ PUBLIC PORTAL</div>
-      <a class="nav-link active" data-view="landing" id="nav-landing">
-        <i data-lucide="compass"></i>
-        <span>00. HOME</span>
+      <div class="nav-section-title">Public Portal</div>
+      <a class="nav-link active" data-view="landing" onclick="switchView('landing')">
+        <span class="material-symbols-outlined">rocket_launch</span>
+        <span>Instant Quoter</span>
       </a>
 
-      <div class="nav-section-title">★ STUDIO OS</div>
-      <a class="nav-link" data-view="dashboard" id="nav-dashboard">
-        <i data-lucide="layout-grid"></i>
-        <span>01. DASHBOARD</span>
+      <div class="nav-section-title">Workshop OS</div>
+      <a class="nav-link" data-view="dashboard" onclick="switchView('dashboard')">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>Dashboard</span>
       </a>
-      <a class="nav-link" data-view="inventory" id="nav-inventory">
-        <i data-lucide="layers"></i>
-        <span>02. INVENTORY</span>
-        <span class="nav-badge" id="sidebar-filament-count">0</span>
+      <a class="nav-link" data-view="inventory" onclick="switchView('inventory')">
+        <span class="material-symbols-outlined">inventory_2</span>
+        <span>Filament Matrix</span>
+        <span class="nav-badge" id="sidebar-active-spools">0</span>
       </a>
-      <a class="nav-link" data-view="orders" id="nav-orders">
-        <i data-lucide="cpu"></i>
-        <span>03. ORDERS</span>
-        <span class="nav-badge" id="sidebar-order-count">0</span>
+      <a class="nav-link" data-view="orders" onclick="switchView('orders')">
+        <span class="material-symbols-outlined">assignment</span>
+        <span>Order Ledger</span>
+        <span class="nav-badge" id="sidebar-pending-orders">0</span>
       </a>
-      <a class="nav-link" data-view="sales" id="nav-sales">
-        <i data-lucide="trending-up"></i>
-        <span>04. FINANCE & SALES</span>
+      <a class="nav-link" data-view="sales" onclick="switchView('sales')">
+        <span class="material-symbols-outlined">monitoring</span>
+        <span>Sales & Reports</span>
       </a>
 
-      <div class="nav-section-title">★ SYSTEM</div>
-      <a class="nav-link" data-view="settings" id="nav-settings">
-        <i data-lucide="sliders"></i>
-        <span>05. SETTINGS</span>
+      <div class="nav-section-title">Configuration</div>
+      <a class="nav-link" data-view="settings" onclick="switchView('settings')">
+        <span class="material-symbols-outlined">settings</span>
+        <span>Studio Settings</span>
       </a>
     </nav>
 
@@ -80,193 +85,181 @@
       <div class="studio-status-card">
         <div class="status-indicator-wrap">
           <span class="pulse-dot"></span>
-          <span>FARM: ONLINE</span>
+          <span>BAMBU + VORON FARM</span>
         </div>
-        <div class="studio-status-desc">
-          Bambu A1 + Voron 2.4 CoreXY [Active] • 4/4 Ready
+        <div class="studio-status-desc font-mono">
+          Dhaka Lab: <span id="sidebar-farm-status" style="color: #146c2e; font-weight: 700;">ONLINE</span>
         </div>
       </div>
     </div>
   </aside>
 
-  <!-- Main Application Wrapper -->
+  <!-- ========================================================================
+       2. Main Content Wrapper & Strict M3 Top App Bar
+       ======================================================================== -->
   <div class="main-wrapper">
-    <!-- Top Header -->
+    
+    <!-- Top App Bar -->
     <header class="top-header">
       <div class="header-left">
-        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
-          <i data-lucide="menu"></i>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation">
+          <span class="material-symbols-outlined">menu</span>
         </button>
         <div class="page-breadcrumb">
-          <span>STUDIOMISTRI</span>
-          <span style="color: var(--nb-orange);">/</span>
-          <span class="page-title-display" id="current-view-title">STUDIO HOME</span>
+          <span>STUDIO MISTRI</span>
+          <span>/</span>
+          <span class="page-title-display" id="page-title-display">Instant Print Quoter</span>
         </div>
       </div>
 
       <div class="header-right">
-        <div class="header-stat-pill">
-          <span class="label">REVENUE:</span>
-          <span class="value font-mono" id="header-stat-revenue">৳ 0</span>
+        <!-- 3 Tk/g Company Fund Allocation Status Pill -->
+        <div class="header-stat-pill" title="Company Fund Allocation (3 Tk/g reserved from every gram printed)">
+          <span class="material-symbols-outlined" style="font-size: 18px; color: #0b57d0;">account_balance</span>
+          <span class="label">Company Pool:</span>
+          <span class="value font-mono" id="header-company-pool">৳ 0</span>
         </div>
-        <div class="header-stat-pill">
-          <span class="label">CO. FUND (3৳/g):</span>
-          <span class="value font-mono" style="color: #0284c7;" id="header-stat-company">৳ 0</span>
-        </div>
-        <div class="header-actions">
-          <!-- Admin Status / Trigger -->
-          <div id="admin-auth-header-wrap" style="display: flex; align-items: center; gap: 0.5rem;">
-            <button class="btn btn-outline btn-sm" id="btn-open-admin-login" title="Admin Login">
-              <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
-              <span>ADMIN LOGIN</span>
-            </button>
-            <div id="admin-logged-in-badge" style="display: none; align-items: center; gap: 0.4rem;">
-              <a href="http://127.0.0.1:8000/admin/" target="_blank" class="btn btn-secondary btn-sm" title="Open Django Admin Portal">
-                <i data-lucide="shield" style="width: 14px; height: 14px;"></i>
-                <span id="admin-username-tag">ADMIN</span>
-                <i data-lucide="external-link" style="width: 12px; height: 12px; margin-left: 2px;"></i>
-              </a>
-              <button class="btn btn-outline btn-sm" id="btn-admin-logout" title="Logout">
-                <i data-lucide="log-out" style="width: 14px; height: 14px;"></i>
-              </button>
-            </div>
-          </div>
 
+        <div class="header-actions">
           <button class="btn btn-secondary btn-sm" id="btn-quick-add-filament">
-            <i data-lucide="plus" style="width: 15px; height: 15px;"></i>
-            <span>+ SPOOL</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+            <span>Spool</span>
           </button>
           <button class="btn btn-primary btn-sm" id="btn-quick-new-order">
-            <i data-lucide="plus" style="width: 15px; height: 15px;"></i>
-            <span>+ ORDER</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">receipt_long</span>
+            <span>New Order</span>
           </button>
+
+          <!-- Admin Authentication Status / Trigger -->
+          <button class="btn btn-outline btn-sm" id="btn-open-admin-login">
+            <span class="material-symbols-outlined" style="font-size: 16px;">admin_panel_settings</span>
+            <span>Admin</span>
+          </button>
+          
+          <div id="admin-logged-in-badge" style="display: none; align-items: center; gap: 0.5rem;">
+            <span class="badge badge-paid font-mono" id="admin-username-tag">ADMIN</span>
+            <button class="btn btn-outline btn-sm" id="btn-admin-logout" title="Log Out">
+              <span class="material-symbols-outlined" style="font-size: 16px;">logout</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- Content Body -->
+    <!-- Content Body Area -->
     <main class="content-body">
       
       <!-- ====================================================================
-           VIEW 0: NEOBRUTALISM PUBLIC LANDING PAGE & CLIENT PORTAL
+           VIEW 0: PUBLIC LANDING & STRICT M3 INSTANT QUOTER
            ==================================================================== -->
       <section class="view-section active" id="view-landing">
-        <!-- Hero Section -->
+        
+        <!-- Hero Studio Banner -->
         <div class="landing-hero">
-          <img src="fb cover.png" alt="Studio Mistri 3D Printing Showcase" class="landing-hero-bg-cover">
+          <img src="fb cover.png" alt="Studio Mistri 3D Printing Farm" class="landing-hero-bg-cover">
           <div class="landing-hero-content">
             <div class="landing-pill-tag">
-              <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
-              <span>STUDIOMISTRI // 3D FABRICATION LAB • DHAKA</span>
+              <span class="material-symbols-outlined" style="font-size: 16px;">precision_manufacturing</span>
+              <span>STUDIO MISTRI • DHAKA LAB</span>
             </div>
-            <h1 class="landing-hero-title">
-              THINK • DESIGN • <span>MAKE</span>
-            </h1>
-            <p class="landing-hero-lead">
-              Precision additive manufacturing, multi-material functional prototyping, architectural scale models, and custom engineering fabrication.
+            <h1 class="landing-hero-title">Precision 3D Printing & Rapid Prototyping</h1>
+            <p class="landing-hero-desc">
+              High-speed multi-color FDM, engineering grade filaments (PLA+, PETG, ABS, TPU, PLA-CF), and industrial additive manufacturing. Think • Design • Make.
             </p>
-
-            <div class="landing-hero-cta-row">
-              <a href="#instant-quoter-section" class="btn btn-glow btn-lg">
-                <i data-lucide="calculator"></i>
-                <span>INSTANT PRINT QUOTER</span>
+            <div class="landing-hero-actions">
+              <a href="#instant-quoter-section" class="btn btn-primary btn-lg">
+                <span class="material-symbols-outlined">calculate</span>
+                <span>Get Instant Estimate</span>
               </a>
-              <button class="btn btn-outline btn-lg" onclick="switchView('dashboard')">
-                <i data-lucide="terminal"></i>
-                <span>OPEN STUDIO OS</span>
+              <button class="btn btn-secondary btn-lg" onclick="switchView('inventory')">
+                <span class="material-symbols-outlined">palette</span>
+                <span>Explore Filament Stock</span>
               </button>
             </div>
-
-            <!-- Features Ribbon -->
-            <div class="landing-features-ribbon">
+            <div class="feature-ribbon">
               <div class="feature-ribbon-item">
-                <i data-lucide="check"></i>
-                <span>50μm Precision</span>
+                <span class="material-symbols-outlined" style="color: #0b57d0;">check_circle</span>
+                <span>0.08mm - 0.28mm Layer Precision</span>
               </div>
               <div class="feature-ribbon-item">
-                <i data-lucide="check"></i>
-                <span>24-48h Express</span>
+                <span class="material-symbols-outlined" style="color: #0b57d0;">check_circle</span>
+                <span>Automated 3 Tk/g Split Allocation</span>
               </div>
               <div class="feature-ribbon-item">
-                <i data-lucide="check"></i>
-                <span>Multi-Color FDM</span>
-              </div>
-              <div class="feature-ribbon-item">
-                <i data-lucide="check"></i>
-                <span>±0.1mm Tolerance</span>
+                <span class="material-symbols-outlined" style="color: #0b57d0;">check_circle</span>
+                <span>24-Hour Express Dispatch</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================================================================
-             MATERIAL DESIGN 3 (M3) INSTANT 3D PRINT ESTIMATOR
-             ================================================================== -->
-        <div id="instant-quoter-section" class="m3-estimator-card">
-          <!-- Card Header -->
+        <!-- Strict M3 Elevated 3D Print Cost Estimator Card -->
+        <div class="m3-estimator-card card" id="instant-quoter-section">
           <div class="m3-card-header">
             <div class="m3-badge-pill">
-              <i data-lucide="calculator" class="m3-badge-icon"></i>
-              <span>MATERIAL 3 // 3D FABRICATION ENGINE</span>
+              <span class="material-symbols-outlined m3-badge-icon">tune</span>
+              <span>MATERIAL DESIGN 3 • COST CALCULATOR</span>
             </div>
             <h2 class="m3-card-title">Instant 3D Print Cost Estimator</h2>
             <p class="m3-card-subtitle">
-              Configure your model specifications, engineering polymers, and finishing layers for instant real-time telemetry and 3 Tk/g company pool allocation.
+              Configure your print specifications, material selection, and weight to calculate transparent pricing in real-time.
             </p>
           </div>
 
           <div class="m3-quoter-layout">
-            <!-- Left Column: M3 Text Fields & Configuration -->
+            <!-- Form Parameters -->
             <div class="m3-form-container">
-              
-              <!-- Row 1: Material & Color -->
               <div class="m3-form-grid-2">
+                <!-- Material Type -->
                 <div class="m3-text-field">
                   <div class="m3-field-container">
-                    <i data-lucide="box" class="m3-field-leading-icon"></i>
+                    <span class="material-symbols-outlined m3-field-leading-icon">category</span>
                     <div class="m3-field-content">
-                      <label class="m3-floating-label" for="landing-quote-material">Material / Filament *</label>
-                      <select id="landing-quote-material" class="m3-input m3-select font-mono">
-                        <option value="PLA+" data-rate="7.00">PLA+ High Speed (৳ 7.00 / g) • Prototyping</option>
-                        <option value="PETG" data-rate="8.50">PETG Tough (৳ 8.50 / g) • Chemical & Heat</option>
-                        <option value="ABS" data-rate="9.00">ABS Industrial (৳ 9.00 / g) • High Impact</option>
-                        <option value="TPU 95A" data-rate="12.00">TPU 95A Flexible (৳ 12.00 / g) • Elastic</option>
-                        <option value="PLA-CF" data-rate="15.00">PLA-CF Carbon Fiber (৳ 15.00 / g) • Rigid</option>
-                        <option value="Silk PLA" data-rate="8.50">Silk PLA Shiny (৳ 8.50 / g) • Aesthetic</option>
+                      <label class="m3-floating-label" for="landing-quote-material">Filament Material</label>
+                      <select id="landing-quote-material" class="m3-select">
+                        <option value="PLA+">PLA+ (Tough & Precise)</option>
+                        <option value="PETG">PETG (Impact & Heat Resistant)</option>
+                        <option value="ABS">ABS (Rigid Structural)</option>
+                        <option value="TPU">TPU (Flexible 95A)</option>
+                        <option value="PLA-CF">PLA-CF (Carbon Fiber Reinforced)</option>
                       </select>
                     </div>
-                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                    <span class="material-symbols-outlined" style="color: #74777f;">expand_more</span>
                   </div>
-                  <span class="m3-helper-text">High-precision FDM/FFF engineering spools</span>
                 </div>
 
+                <!-- Color Swatch Dropdown -->
                 <div class="m3-text-field">
                   <div class="m3-field-container">
-                    <i data-lucide="palette" class="m3-field-leading-icon"></i>
+                    <span class="material-symbols-outlined m3-field-leading-icon">palette</span>
                     <div class="m3-field-content">
-                      <label class="m3-floating-label" for="landing-quote-color">Available Color *</label>
-                      <select id="landing-quote-color" class="m3-input m3-select font-mono">
-                        <!-- Populated dynamically from inventory -->
+                      <label class="m3-floating-label" for="landing-quote-color">Available Color</label>
+                      <select id="landing-quote-color" class="m3-select">
+                        <option value="Bambu Jade White">Bambu Jade White</option>
+                        <option value="eSUN Matte Black">eSUN Matte Black</option>
+                        <option value="FlashForge Flame Orange">FlashForge Flame Orange</option>
+                        <option value="eSUN Signal Red">eSUN Signal Red</option>
+                        <option value="Polymaker Forest Green">Polymaker Forest Green</option>
+                        <option value="Bambu Carbon Dark Grey">Bambu Carbon Dark Grey</option>
                       </select>
                     </div>
-                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                    <span class="material-symbols-outlined" style="color: #74777f;">expand_more</span>
                   </div>
-                  <span class="m3-helper-text">Real-time studio inventory stock</span>
                 </div>
               </div>
 
-              <!-- Row 2: Part Weight + Segmented Presets -->
-              <div class="m3-text-field m3-weight-field">
+              <!-- Estimated Weight Input & M3 Presets -->
+              <div class="m3-text-field">
                 <div class="m3-field-container">
-                  <i data-lucide="scale" class="m3-field-leading-icon"></i>
+                  <span class="material-symbols-outlined m3-field-leading-icon">scale</span>
                   <div class="m3-field-content">
-                    <label class="m3-floating-label" for="landing-quote-weight">Part Net Weight (Grams) *</label>
-                    <input type="number" id="landing-quote-weight" class="m3-input m3-number-input font-mono" value="150" min="5" max="5000" step="5">
+                    <label class="m3-floating-label" for="landing-quote-weight">Model Sliced Weight (Grams)</label>
+                    <input type="number" id="landing-quote-weight" class="m3-input m3-number-input font-mono" value="120" min="1" max="10000" step="1">
                   </div>
                   <span class="m3-unit-suffix">GRAMS</span>
                 </div>
 
-                <!-- M3 Segmented Buttons for Presets -->
+                <!-- Segmented Quick Weight Buttons -->
                 <div class="m3-segmented-button-bar">
                   <span class="m3-segment-label">QUICK PRESETS:</span>
                   <div class="m3-segmented-buttons">
@@ -290,385 +283,252 @@
                 </div>
               </div>
 
-              <!-- Row 3: Layer Resolution & Post-Processing Finish -->
               <div class="m3-form-grid-2">
+                <!-- Quality / Layer Height -->
                 <div class="m3-text-field">
                   <div class="m3-field-container">
-                    <i data-lucide="layers" class="m3-field-leading-icon"></i>
+                    <span class="material-symbols-outlined m3-field-leading-icon">layers</span>
                     <div class="m3-field-content">
-                      <label class="m3-floating-label" for="landing-quote-quality">Layer Resolution</label>
-                      <select id="landing-quote-quality" class="m3-input m3-select font-mono">
-                        <option value="0.20">0.20mm • Standard High-Speed (Default)</option>
-                        <option value="0.12">0.12mm • Ultra Fine Micro Detail</option>
-                        <option value="0.28">0.28mm • Fast Draft</option>
+                      <label class="m3-floating-label" for="landing-quote-quality">Layer Quality</label>
+                      <select id="landing-quote-quality" class="m3-select">
+                        <option value="0.20">0.20mm Standard (Balanced)</option>
+                        <option value="0.12">0.12mm High Detail (+৳1.00/g)</option>
+                        <option value="0.28">0.28mm Draft Speed (-৳0.50/g)</option>
                       </select>
                     </div>
-                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                    <span class="material-symbols-outlined" style="color: #74777f;">expand_more</span>
                   </div>
                 </div>
 
+                <!-- Post-Processing Finish -->
                 <div class="m3-text-field">
                   <div class="m3-field-container">
-                    <i data-lucide="sparkles" class="m3-field-leading-icon"></i>
+                    <span class="material-symbols-outlined m3-field-leading-icon">auto_fix_high</span>
                     <div class="m3-field-content">
-                      <label class="m3-floating-label" for="landing-quote-finish">Post-Processing & Finish</label>
-                      <select id="landing-quote-finish" class="m3-input m3-select font-mono">
-                        <option value="0">Standard Support Removal (+ ৳ 0)</option>
-                        <option value="150">Precision Sanding & Smoothing (+ ৳ 150)</option>
-                        <option value="300">Sanding + Primer Coat (+ ৳ 300)</option>
-                        <option value="200">Threaded Brass Heat Inserts (+ ৳ 200)</option>
+                      <label class="m3-floating-label" for="landing-quote-finish">Post-Processing</label>
+                      <select id="landing-quote-finish" class="m3-select">
+                        <option value="0">Standard Support Cleanup (Free)</option>
+                        <option value="150">Vapor Smooth / Fine Sanding (+৳150)</option>
+                        <option value="300">Heat-Set Threaded Inserts (+৳300)</option>
                       </select>
                     </div>
-                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                    <span class="material-symbols-outlined" style="color: #74777f;">expand_more</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Row 4: Client Contact Details Subcard -->
+              <!-- Customer Contact Details Subcard -->
               <div class="m3-contact-subcard">
                 <div class="m3-subcard-title">
-                  <i data-lucide="user-check" style="width: 16px; height: 16px; color: var(--nb-orange);"></i>
-                  <span>CLIENT CONTACT & INVOICE DETAILS</span>
+                  <span class="material-symbols-outlined" style="font-size: 16px;">contact_mail</span>
+                  <span>Customer Contact Details (For Fast Order Placement)</span>
                 </div>
                 <div class="m3-form-grid-2">
                   <div class="m3-text-field">
                     <div class="m3-field-container">
-                      <i data-lucide="user" class="m3-field-leading-icon"></i>
+                      <span class="material-symbols-outlined m3-field-leading-icon">person</span>
                       <div class="m3-field-content">
-                        <label class="m3-floating-label" for="landing-quote-client-name">Your Name / Studio *</label>
-                        <input type="text" id="landing-quote-client-name" class="m3-input" placeholder="e.g. Architect Tanvir" required>
+                        <label class="m3-floating-label" for="landing-quote-customer-name">Full Name</label>
+                        <input type="text" id="landing-quote-customer-name" class="m3-input" placeholder="e.g. Asif Rahman">
                       </div>
                     </div>
                   </div>
-
                   <div class="m3-text-field">
                     <div class="m3-field-container">
-                      <i data-lucide="phone" class="m3-field-leading-icon"></i>
+                      <span class="material-symbols-outlined m3-field-leading-icon">phone</span>
                       <div class="m3-field-content">
-                        <label class="m3-floating-label" for="landing-quote-client-phone">WhatsApp / Phone Number *</label>
-                        <input type="tel" id="landing-quote-client-phone" class="m3-input font-mono" placeholder="e.g. 01700-000000" required>
+                        <label class="m3-floating-label" for="landing-quote-customer-phone">Phone Number</label>
+                        <input type="tel" id="landing-quote-customer-phone" class="m3-input font-mono" placeholder="017XXXXXXXX">
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="m3-text-field">
+                  <div class="m3-field-container">
+                    <span class="material-symbols-outlined m3-field-leading-icon">notes</span>
+                    <div class="m3-field-content">
+                      <label class="m3-floating-label" for="landing-quote-notes">Order Notes / STL Drive Link</label>
+                      <input type="text" id="landing-quote-notes" class="m3-input" placeholder="e.g. Infill 25%, Wall loops: 4, Drive URL...">
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <!-- Action Row: Calculate Action Button -->
-              <div class="m3-action-row">
-                <button type="button" class="m3-btn-action m3-btn-tonal" id="btn-recalculate-quote">
-                  <i data-lucide="refresh-cw" class="m3-btn-icon"></i>
-                  <span>Recalculate Estimate</span>
-                </button>
-              </div>
-
             </div>
 
-            <!-- Right Column: M3 Elevated Summary Card -->
+            <!-- M3 Summary Card & Pricing Hero -->
             <div class="m3-summary-card">
               <div class="m3-summary-header">
-                <div class="m3-summary-overline">ESTIMATED TOTAL:</div>
-                <div class="m3-rate-chip" id="landing-quote-rate-badge">RATE: ৳ 7.00 / G</div>
+                <span class="m3-summary-overline">ESTIMATED QUOTATION</span>
+                <span class="m3-rate-chip" id="landing-quote-rate-chip">৳ 6.00 / gram</span>
               </div>
 
               <div class="m3-price-hero">
-                <div class="m3-price-value" id="landing-quote-total-price">৳ 1,050.00</div>
-                <div class="m3-price-caption">BDT • Inclusive of Slicing & Machine Reserve</div>
+                <div class="m3-price-value" id="landing-quote-price">৳ 720</div>
+                <div class="m3-price-caption">Includes material, slicing telemetry & 15% studio overhead</div>
               </div>
 
               <div class="m3-breakdown-list">
                 <div class="m3-breakdown-item">
                   <div class="m3-item-left">
-                    <i data-lucide="scale" class="m3-item-icon"></i>
-                    <span>Net Part Weight:</span>
+                    <span class="material-symbols-outlined m3-item-icon">timer</span>
+                    <span>Estimated Print Duration:</span>
                   </div>
-                  <strong class="font-mono" id="landing-quote-weight-display">150g</strong>
+                  <strong id="landing-quote-time" class="font-mono">3h 40m</strong>
                 </div>
 
-                <div class="m3-breakdown-item">
-                  <div class="m3-item-left">
-                    <i data-lucide="clock" class="m3-item-icon"></i>
-                    <span>Est. Print Time:</span>
-                  </div>
-                  <strong class="font-mono" id="landing-quote-time-display">~ 4h 30m</strong>
-                </div>
-
-                <div class="m3-breakdown-item">
-                  <div class="m3-item-left">
-                    <i data-lucide="zap" class="m3-item-icon" style="color: #22c55e;"></i>
-                    <span>Turnaround Lead Time:</span>
-                  </div>
-                  <strong style="color: #22c55e;">24-48 Hours Express</strong>
-                </div>
-
+                <!-- 3 Tk/g Company Pool Split Allocation Indicator -->
                 <div class="m3-company-pool-pill">
                   <div class="m3-pool-header">
-                    <i data-lucide="shield-check" style="width: 15px; height: 15px; color: #00d2ff;"></i>
-                    <span>3 Tk/g Company Pool:</span>
+                    <span class="material-symbols-outlined" style="color: #0b57d0; font-size: 18px;">account_balance</span>
+                    <span>Company Fund Split (3৳/g):</span>
                   </div>
-                  <strong id="landing-quote-split-display" class="font-mono" style="color: #00d2ff;">৳ 450 Co / ৳ 600 Sal</strong>
+                  <strong id="landing-quote-company-pool" class="font-mono" style="color: #0b57d0;">৳ 360</strong>
+                </div>
+
+                <div class="m3-breakdown-item" style="padding-top: 0.25rem;">
+                  <div class="m3-item-left">
+                    <span class="material-symbols-outlined m3-item-icon">payments</span>
+                    <span>Salary Account Split:</span>
+                  </div>
+                  <strong id="landing-quote-salary-pool" class="font-mono" style="color: #146c2e;">৳ 360</strong>
                 </div>
               </div>
 
-              <!-- Prominent Rounded Action Button (Submit Order & PDF Invoice) -->
-              <button class="m3-btn-action m3-btn-prominent" id="btn-submit-landing-order">
-                <i data-lucide="file-check" class="m3-btn-icon"></i>
-                <span>SUBMIT ORDER & GET PDF INVOICE</span>
+              <!-- Strict M3 Pill Action Button -->
+              <button type="button" class="btn btn-primary m3-btn-prominent" id="btn-submit-landing-order">
+                <span class="material-symbols-outlined">send</span>
+                <span>CONFIRM & SUBMIT ORDER (৳ 720)</span>
               </button>
 
+              <div style="margin-top: 0.75rem; text-align: center;">
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-recalculate-quote">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">refresh</span>
+                  <span>Recalculate Estimate</span>
+                </button>
+              </div>
+
               <div class="m3-payment-note">
-                <i data-lucide="check-circle" style="width: 14px; height: 14px; color: #22c55e;"></i>
-                <span>[bKash / Nagad / Bank Transfer Accepted]</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">verified_user</span>
+                <span>Payment on delivery or via bKash / Nagad.</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================================================================
-             SERVICES MATRIX
-             ================================================================== -->
+        <!-- Services Grid Showcase -->
         <div class="section-header-block">
-          <span class="section-tag-label">★ STUDIO CAPABILITIES ★</span>
-          <h2 class="section-main-heading">What We Build At StudioMistri</h2>
-          <p class="section-sub-desc">Modular engineering, architectural precision, and rapid functional prototyping.</p>
+          <div class="section-tag-label">CAPABILITIES</div>
+          <h2 class="section-main-heading">Additive Manufacturing Services</h2>
+          <p class="section-sub-desc">Comprehensive rapid prototyping, multi-color engineering, and production batches.</p>
         </div>
 
         <div class="services-showcase-grid">
-          <div class="service-card">
-            <div class="service-icon-wrap"><i data-lucide="printer"></i></div>
-            <h3 class="service-title">Multi-Color FDM 3D Printing</h3>
-            <p class="service-description">
-              High-speed multi-material printing with automatic color swapping. Perfect for branded enclosures, signage, and ergonomic components.
-            </p>
-            <div class="service-tags-list">
-              <span class="service-tag-item">4 Colors Simultaneous</span>
-              <span class="service-tag-item">PLA+ / PETG / TPU</span>
-              <span class="service-tag-item">500 mm/s Speed</span>
+          <div class="service-card card">
+            <div class="service-icon-wrap">
+              <span class="material-symbols-outlined">precision_manufacturing</span>
             </div>
+            <h3 class="service-title">Rapid FDM Prototyping</h3>
+            <p class="service-desc">Functional test parts, housings, snap-fits, and mechanical assemblies with 0.12mm tolerance.</p>
           </div>
-
-          <div class="service-card">
-            <div class="service-icon-wrap" style="background: var(--nb-cyan);"><i data-lucide="cpu"></i></div>
-            <h3 class="service-title">Engineering & Functional R&D</h3>
-            <p class="service-description">
-              Carbon fiber reinforced parts, custom drone airframes, robotics linkages, and heat-resistant enclosures tested for mechanical stress.
-            </p>
-            <div class="service-tags-list">
-              <span class="service-tag-item">Carbon Fiber PLA-CF</span>
-              <span class="service-tag-item">Brass Heat Inserts</span>
-              <span class="service-tag-item">High Rigidity</span>
+          <div class="service-card card">
+            <div class="service-icon-wrap">
+              <span class="material-symbols-outlined">palette</span>
             </div>
+            <h3 class="service-title">Multi-Color & Multi-Material</h3>
+            <p class="service-desc">Up to 4-color single-body prints with automated filament switching via Bambu AMS Lite.</p>
           </div>
-
-          <div class="service-card">
-            <div class="service-icon-wrap" style="background: var(--nb-mint);"><i data-lucide="box"></i></div>
-            <h3 class="service-title">Architectural Scale Models</h3>
-            <p class="service-description">
-              Ultra-detailed scale models of residential towers, parametric facades, topography maps, and interior spatial master plans for client presentations.
-            </p>
-            <div class="service-tags-list">
-              <span class="service-tag-item">1:50 to 1:500 Scale</span>
-              <span class="service-tag-item">Crisp Geometry</span>
-              <span class="service-tag-item">Matte Finish</span>
+          <div class="service-card card">
+            <div class="service-icon-wrap">
+              <span class="material-symbols-outlined">science</span>
             </div>
+            <h3 class="service-title">Engineering Filaments</h3>
+            <p class="service-desc">Carbon-fiber infused composites, high-heat PETG, chemical-resistant ABS, and TPU flexibles.</p>
           </div>
-
-          <div class="service-card">
-            <div class="service-icon-wrap" style="background: var(--nb-pink);"><i data-lucide="sparkles"></i></div>
-            <h3 class="service-title">Ultra-Fine SLA Resin Fabrication</h3>
-            <p class="service-description">
-              8K microscopic surface smoothness without visible layer lines. Ideal for intricate jewelry casting masters, dental molds, and collector miniatures.
-            </p>
-            <div class="service-tags-list">
-              <span class="service-tag-item">25μm Layer Height</span>
-              <span class="service-tag-item">Mirror Smooth</span>
-              <span class="service-tag-item">UV Cured</span>
+          <div class="service-card card">
+            <div class="service-icon-wrap">
+              <span class="material-symbols-outlined">architecture</span>
             </div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon-wrap" style="background: var(--nb-yellow);"><i data-lucide="compass"></i></div>
-            <h3 class="service-title">CAD Design & Optimization</h3>
-            <p class="service-description">
-              Design for Additive Manufacturing (DFAM), 3D scanning, organic mesh repair, wall thickness analysis, and tolerance fitting for assemblies.
-            </p>
-            <div class="service-tags-list">
-              <span class="service-tag-item">STL / STEP / 3MF</span>
-              <span class="service-tag-item">Topology Optimization</span>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon-wrap" style="background: #fca5a5;"><i data-lucide="hammer"></i></div>
-            <h3 class="service-title">Post-Processing & Finishing</h3>
-            <p class="service-description">
-              Complete professional surface finishing: support removal, acetone vapor smoothing for ABS, multi-grit sanding, primer coats, and custom paint finishes.
-            </p>
-            <div class="service-tags-list">
-              <span class="service-tag-item">Vapor Smoothing</span>
-              <span class="service-tag-item">Brass Inserts</span>
-              <span class="service-tag-item">Matte / Gloss</span>
-            </div>
+            <h3 class="service-title">CAD Slicing Optimization</h3>
+            <p class="service-desc">Infill density tuning, structural wall reinforcement, and stress-oriented print angle placement.</p>
           </div>
         </div>
 
-        <!-- ==================================================================
-             MACHINE FLEET SHOWCASE
-             ================================================================== -->
+        <!-- Hardware Fleet Showcase -->
         <div class="section-header-block">
-          <span class="section-tag-label">★ HARDWARE FLEET ★</span>
-          <h2 class="section-main-heading">Fabrication Machinery Fleet</h2>
-          <p class="section-sub-desc">Calibrated industrial-grade 3D printers operating with continuous environmental control.</p>
+          <div class="section-tag-label">HARDWARE FLEET</div>
+          <h2 class="section-main-heading">Dhaka Production Workshop</h2>
+          <p class="section-sub-desc">Calibrated industrial workhorses operating 24/7.</p>
         </div>
 
-        <div class="fleet-grid">
-          <div class="fleet-card">
-            <div class="fleet-header">
-              <div class="fleet-name">Bambu Lab A1 Combo</div>
-              <span class="badge badge-in-stock">ONLINE</span>
+        <div class="hardware-fleet-grid">
+          <div class="printer-card card">
+            <div class="printer-card-header">
+              <span class="printer-name">Bambu Lab A1 Combo</span>
+              <span class="badge badge-paid">READY</span>
             </div>
-            <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--nb-text-main);">High-Speed Multi-Color FDM System with AMS Lite</div>
-            <div class="fleet-specs-grid">
-              <div>
-                <span class="fleet-spec-label">Volume:</span>
-                <div class="fleet-spec-val">256×256×256mm</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Speed:</span>
-                <div class="fleet-spec-val">500 mm/s</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Nozzle:</span>
-                <div class="fleet-spec-val">0.4mm Hardened</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Materials:</span>
-                <div class="fleet-spec-val">PLA+, PETG, TPU</div>
-              </div>
-            </div>
+            <div class="printer-type font-mono">High-Speed Multi-Color FDM • 256×256×256mm</div>
           </div>
-
-          <div class="fleet-card">
-            <div class="fleet-header">
-              <div class="fleet-name">Voron 2.4 CoreXY 350</div>
-              <span class="badge badge-in-stock">ONLINE</span>
+          <div class="printer-card card">
+            <div class="printer-card-header">
+              <span class="printer-name">Voron 2.4 Custom</span>
+              <span class="badge badge-paid">ACTIVE</span>
             </div>
-            <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--nb-text-main);">High-Temp Enclosed Engineering Workhorse</div>
-            <div class="fleet-specs-grid">
-              <div>
-                <span class="fleet-spec-label">Volume:</span>
-                <div class="fleet-spec-val">350×350×350mm</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Chamber:</span>
-                <div class="fleet-spec-val">60°C Enclosure</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Nozzle:</span>
-                <div class="fleet-spec-val">0.4mm DiamondBack</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Materials:</span>
-                <div class="fleet-spec-val">ABS, ASA, PLA-CF</div>
-              </div>
-            </div>
+            <div class="printer-type font-mono">Enclosed CoreXY High-Temp Workhorse • 350×350×350mm</div>
           </div>
-
-          <div class="fleet-card">
-            <div class="fleet-header">
-              <div class="fleet-name">Elegoo Saturn 4 12K</div>
-              <span class="badge badge-completed">QUEUE READY</span>
+          <div class="printer-card card">
+            <div class="printer-card-header">
+              <span class="printer-name">Elegoo Saturn 3 Ultra</span>
+              <span class="badge badge-paid">READY</span>
             </div>
-            <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--nb-text-main);">Ultra-High Resolution MSLA Photopolymer Resin</div>
-            <div class="fleet-specs-grid">
-              <div>
-                <span class="fleet-spec-label">Resolution:</span>
-                <div class="fleet-spec-val">19×24 μm (12K)</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Volume:</span>
-                <div class="fleet-spec-val">218×122×220mm</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Layers:</span>
-                <div class="fleet-spec-val">0.01 - 0.05mm</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Materials:</span>
-                <div class="fleet-spec-val">Tough UV Resin</div>
-              </div>
-            </div>
+            <div class="printer-type font-mono">12K MSLA Photopolymer Resin Studio</div>
           </div>
-
-          <div class="fleet-card">
-            <div class="fleet-header">
-              <div class="fleet-name">Prusa MK4 Precision</div>
-              <span class="badge badge-in-stock">ONLINE</span>
+          <div class="printer-card card">
+            <div class="printer-card-header">
+              <span class="printer-name">Prusa MK4 Nextruder</span>
+              <span class="badge badge-paid">ACTIVE</span>
             </div>
-            <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--nb-text-main);">Nextruder Direct Drive for Flexibles & Detail</div>
-            <div class="fleet-specs-grid">
-              <div>
-                <span class="fleet-spec-label">Volume:</span>
-                <div class="fleet-spec-val">250×210×220mm</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Sensors:</span>
-                <div class="fleet-spec-val">Loadcell Auto-1st</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Nozzle:</span>
-                <div class="fleet-spec-val">0.4mm High Flow</div>
-              </div>
-              <div>
-                <span class="fleet-spec-label">Materials:</span>
-                <div class="fleet-spec-val">TPU 95A, PETG</div>
-              </div>
-            </div>
+            <div class="printer-type font-mono">Direct Drive Precision for Flexibles & TPU</div>
           </div>
         </div>
 
-        <!-- ==================================================================
-             4-STEP WORKFLOW
-             ================================================================== -->
+        <!-- 4-Step Fabrication Workflow -->
         <div class="section-header-block">
-          <span class="section-tag-label">★ SIMPLE 4-STEP PIPELINE ★</span>
-          <h2 class="section-main-heading">From CAD File To Physical Delivery</h2>
-          <p class="section-sub-desc">Four systematic steps from digital upload to caliper-verified delivery.</p>
+          <div class="section-tag-label">WORKFLOW</div>
+          <h2 class="section-main-heading">How Studio Mistri Operates</h2>
         </div>
 
-        <div class="workflow-grid">
-          <div class="workflow-card">
-            <div class="workflow-number">01</div>
-            <h3 class="workflow-step-title">Upload 3D Model</h3>
-            <p class="workflow-step-desc">Share your <code>.STL</code>, <code>.STEP</code>, or <code>.3MF</code> model file through our online quoter or WhatsApp.</p>
+        <div class="workflow-steps-grid">
+          <div class="step-card card">
+            <div class="step-number font-mono">01</div>
+            <h4 class="step-title">Submit Model / Specs</h4>
+            <p class="step-desc">Configure your weight and material on our instant quoter or send STL/STEP CAD files.</p>
           </div>
-          <div class="workflow-card">
-            <div class="workflow-number">02</div>
-            <h3 class="workflow-step-title">Slicing & QA</h3>
-            <p class="workflow-step-desc">We analyze print orientation, infill geometry, stress points, and generate your official itemized invoice.</p>
+          <div class="step-card card">
+            <div class="step-number font-mono">02</div>
+            <h4 class="step-title">Automated Telemetry</h4>
+            <p class="step-desc">Our engine validates spool inventory and computes 3 Tk/g company pool allocation.</p>
           </div>
-          <div class="workflow-card">
-            <div class="workflow-number">03</div>
-            <h3 class="workflow-step-title">Fabrication</h3>
-            <p class="workflow-step-desc">Models are printed on calibrated hardware with automated first-layer detection and thermal logging.</p>
+          <div class="step-card card">
+            <div class="step-number font-mono">03</div>
+            <h4 class="step-title">Precision Printing</h4>
+            <p class="step-desc">High-speed production on Bambu Lab & Voron fleet with live telemetry logging.</p>
           </div>
-          <div class="workflow-card">
-            <div class="workflow-number">04</div>
-            <h3 class="workflow-step-title">Inspection & Dispatch</h3>
-            <p class="workflow-step-desc">Support cleanup, surface post-processing, digital caliper dimensional QA, and express delivery.</p>
+          <div class="step-card card">
+            <div class="step-number font-mono">04</div>
+            <h4 class="step-title">QC & Delivery</h4>
+            <p class="step-desc">Support removal, dimensional check, PDF tax invoice generation, and courier dispatch.</p>
           </div>
         </div>
 
-        <!-- ==================================================================
-             LANDING FOOTER
-             ================================================================== -->
+        <!-- Landing Footer -->
         <footer class="landing-footer">
           <div class="footer-top-grid">
-            <div class="footer-brand-info">
+            <div>
               <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-                <img src="brand_logo.png" alt="Studio Mistri" style="height: 38px; width: auto;">
-                <strong style="font-size: 1.3rem; font-weight: 800; color: var(--md-sys-color-on-surface);">Studio Mistri</strong>
+                <img src="brand_logo.png" alt="Studio Mistri" class="brand-logo-img" style="max-height: 40px; width: auto; object-fit: contain;">
+                <strong style="font-size: 1.25rem; font-weight: 700; color: #1f1f1f;">Studio Mistri</strong>
               </div>
-              <p>High-precision 3D printing studio, rapid prototyping lab, and additive manufacturing solutions in Dhaka, Bangladesh. THINK • DESIGN • MAKE.</p>
+              <p style="font-size: 0.88rem; line-height: 1.5;">High-precision 3D printing studio, rapid prototyping lab, and additive manufacturing solutions in Dhaka, Bangladesh. THINK • DESIGN • MAKE.</p>
             </div>
 
             <div>
@@ -684,7 +544,7 @@
 
             <div>
               <div class="footer-col-title">WORKSHOP CONTACT</div>
-              <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; font-family: var(--font-family-mono); font-weight: 600; color: var(--md-sys-color-on-surface);">
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; font-family: var(--font-family-mono); font-weight: 500; color: #1f1f1f;">
                 <div>Location: Dhaka, Bangladesh</div>
                 <div>Phone: +880 1700-000000</div>
                 <div>Email: contact@studiomistri.com</div>
@@ -709,780 +569,443 @@
            VIEW 1: DASHBOARD
            ==================================================================== -->
       <section class="view-section" id="view-dashboard">
-        <!-- Hero Studio Banner with fb cover.png -->
-        <div class="studio-hero-banner card" style="margin-bottom: 2rem; position: relative; overflow: hidden; min-height: 180px; display: flex; align-items: center; padding: 0;">
-          <img src="fb cover.png" alt="Studio Mistri 3D Printing Cover" class="hero-cover-img" style="position: absolute; top: 0; right: 0; width: 45%; height: 100%; object-fit: cover; opacity: 0.4;">
-          <div class="hero-content" style="position: relative; z-index: 2; padding: 2.25rem; max-width: 58%;">
-            <div class="hero-tag m3-badge-pill">
-              <i data-lucide="activity" style="width: 14px; height: 14px;"></i>
+        <div class="card" style="margin-bottom: 2rem; position: relative; overflow: hidden; min-height: 180px; display: flex; align-items: center; padding: 0;">
+          <img src="fb cover.png" alt="Studio Mistri 3D Printing Cover" style="position: absolute; top: 0; right: 0; width: 45%; height: 100%; object-fit: cover; opacity: 0.35;">
+          <div style="position: relative; z-index: 2; padding: 2.25rem; max-width: 60%;">
+            <div class="m3-badge-pill">
+              <span class="material-symbols-outlined" style="font-size: 16px;">monitoring</span>
               <span>STUDIO TELEMETRY • THINK DESIGN MAKE</span>
             </div>
-            <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--md-sys-color-on-surface); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.35rem;">
-              Studio Mistri | 3D Studio OS
-            </h2>
-            <p style="color: var(--md-sys-color-on-surface-variant); font-size: 0.92rem; margin-bottom: 1.25rem;">
-              High-precision additive manufacturing, prototyping & custom fabrication studio.
-            </p>
-            <div class="hero-stats-row" style="display: flex; gap: 1rem;">
-              <div class="hero-mini-stat" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-divider); padding: 0.4rem 0.85rem; border-radius: var(--md-shape-corner-medium);">
-                <span class="num font-mono" id="hero-stat-total-grams" style="font-size: 1.15rem; font-weight: 800; color: var(--md-sys-color-primary);">0g</span>
-                <span class="label" style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: var(--md-sys-color-outline); text-transform: uppercase;"> Printed</span>
+            <h2 style="font-size: 1.85rem; font-weight: 700; color: #1f1f1f; margin-bottom: 0.35rem;">Studio Mistri | 3D Studio OS</h2>
+            <p style="font-size: 0.92rem; color: #44474e; margin-bottom: 1.25rem;">High-precision additive manufacturing, prototyping & custom fabrication studio.</p>
+            <div style="display: flex; gap: 1rem;">
+              <div style="background: #f2f4f7; padding: 0.4rem 0.85rem; border-radius: 8px;">
+                <span class="font-mono" id="hero-stat-total-grams" style="font-size: 1.15rem; font-weight: 700; color: #0b57d0;">0g</span>
+                <span style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: #74777f; text-transform: uppercase;"> Printed</span>
               </div>
-              <div class="hero-mini-stat" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-divider); padding: 0.4rem 0.85rem; border-radius: var(--md-shape-corner-medium);">
-                <span class="num font-mono" id="hero-stat-orders-completed" style="font-size: 1.15rem; font-weight: 800; color: var(--md-sys-color-success);">0</span>
-                <span class="label" style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: var(--md-sys-color-outline); text-transform: uppercase;"> Completed</span>
+              <div style="background: #f2f4f7; padding: 0.4rem 0.85rem; border-radius: 8px;">
+                <span class="font-mono" id="hero-stat-orders-completed" style="font-size: 1.15rem; font-weight: 700; color: #146c2e;">0</span>
+                <span style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: #74777f; text-transform: uppercase;"> Completed</span>
               </div>
-              <div class="hero-mini-stat" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-divider); padding: 0.4rem 0.85rem; border-radius: var(--md-shape-corner-medium);">
-                <span class="num font-mono" id="hero-stat-available-colors" style="font-size: 1.15rem; font-weight: 800; color: var(--md-sys-color-tertiary);">0</span>
-                <span class="label" style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: var(--md-sys-color-outline); text-transform: uppercase;"> Colors</span>
+              <div style="background: #f2f4f7; padding: 0.4rem 0.85rem; border-radius: 8px;">
+                <span class="font-mono" id="hero-stat-available-colors" style="font-size: 1.15rem; font-weight: 700; color: #ea580c;">0</span>
+                <span style="font-size: 0.7rem; font-family: var(--font-family-mono); font-weight: 700; color: #74777f; text-transform: uppercase;"> Colors</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Special Company Account vs Salary Account Split Spotlight Card -->
-        <div class="split-spotlight-box">
-          <div class="split-item">
-            <div class="split-label company">
-              <i data-lucide="landmark" style="width: 18px; height: 18px; stroke-width: 2.5px;"></i>
-              <span>Company Reserve Fund (3 ৳ / Gram)</span>
-            </div>
-            <div class="split-amount font-mono" id="dash-split-company">৳ 0</div>
-            <div class="split-desc font-mono">Dedicated machine wear & tear, electricity, nozzle replacements & reserve.</div>
+        <!-- 3 Tk/g Company Account vs Salary Account Spotlight Card -->
+        <div class="financial-split-banner card">
+          <div class="split-col">
+            <span class="split-label">Company Account Fund (3 ৳ / gram rule)</span>
+            <span class="split-amount font-mono" id="dash-company-pool-val" style="color: #0b57d0;">৳ 0</span>
           </div>
-          <div class="split-divider-v"></div>
-          <div class="split-item">
-            <div class="split-label salary">
-              <i data-lucide="wallet" style="width: 18px; height: 18px; stroke-width: 2.5px;"></i>
-              <span>Salary Account Disbursed</span>
-            </div>
-            <div class="split-amount font-mono" id="dash-split-salary">৳ 0</div>
-            <div class="split-desc font-mono">Distributed directly to studio makers, CAD designers & operating payroll.</div>
+          <div class="split-col">
+            <span class="split-label">Salary Account Allocation</span>
+            <span class="split-amount font-mono" id="dash-salary-pool-val" style="color: #146c2e;">৳ 0</span>
+          </div>
+          <div class="split-col">
+            <button class="btn btn-primary btn-sm" onclick="switchView('sales')">
+              <span class="material-symbols-outlined">analytics</span>
+              <span>View Full Audit Report</span>
+            </button>
           </div>
         </div>
 
-        <!-- Metric KPI Cards -->
-        <div class="metrics-grid">
-          <div class="metric-card" style="--card-accent: var(--nb-orange);">
-            <div class="metric-header">
-              <span class="metric-title">TOTAL REVENUE</span>
-              <div class="metric-icon-wrap"><i data-lucide="dollar-sign"></i></div>
+        <!-- KPI Metric Cards Grid -->
+        <div class="metric-cards-grid">
+          <div class="metric-card card">
+            <div class="metric-card-header">
+              <span class="metric-title">Gross Revenue</span>
+              <div class="metric-icon-wrap"><span class="material-symbols-outlined">payments</span></div>
             </div>
-            <div class="metric-value font-mono" id="dash-metric-revenue">৳ 0</div>
-            <div class="metric-subtext positive">
-              <i data-lucide="arrow-up-right" style="width: 15px; height: 15px; display: inline-block;"></i>
-              <span id="dash-metric-order-count">0 orders total</span>
-            </div>
+            <div class="metric-value font-mono" id="dash-total-revenue">৳ 0</div>
+            <div class="metric-subtitle">Completed & active orders</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: #fca5a5;">
-            <div class="metric-header">
-              <span class="metric-title">INVENTORY COST</span>
-              <div class="metric-icon-wrap"><i data-lucide="package"></i></div>
+          <div class="metric-card card">
+            <div class="metric-card-header">
+              <span class="metric-title">Material Cost</span>
+              <div class="metric-icon-wrap" style="background: #ffdad6; color: #ba1a1a;"><span class="material-symbols-outlined">inventory</span></div>
             </div>
-            <div class="metric-value font-mono" id="dash-metric-cost">৳ 0</div>
-            <div class="metric-subtext">
-              <span>Material consumption</span>
-            </div>
+            <div class="metric-value font-mono" id="dash-material-cost" style="color: #ba1a1a;">৳ 0</div>
+            <div class="metric-subtitle">Spool purchase amortization</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: var(--nb-mint);">
-            <div class="metric-header">
-              <span class="metric-title">NET PROFIT</span>
-              <div class="metric-icon-wrap"><i data-lucide="award"></i></div>
+          <div class="metric-card card">
+            <div class="metric-card-header">
+              <span class="metric-title">Net Studio Profit</span>
+              <div class="metric-icon-wrap" style="background: #c4eed0; color: #146c2e;"><span class="material-symbols-outlined">trending_up</span></div>
             </div>
-            <div class="metric-value font-mono" id="dash-metric-profit">৳ 0</div>
-            <div class="metric-subtext positive" id="dash-metric-margin">
-              Margin: 0%
-            </div>
+            <div class="metric-value font-mono" id="dash-net-profit" style="color: #146c2e;">৳ 0</div>
+            <div class="metric-subtitle">Revenue minus material cost</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: var(--nb-cyan);">
-            <div class="metric-header">
-              <span class="metric-title">FILAMENT STOCK</span>
-              <div class="metric-icon-wrap"><i data-lucide="layers"></i></div>
+          <div class="metric-card card">
+            <div class="metric-card-header">
+              <span class="metric-title">Filament Spools</span>
+              <div class="metric-icon-wrap"><span class="material-symbols-outlined">layers</span></div>
             </div>
-            <div class="metric-value font-mono" id="dash-metric-filament-weight">0 kg</div>
-            <div class="metric-subtext" id="dash-metric-spool-count">
-              0 spools available
-            </div>
+            <div class="metric-value font-mono" id="dash-active-spools">0</div>
+            <div class="metric-subtitle">Active cartridges loaded</div>
           </div>
         </div>
 
-        <!-- Dashboard Two-Column Grid: Active Orders Queue & Low Stock Alert -->
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; margin-bottom: 1.75rem;" class="dash-split-grid">
-          <!-- Active Orders Queue -->
-          <div class="panel" style="margin-bottom: 0;">
-            <div class="panel-header">
-              <div class="panel-title-wrap">
-                <i data-lucide="activity" style="color: var(--nb-orange); width: 20px; height: 20px;"></i>
-                <div>
-                  <div class="panel-title">ACTIVE PRINT QUEUE</div>
-                  <div class="panel-subtitle">Current jobs in slicing, printing & finishing</div>
-                </div>
-              </div>
-              <button class="btn btn-secondary btn-sm" onclick="switchView('orders')">
-                <span>VIEW ALL</span>
-                <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
-              </button>
+        <!-- Live Print Queue & Low Stock Tables -->
+        <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+          <div class="data-table-card card">
+            <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #edf0f4;">
+              <h3 style="font-size: 1.05rem; font-weight: 700;">Live Production Queue</h3>
+              <button class="btn btn-outline btn-sm" onclick="switchView('orders')">View All</button>
             </div>
-            <div class="panel-body" style="padding: 0;">
-              <div class="table-responsive" style="border: none; box-shadow: none;">
-                <table class="custom-table" id="dash-queue-table">
-                  <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Model / Client</th>
-                      <th>Filament</th>
-                      <th>Weight</th>
-                      <th>Total</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody id="dash-queue-tbody">
-                    <!-- Populated dynamically -->
-                  </tbody>
-                </table>
-              </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Material</th>
+                    <th>Weight</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-recent-orders-table-body">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <!-- Low Stock Alert & Quick Calculator Panel -->
-          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <!-- Low Stock Panel -->
-            <div class="panel" style="margin-bottom: 0;">
-              <div class="panel-header">
-                <div class="panel-title-wrap">
-                  <i data-lucide="alert-triangle" style="color: var(--nb-orange); width: 20px; height: 20px;"></i>
-                  <div>
-                    <div class="panel-title">STOCK HEALTH</div>
-                    <div class="panel-subtitle">Spools needing restock (&lt;250g)</div>
-                  </div>
-                </div>
-                <button class="btn btn-secondary btn-sm" onclick="switchView('inventory')">
-                  <span>INVENTORY</span>
-                </button>
-              </div>
-              <div class="panel-body" id="dash-low-stock-list">
-                <!-- Populated dynamically -->
-              </div>
-            </div>
-
-            <!-- Quick Print Price & 3 Tk/g Split Calculator -->
-            <div class="panel" style="margin-bottom: 0;">
-              <div class="panel-header">
-                <div class="panel-title-wrap">
-                  <i data-lucide="calculator" style="color: #0284c7; width: 20px; height: 20px;"></i>
-                  <div>
-                    <div class="panel-title">QUICK SPLIT CALCULATOR</div>
-                    <div class="panel-subtitle">Instant breakdown at 3 ৳ / gram company fee</div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div class="form-row" style="grid-template-columns: 1fr 1fr; margin-bottom: 0.75rem;">
-                  <div class="form-group" style="margin-bottom: 0;">
-                    <label class="form-label">Weight (g)</label>
-                    <input type="number" id="quick-calc-weight" class="form-control font-mono" value="120" min="1" step="1">
-                  </div>
-                  <div class="form-group" style="margin-bottom: 0;">
-                    <label class="form-label">Rate / g (৳)</label>
-                    <input type="number" id="quick-calc-rate" class="form-control font-mono" value="7.00" min="3" step="0.5">
-                  </div>
-                </div>
-                <div class="calculator-box" style="margin-top: 0.4rem; padding: 0.85rem;">
-                  <div class="calc-breakdown-row">
-                    <span>Total Client Price:</span>
-                    <strong class="font-mono" id="quick-calc-total" style="color: var(--nb-text-main); font-size: 1.1rem;">৳ 840</strong>
-                  </div>
-                  <div class="calc-split-highlight" style="padding: 0.65rem; margin-top: 0.5rem;">
-                    <div class="split-pill-calc company">
-                      <span class="title">Company (3৳/g)</span>
-                      <span class="val font-mono" id="quick-calc-company">৳ 360</span>
-                      <span class="formula">120g × 3.00 ৳</span>
-                    </div>
-                    <div class="split-pill-calc salary">
-                      <span class="title">Salary Remainder</span>
-                      <span class="val font-mono" id="quick-calc-salary">৳ 480</span>
-                      <span class="formula">120g × 4.00 ৳</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           VIEW 2: INVENTORY MANAGEMENT
-           ==================================================================== -->
-      <section class="view-section" id="view-inventory">
-        <!-- Filament Summary Metrics Bar -->
-        <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
-          <div class="metric-card" style="--card-accent: var(--nb-orange);">
-            <div class="metric-header">
-              <span class="metric-title">TOTAL SPOOLS</span>
-              <div class="metric-icon-wrap"><i data-lucide="disc"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="inv-stat-spools">0</div>
-            <div class="metric-subtext" id="inv-stat-colors">0 unique colors</div>
-          </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-cyan);">
-            <div class="metric-header">
-              <span class="metric-title">TOTAL WEIGHT</span>
-              <div class="metric-icon-wrap"><i data-lucide="scale"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="inv-stat-weight">0.00 kg</div>
-            <div class="metric-subtext" id="inv-stat-grams">0 grams ready</div>
-          </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-mint);">
-            <div class="metric-header">
-              <span class="metric-title">ASSET VALUE</span>
-              <div class="metric-icon-wrap"><i data-lucide="dollar-sign"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="inv-stat-value">৳ 0</div>
-            <div class="metric-subtext">Current spool asset value</div>
-          </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-yellow);">
-            <div class="metric-header">
-              <span class="metric-title">LOW STOCK</span>
-              <div class="metric-icon-wrap"><i data-lucide="alert-circle"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="inv-stat-low-stock">0</div>
-            <div class="metric-subtext" style="color: #b45309;">Spools &lt; 250 grams</div>
-          </div>
-        </div>
-
-        <!-- Inventory Panel -->
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <i data-lucide="layers" style="color: var(--nb-orange); width: 22px; height: 22px;"></i>
-              <div>
-                <div class="panel-title">FILAMENT INVENTORY MATRIX</div>
-                <div class="panel-subtitle">Available colors, engineering materials, brands and pricing</div>
-              </div>
-            </div>
-            <div class="panel-actions">
-              <button class="btn btn-secondary btn-sm" id="btn-toggle-inv-view" title="Toggle Grid / Table View">
-                <i data-lucide="layout-grid" id="inv-view-icon" style="width: 15px; height: 15px;"></i>
-                <span id="inv-view-label">Table View</span>
-              </button>
-              <button class="btn btn-primary btn-sm" id="btn-add-filament-modal">
-                <i data-lucide="plus" style="width: 15px; height: 15px;"></i>
-                <span>+ ADD FILAMENT</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="panel-body">
-            <!-- Search & Filters Toolbar -->
-            <div class="toolbar-wrap">
-              <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" id="inv-search-input" class="form-control font-mono" placeholder="search color, brand, material, rack...">
-              </div>
-
-              <div class="filter-group" id="inv-material-filters">
-                <span class="filter-chip active" data-material="all">ALL</span>
-                <span class="filter-chip" data-material="PLA">PLA / PLA+</span>
-                <span class="filter-chip" data-material="PETG">PETG</span>
-                <span class="filter-chip" data-material="ABS">ABS / ASA</span>
-                <span class="filter-chip" data-material="TPU">TPU</span>
-                <span class="filter-chip" data-material="Carbon Fiber">CARBON FIBER</span>
-                <span class="filter-chip" data-material="Resin">RESIN</span>
-              </div>
-
-              <div class="filter-group">
-                <select id="inv-brand-filter" class="form-control font-mono" style="width: auto; padding: 0.4rem 2rem 0.4rem 0.75rem; font-size: 0.8rem;">
-                  <option value="all">ALL BRANDS</option>
-                  <option value="Bambu Lab">Bambu Lab</option>
-                  <option value="eSun">eSun</option>
-                  <option value="Polymaker">Polymaker</option>
-                  <option value="Sunlu">Sunlu</option>
-                  <option value="Creality">Creality</option>
-                  <option value="Other">Other</option>
-                </select>
-
-                <select id="inv-stock-filter" class="form-control font-mono" style="width: auto; padding: 0.4rem 2rem 0.4rem 0.75rem; font-size: 0.8rem;">
-                  <option value="all">ALL STOCK</option>
-                  <option value="in_stock">In Stock (&gt;250g)</option>
-                  <option value="low_stock">Low Stock (≤250g)</option>
-                  <option value="out_of_stock">Empty (0g)</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Grid View (Cards) -->
-            <div class="filament-cards-grid" id="filament-cards-container">
+          <div class="card">
+            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem;">Low Stock Alerts</h3>
+            <div id="dash-low-stock-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
               <!-- Rendered dynamically -->
             </div>
-
-            <!-- Table View -->
-            <div class="table-responsive" id="filament-table-container" style="display: none; margin-top: 1rem;">
-              <table class="custom-table">
-                <thead>
-                  <tr>
-                    <th>Color / Swatch</th>
-                    <th>Material Type</th>
-                    <th>Brand</th>
-                    <th>Spool Price</th>
-                    <th>Cost / Gram</th>
-                    <th>Stock Remaining</th>
-                    <th>Location</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="filament-table-tbody">
-                  <!-- Rendered dynamically -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Empty State -->
-            <div id="inv-empty-state" style="display: none; text-align: center; padding: 3rem 1rem;">
-              <i data-lucide="layers" style="width: 48px; height: 48px; color: var(--nb-text-main); margin-bottom: 0.75rem;"></i>
-              <h3 style="font-size: 1.15rem; font-weight: 900; color: var(--nb-text-main); margin-bottom: 0.25rem;">NO FILAMENTS FOUND</h3>
-              <p style="font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; color: var(--nb-text-muted); margin-bottom: 1.25rem;">Try adjusting search filters or add a new spool.</p>
-              <button class="btn btn-primary btn-sm" onclick="openFilamentModal()">
-                <i data-lucide="plus" style="width: 15px; height: 15px;"></i>
-                <span>+ ADD FILAMENT</span>
-              </button>
-            </div>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           VIEW 3: ORDER MANAGEMENT & INVOICE GENERATOR
+           VIEW 2: INVENTORY MATRIX
+           ==================================================================== -->
+      <section class="view-section" id="view-inventory">
+        <div class="inventory-header-bar">
+          <div>
+            <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Filament Inventory Matrix</h2>
+            <p style="color: #44474e;">Manage cartridges, track gram consumption, spool purchase costs, and remaining stock.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" id="btn-toggle-inv-view">
+              <span class="material-symbols-outlined">table_rows</span>
+              <span id="inv-view-label">Table View</span>
+            </button>
+            <button class="btn btn-primary btn-sm" id="btn-add-filament-modal">
+              <span class="material-symbols-outlined">add</span>
+              <span>Add Filament Spool</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="inventory-filters-row">
+          <input type="text" id="inv-search-input" class="form-control font-mono" placeholder="Search by color, brand, or material..." style="max-width: 320px; border-radius: 100px;">
+          <select id="inv-brand-filter" class="form-control" style="max-width: 180px; border-radius: 100px;">
+            <option value="ALL">All Brands</option>
+            <option value="Bambu Lab">Bambu Lab</option>
+            <option value="eSUN">eSUN</option>
+            <option value="FlashForge">FlashForge</option>
+            <option value="Polymaker">Polymaker</option>
+            <option value="Sunlu">Sunlu</option>
+          </select>
+          <select id="inv-stock-filter" class="form-control" style="max-width: 180px; border-radius: 100px;">
+            <option value="ALL">All Stock Levels</option>
+            <option value="IN_STOCK">In Stock (>200g)</option>
+            <option value="LOW_STOCK">Low Stock (≤200g)</option>
+            <option value="EMPTY">Depleted (0g)</option>
+          </select>
+
+          <div class="filter-chips-group" id="inv-material-filters">
+            <span class="filter-chip active" data-material="ALL">All</span>
+            <span class="filter-chip" data-material="PLA+">PLA+</span>
+            <span class="filter-chip" data-material="PETG">PETG</span>
+            <span class="filter-chip" data-material="ABS">ABS</span>
+            <span class="filter-chip" data-material="TPU">TPU</span>
+            <span class="filter-chip" data-material="PLA-CF">PLA-CF</span>
+          </div>
+        </div>
+
+        <div class="filament-cards-grid" id="inv-grid-container">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <div class="data-table-card card" id="inv-table-container" style="display: none; margin-top: 1.5rem;">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Color & Brand</th>
+                  <th>Material</th>
+                  <th>Remaining</th>
+                  <th>Cost / Spool</th>
+                  <th>Selling Rate</th>
+                  <th>Status</th>
+                  <th>Quick Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inv-table-tbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 3: ORDERS LEDGER
            ==================================================================== -->
       <section class="view-section" id="view-orders">
-        <!-- Order Stats Bar -->
-        <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
-          <div class="metric-card" style="--card-accent: var(--nb-orange);">
-            <div class="metric-header">
-              <span class="metric-title">TOTAL ORDERS</span>
-              <div class="metric-icon-wrap"><i data-lucide="cpu"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="order-stat-total">0</div>
-            <div class="metric-subtext" id="order-stat-revenue-total">৳ 0 in sales</div>
+        <div class="inventory-header-bar">
+          <div>
+            <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Order Management Ledger</h2>
+            <p style="color: #44474e;">Production queue, automated 3 Tk/g split accounting, invoice generation & dispatch.</p>
           </div>
+          <button class="btn btn-primary btn-sm" id="btn-new-order-modal">
+            <span class="material-symbols-outlined">add</span>
+            <span>Create New Order</span>
+          </button>
+        </div>
 
-          <div class="metric-card" style="--card-accent: var(--nb-cyan);">
-            <div class="metric-header">
-              <span class="metric-title">CO. SHARE (3৳/G)</span>
-              <div class="metric-icon-wrap"><i data-lucide="landmark"></i></div>
-            </div>
-            <div class="metric-value font-mono" style="color: #0284c7;" id="order-stat-company">৳ 0</div>
-            <div class="metric-subtext">3 BDT kept per gram</div>
+        <div class="metric-cards-grid" style="margin-bottom: 1.5rem;">
+          <div class="metric-card card">
+            <div class="metric-title">Total Orders</div>
+            <div class="metric-value font-mono" id="order-stat-total-count">0</div>
           </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-mint);">
-            <div class="metric-header">
-              <span class="metric-title">SALARY SHARE</span>
-              <div class="metric-icon-wrap"><i data-lucide="wallet"></i></div>
-            </div>
-            <div class="metric-value font-mono" style="color: #15803d;" id="order-stat-salary">৳ 0</div>
-            <div class="metric-subtext">Remainder to salary</div>
+          <div class="metric-card card">
+            <div class="metric-title">Active In Queue</div>
+            <div class="metric-value font-mono" id="order-stat-active-count" style="color: #0b57d0;">0</div>
           </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-yellow);">
-            <div class="metric-header">
-              <span class="metric-title">GRAMS PRINTED</span>
-              <div class="metric-icon-wrap"><i data-lucide="scale"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="order-stat-grams">0g</div>
-            <div class="metric-subtext">Across all jobs</div>
+          <div class="metric-card card">
+            <div class="metric-title">Total Weight Printed</div>
+            <div class="metric-value font-mono" id="order-stat-total-weight">0g</div>
+          </div>
+          <div class="metric-card card">
+            <div class="metric-title">Company Fund Collected</div>
+            <div class="metric-value font-mono" id="order-stat-company-pool" style="color: #0b57d0;">৳ 0</div>
           </div>
         </div>
 
-        <!-- Orders Panel -->
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <i data-lucide="file-text" style="color: var(--nb-orange); width: 22px; height: 22px;"></i>
-              <div>
-                <div class="panel-title">PRINT ORDER LEDGER</div>
-                <div class="panel-subtitle">Customer orders, filament allocation & tax invoices</div>
-              </div>
-            </div>
-            <div class="panel-actions">
-              <button class="btn btn-primary btn-sm" id="btn-create-order-modal">
-                <i data-lucide="plus" style="width: 15px; height: 15px;"></i>
-                <span>+ CREATE 3D PRINT ORDER</span>
-              </button>
-            </div>
-          </div>
+        <div class="inventory-filters-row">
+          <input type="text" id="order-search-input" class="form-control font-mono" placeholder="Search orders by customer or invoice..." style="max-width: 320px; border-radius: 100px;">
+          <select id="order-status-filter" class="form-control" style="max-width: 200px; border-radius: 100px;">
+            <option value="ALL">All Order Statuses</option>
+            <option value="QUOTATION">Quotation</option>
+            <option value="SLICING">Slicing / Preparing</option>
+            <option value="PRINTING">Printing Active</option>
+            <option value="POST_PROCESSING">Post Processing</option>
+            <option value="COMPLETED">Completed / Shipped</option>
+            <option value="CANCELLED">Cancelled</option>
+          </select>
+        </div>
 
-          <div class="panel-body">
-            <!-- Search & Filters Toolbar -->
-            <div class="toolbar-wrap">
-              <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" id="order-search-input" class="form-control font-mono" placeholder="search order id, client, model...">
-              </div>
-
-              <div class="filter-group">
-                <select id="order-status-filter" class="form-control font-mono" style="width: auto; padding: 0.4rem 2rem 0.4rem 0.75rem; font-size: 0.8rem;">
-                  <option value="all">ALL STATUSES</option>
-                  <option value="Quotation">Quotation</option>
-                  <option value="Slicing">Slicing</option>
-                  <option value="Printing">Printing 🖨️</option>
-                  <option value="Post-Processing">Post-Processing</option>
-                  <option value="Delivered">Delivered</option>
-                  <option value="Paid">Paid ✅</option>
-                </select>
-
-                <select id="order-sort-filter" class="form-control font-mono" style="width: auto; padding: 0.4rem 2rem 0.4rem 0.75rem; font-size: 0.8rem;">
-                  <option value="newest">Newest First</option>
-                  <option value="oldest">Oldest First</option>
-                  <option value="price-desc">Highest Total (৳)</option>
-                  <option value="weight-desc">Heaviest Weight (g)</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Orders Table -->
-            <div class="table-responsive">
-              <table class="custom-table" id="orders-table">
-                <thead>
-                  <tr>
-                    <th>Invoice / ID</th>
-                    <th>Model & Dimensions</th>
-                    <th>Customer</th>
-                    <th>Filament</th>
-                    <th>Weight</th>
-                    <th>Rate / g</th>
-                    <th>Total Price</th>
-                    <th>Company Split (3৳/g)</th>
-                    <th>Salary Split</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="orders-table-tbody">
-                  <!-- Rendered dynamically -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Empty State -->
-            <div id="order-empty-state" style="display: none; text-align: center; padding: 3rem 1rem;">
-              <i data-lucide="cpu" style="width: 48px; height: 48px; color: var(--nb-text-main); margin-bottom: 0.75rem;"></i>
-              <h3 style="font-size: 1.15rem; font-weight: 900; color: var(--nb-text-main); margin-bottom: 0.25rem;">NO ORDERS FOUND</h3>
-              <p style="font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; color: var(--nb-text-muted); margin-bottom: 1.25rem;">Start by creating a new 3D printing customer order with invoice generation.</p>
-              <button class="btn btn-primary btn-sm" onclick="openOrderModal()">
-                <i data-lucide="plus" style="width: 15px; height: 15px;"></i>
-                <span>+ CREATE ORDER NOW</span>
-              </button>
-            </div>
+        <div class="data-table-card card">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Invoice #</th>
+                  <th>Customer</th>
+                  <th>Material & Spool</th>
+                  <th>Weight</th>
+                  <th>Total (৳)</th>
+                  <th>Company (3৳/g)</th>
+                  <th>Salary (৳)</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-tbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           VIEW 4: SALES, FINANCIALS & REPORTS
+           VIEW 4: SALES & FINANCIAL AUDIT
            ==================================================================== -->
       <section class="view-section" id="view-sales">
-        <!-- Sales Financial KPIs Summary -->
-        <div class="metrics-grid">
-          <div class="metric-card" style="--card-accent: var(--nb-orange);">
-            <div class="metric-header">
-              <span class="metric-title">TOTAL REVENUE</span>
-              <div class="metric-icon-wrap"><i data-lucide="trending-up"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="sales-kpi-revenue">৳ 0</div>
-            <div class="metric-subtext positive">
-              <i data-lucide="check" style="width: 15px; height: 15px; display: inline-block;"></i>
-              <span id="sales-kpi-orders-count">0 completed orders</span>
-            </div>
+        <div class="inventory-header-bar">
+          <div>
+            <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Financial Audit & Sales Telemetry</h2>
+            <p style="color: #44474e;">Revenue accounting, material cost amortization, company fund pool vs salary split.</p>
           </div>
-
-          <div class="metric-card" style="--card-accent: #fca5a5;">
-            <div class="metric-header">
-              <span class="metric-title">MATERIAL COST</span>
-              <div class="metric-icon-wrap"><i data-lucide="package"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="sales-kpi-inventory-cost">৳ 0</div>
-            <div class="metric-subtext">
-              <span>Filament expense</span>
-            </div>
-          </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-mint);">
-            <div class="metric-header">
-              <span class="metric-title">NET PROFIT</span>
-              <div class="metric-icon-wrap"><i data-lucide="award"></i></div>
-            </div>
-            <div class="metric-value font-mono" id="sales-kpi-profit">৳ 0</div>
-            <div class="metric-subtext positive" id="sales-kpi-margin-text">
-              Net Margin: 0%
-            </div>
-          </div>
-
-          <div class="metric-card" style="--card-accent: var(--nb-cyan);">
-            <div class="metric-header">
-              <span class="metric-title">CO. RESERVE POOL</span>
-              <div class="metric-icon-wrap"><i data-lucide="landmark"></i></div>
-            </div>
-            <div class="metric-value font-mono" style="color: #0284c7;" id="sales-kpi-company-pool">৳ 0</div>
-            <div class="metric-subtext highlight-split">
-              <span>At 3 ৳ / printed gram</span>
-            </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" id="btn-export-sales-csv">
+              <span class="material-symbols-outlined">download</span>
+              <span>Export CSV</span>
+            </button>
+            <button class="btn btn-primary btn-sm" id="btn-print-sales-report">
+              <span class="material-symbols-outlined">print</span>
+              <span>Print Financial Statement</span>
+            </button>
           </div>
         </div>
 
-        <!-- Account Split Overview Banner -->
-        <div class="split-spotlight-box" style="margin-bottom: 1.75rem;">
-          <div class="split-item">
-            <div class="split-label company">
-              <i data-lucide="landmark" style="width: 18px; height: 18px;"></i>
-              <span>Accumulated Company Reserve (3 ৳/g)</span>
-            </div>
-            <div class="split-amount font-mono" id="sales-banner-company">৳ 0</div>
-            <div class="split-desc font-mono">Retained for studio machinery maintenance, power & expansion.</div>
+        <div class="metric-cards-grid">
+          <div class="metric-card card">
+            <div class="metric-title">Gross Revenue</div>
+            <div class="metric-value font-mono" id="sales-gross-revenue">৳ 0</div>
           </div>
-          <div class="split-divider-v"></div>
-          <div class="split-item">
-            <div class="split-label salary">
-              <i data-lucide="wallet" style="width: 18px; height: 18px;"></i>
-              <span>Accumulated Salary Account</span>
-            </div>
-            <div class="split-amount font-mono" id="sales-banner-salary">৳ 0</div>
-            <div class="split-desc font-mono">Distributed directly as designer & operator compensations.</div>
+          <div class="metric-card card">
+            <div class="metric-title">Raw Material Cost</div>
+            <div class="metric-value font-mono" id="sales-material-cost" style="color: #ba1a1a;">৳ 0</div>
+          </div>
+          <div class="metric-card card">
+            <div class="metric-title">Net Studio Profit</div>
+            <div class="metric-value font-mono" id="sales-net-profit" style="color: #146c2e;">৳ 0</div>
+          </div>
+          <div class="metric-card card">
+            <div class="metric-title">Company Reserve (3৳/g)</div>
+            <div class="metric-value font-mono" id="sales-company-pool" style="color: #0b57d0;">৳ 0</div>
+          </div>
+          <div class="metric-card card">
+            <div class="metric-title">Salary Account Pool</div>
+            <div class="metric-value font-mono" id="sales-salary-pool" style="color: #146c2e;">৳ 0</div>
           </div>
         </div>
 
-        <!-- Visual Analytics Charts -->
-        <div class="charts-grid">
-          <div class="chart-card">
-            <div class="chart-card-header">
-              <span class="chart-title">REVENUE VS MATERIAL COSTS</span>
-              <span class="badge badge-completed">FINANCIAL AUDIT</span>
-            </div>
-            <div class="chart-canvas-wrap">
+        <div class="charts-row-grid">
+          <div class="chart-card card">
+            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem;">Financial Balance Sheet</h3>
+            <div class="chart-container-relative">
               <canvas id="salesFinancialsChart"></canvas>
             </div>
           </div>
-
-          <div class="chart-card">
-            <div class="chart-card-header">
-              <span class="chart-title">FUND ALLOCATION SPLIT</span>
-              <span class="badge badge-paid">3 TK/G SPLIT</span>
-            </div>
-            <div class="chart-canvas-wrap">
+          <div class="chart-card card">
+            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem;">Revenue Split Allocation</h3>
+            <div class="chart-container-relative">
               <canvas id="salesAllocationDoughnutChart"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Material Consumption & Grams Chart -->
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <i data-lucide="pie-chart" style="color: var(--nb-orange); width: 22px; height: 22px;"></i>
-              <div>
-                <div class="panel-title">MATERIAL CONSUMPTION BY WEIGHT</div>
-                <div class="panel-subtitle">Total grams printed per engineering material</div>
-              </div>
-            </div>
-          </div>
-          <div class="panel-body">
-            <div style="height: 250px; width: 100%;">
-              <canvas id="filamentConsumptionBarChart"></canvas>
-            </div>
+        <div class="chart-card card" style="margin-bottom: 2rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem;">Filament Consumption by Polymer (Grams)</h3>
+          <div class="chart-container-relative">
+            <canvas id="filamentConsumptionBarChart"></canvas>
           </div>
         </div>
 
-        <!-- Complete Transactions Ledger Table -->
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <i data-lucide="receipt" style="color: var(--nb-orange); width: 22px; height: 22px;"></i>
-              <div>
-                <div class="panel-title">TRANSACTION AUDIT LEDGER</div>
-                <div class="panel-subtitle">Detailed financial logs with grams, company 3৳/g share & profit</div>
-              </div>
-            </div>
-            <div class="panel-actions">
-              <button class="btn btn-secondary btn-sm" id="btn-export-sales-csv">
-                <i data-lucide="download" style="width: 15px; height: 15px;"></i>
-                <span>EXPORT CSV</span>
-              </button>
-              <button class="btn btn-outline btn-sm" id="btn-print-financial-statement">
-                <i data-lucide="printer" style="width: 15px; height: 15px;"></i>
-                <span>PRINT REPORT</span>
-              </button>
-            </div>
+        <div class="data-table-card card">
+          <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid #edf0f4;">
+            <h3 style="font-size: 1.05rem; font-weight: 700;">Sales Transaction Audit Ledger</h3>
           </div>
-
-          <div class="panel-body">
-            <div class="toolbar-wrap">
-              <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" id="sales-search-input" class="form-control font-mono" placeholder="search tx id, customer, model...">
-              </div>
-
-              <div class="filter-group">
-                <select id="sales-date-filter" class="form-control font-mono" style="width: auto; padding: 0.4rem 2rem 0.4rem 0.75rem; font-size: 0.8rem;">
-                  <option value="all">ALL TIME</option>
-                  <option value="today">Today</option>
-                  <option value="month">This Month</option>
-                  <option value="quarter">This Quarter</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="table-responsive">
-              <table class="custom-table" id="sales-tx-table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Tx / Order ID</th>
-                    <th>Model Description</th>
-                    <th>Customer</th>
-                    <th>Weight</th>
-                    <th>Revenue</th>
-                    <th>Material Cost</th>
-                    <th>Company (3৳/g)</th>
-                    <th>Salary</th>
-                    <th>Net Profit</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="sales-tx-tbody">
-                  <!-- Rendered dynamically -->
-                </tbody>
-              </table>
-            </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Invoice #</th>
+                  <th>Customer</th>
+                  <th>Material</th>
+                  <th>Weight (g)</th>
+                  <th>Revenue (৳)</th>
+                  <th>Material Cost</th>
+                  <th>Company Pool</th>
+                  <th>Salary Split</th>
+                </tr>
+              </thead>
+              <tbody id="sales-ledger-tbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           VIEW 5: STUDIO SETTINGS & CONFIGURATION
+           VIEW 5: SETTINGS
            ==================================================================== -->
       <section class="view-section" id="view-settings">
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <i data-lucide="sliders" style="color: var(--nb-orange); width: 22px; height: 22px;"></i>
-              <div>
-                <div class="panel-title">STUDIO SYSTEM SETTINGS</div>
-                <div class="panel-subtitle">Configure per-gram company allocations, pricing presets and studio profile</div>
-              </div>
+        <div class="inventory-header-bar">
+          <div>
+            <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Studio Settings & Financial Rules</h2>
+            <p style="color: #44474e;">Configure global rate per gram, automated company split parameters, and data backups.</p>
+          </div>
+        </div>
+
+        <form id="form-studio-settings" class="card" style="max-width: 700px; margin-bottom: 2rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem;">Financial Split Parameters</h3>
+          <div class="form-group">
+            <label class="form-label" for="setting-company-rate">Company Account Allocation (৳ per gram) <span class="req">*</span></label>
+            <input type="number" id="setting-company-rate" class="form-control font-mono" value="3.00" step="0.5" min="0" required>
+            <small style="color: #74777f; font-size: 0.76rem;">Default: 3.00 ৳/g reserved for company fund; remaining revenue routes to salary account.</small>
+          </div>
+
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 1rem;">Default Material Selling Rates (৳ / g)</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">PLA+ Rate (৳/g)</label>
+              <input type="number" id="setting-pla-rate" class="form-control font-mono" value="6.00" step="0.5">
             </div>
-            <div class="panel-actions">
-              <button class="btn btn-primary btn-sm" id="btn-save-settings">
-                <i data-lucide="save" style="width: 15px; height: 15px;"></i>
-                <span>SAVE CONFIGURATION</span>
-              </button>
+            <div class="form-group">
+              <label class="form-label">PETG Rate (৳/g)</label>
+              <input type="number" id="setting-petg-rate" class="form-control font-mono" value="7.00" step="0.5">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ABS Rate (৳/g)</label>
+              <input type="number" id="setting-abs-rate" class="form-control font-mono" value="7.50" step="0.5">
+            </div>
+            <div class="form-group">
+              <label class="form-label">TPU Rate (৳/g)</label>
+              <input type="number" id="setting-tpu-rate" class="form-control font-mono" value="10.00" step="0.5">
             </div>
           </div>
 
-          <div class="panel-body">
-            <form id="settings-form">
-              <div style="font-size: 0.88rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-bottom: 0.75rem;">
-                ★ 01. ACCOUNTING & ALLOCATION RULES
-              </div>
-
-              <div class="form-row" style="margin-bottom: 1.5rem;">
-                <div class="form-group">
-                  <label class="form-label">Company Allocation (৳ / Gram) <span class="req">*</span></label>
-                  <input type="number" id="setting-company-rate" class="form-control font-mono" value="3.00" min="0" step="0.25" required>
-                  <small style="color: var(--nb-text-muted); font-size: 0.76rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; display: block; margin-top: 4px;">
-                    Amount allocated to Company Account per printed gram (Default: 3 Tk). Remainder to Salary.
-                  </small>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Currency Symbol</label>
-                  <input type="text" id="setting-currency" class="form-control font-mono" value="৳ (BDT)" readonly>
-                </div>
-              </div>
-
-              <div style="font-size: 0.88rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-bottom: 0.75rem;">
-                ★ 02. MATERIAL PRICING PRESETS (৳ / GRAM)
-              </div>
-
-              <div class="form-row" style="margin-bottom: 1.5rem;">
-                <div class="form-group">
-                  <label class="form-label">PLA / PLA+ (৳/g)</label>
-                  <input type="number" id="setting-price-pla" class="form-control font-mono" value="7.00" min="3" step="0.5">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">PETG (৳/g)</label>
-                  <input type="number" id="setting-price-petg" class="form-control font-mono" value="8.50" min="3" step="0.5">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">ABS / ASA (৳/g)</label>
-                  <input type="number" id="setting-price-abs" class="form-control font-mono" value="9.00" min="3" step="0.5">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">TPU 95A Flexible (৳/g)</label>
-                  <input type="number" id="setting-price-tpu" class="form-control font-mono" value="12.00" min="3" step="0.5">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Carbon Fiber PLA-CF (৳/g)</label>
-                  <input type="number" id="setting-price-cf" class="form-control font-mono" value="15.00" min="3" step="0.5">
-                </div>
-              </div>
-
-              <div style="font-size: 0.88rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-bottom: 0.75rem;">
-                ★ 03. STUDIO CONTACT & INVOICE PROFILE
-              </div>
-
-              <div class="form-row" style="margin-bottom: 1.5rem;">
-                <div class="form-group">
-                  <label class="form-label">Studio Business Name</label>
-                  <input type="text" id="setting-studio-name" class="form-control font-mono" value="StudioMistri">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Phone / WhatsApp</label>
-                  <input type="text" id="setting-studio-phone" class="form-control font-mono" value="+880 1700-000000">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Email</label>
-                  <input type="email" id="setting-studio-email" class="form-control font-mono" value="contact@studiomistri.com">
-                </div>
-              </div>
-
-              <div class="form-row" style="margin-bottom: 1.5rem;">
-                <div class="form-group">
-                  <label class="form-label">bKash Merchant / Personal</label>
-                  <input type="text" id="setting-studio-bkash" class="form-control font-mono" value="01700-000000 (bKash/Nagad)">
-                </div>
-                <div class="form-group" style="grid-column: span 2;">
-                  <label class="form-label">Studio Address & Workshop Location</label>
-                  <input type="text" id="setting-studio-address" class="form-control font-mono" value="StudioMistri Fabrication Hub, Dhaka, Bangladesh">
-                </div>
-              </div>
-            </form>
-
-            <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1.75rem 0;">
-
-            <div style="font-size: 0.88rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-bottom: 0.75rem;">
-              ★ 04. DATA BACKUP & RESTORE
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 1rem;">Studio Identity & Invoice Header</h3>
+          <div class="form-group">
+            <label class="form-label">Studio Name</label>
+            <input type="text" id="setting-studio-name" class="form-control" value="Studio Mistri">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Contact Phone</label>
+              <input type="text" id="setting-studio-phone" class="form-control font-mono" value="+880 1700-000000">
             </div>
-            <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
-              <button class="btn btn-secondary btn-sm" id="btn-export-backup">
-                <i data-lucide="download" style="width: 15px; height: 15px;"></i>
-                <span>EXPORT BACKUP (JSON)</span>
-              </button>
-              <button class="btn btn-outline btn-sm" id="btn-import-backup-trigger">
-                <i data-lucide="upload" style="width: 15px; height: 15px;"></i>
-                <span>IMPORT BACKUP (JSON)</span>
-              </button>
-              <input type="file" id="backup-file-input" accept=".json" style="display: none;">
-              <button class="btn btn-danger btn-sm" id="btn-reset-demo-data" style="margin-left: auto;">
-                <i data-lucide="rotate-ccw" style="width: 15px; height: 15px;"></i>
-                <span>FACTORY DEMO RESET</span>
-              </button>
+            <div class="form-group">
+              <label class="form-label">Workshop Location</label>
+              <input type="text" id="setting-studio-location" class="form-control" value="Dhaka, Bangladesh">
             </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary">
+              <span class="material-symbols-outlined">save</span>
+              <span>Save Configuration</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="card" style="max-width: 700px;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem;">Database Backup & Utilities</h3>
+          <p style="font-size: 0.85rem; color: #44474e; margin-bottom: 1.25rem;">Export complete studio state to JSON or reset with demo fixtures.</p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-secondary btn-sm" id="btn-export-backup-json">
+              <span class="material-symbols-outlined">download</span>
+              <span>Backup State (JSON)</span>
+            </button>
+            <label class="btn btn-outline btn-sm" style="cursor: pointer;">
+              <span class="material-symbols-outlined">upload</span>
+              <span>Restore JSON</span>
+              <input type="file" id="btn-import-backup-json" accept=".json" style="display: none;">
+            </label>
+            <button class="btn btn-danger btn-sm" id="btn-seed-demo-data">
+              <span class="material-symbols-outlined">restart_alt</span>
+              <span>Reset Demo Fixtures</span>
+            </button>
           </div>
         </div>
       </section>
@@ -1491,48 +1014,39 @@
   </div>
 </div>
 
-<!-- ====================================================================
-     MODAL 1: ADD / EDIT FILAMENT
-     ==================================================================== -->
+<!-- ========================================================================
+     MODALS & DIALOGS
+     ======================================================================== -->
+
+<!-- 1. Add / Edit Filament Spool Modal -->
 <div class="modal-overlay" id="modal-filament">
   <div class="modal-container">
     <div class="modal-header">
       <div class="modal-title">
-        <i data-lucide="disc" style="color: var(--nb-text-main); width: 20px; height: 20px;"></i>
-        <span id="modal-filament-title">ADD FILAMENT SPOOL</span>
+        <span class="material-symbols-outlined" style="color: #0b57d0;">layers</span>
+        <span id="modal-filament-title">Add New Filament Spool</span>
       </div>
       <button class="modal-close-btn" onclick="closeModal('modal-filament')">
-        <i data-lucide="x"></i>
+        <span class="material-symbols-outlined">close</span>
       </button>
     </div>
     <form id="form-filament">
-      <input type="hidden" id="filament-edit-id">
       <div class="modal-body">
+        <input type="hidden" id="filament-id">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Brand <span class="req">*</span></label>
-            <input type="text" id="filament-brand" class="form-control font-mono" placeholder="e.g. Bambu Lab, eSun" required list="brand-datalist">
-            <datalist id="brand-datalist">
-              <option value="Bambu Lab"></option>
-              <option value="eSun"></option>
-              <option value="Polymaker"></option>
-              <option value="Sunlu"></option>
-              <option value="Creality"></option>
-              <option value="Flashforge"></option>
-            </datalist>
+            <input type="text" id="filament-brand" class="form-control" placeholder="e.g. Bambu Lab, eSUN" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Material Type <span class="req">*</span></label>
-            <select id="filament-type" class="form-control font-mono" required>
-              <option value="PLA+">PLA+ High Speed</option>
-              <option value="PLA">PLA Standard</option>
-              <option value="PETG">PETG Tough</option>
-              <option value="ABS">ABS Industrial</option>
-              <option value="ASA">ASA UV-Resistant</option>
-              <option value="TPU 95A">TPU 95A Flexible</option>
-              <option value="PLA-CF">PLA-CF Carbon Fiber</option>
-              <option value="Silk PLA">Silk PLA Shiny</option>
-              <option value="Resin">UV Standard Resin</option>
+            <label class="form-label">Material Polymer <span class="req">*</span></label>
+            <select id="filament-type" class="form-control" required>
+              <option value="PLA+">PLA+</option>
+              <option value="PETG">PETG</option>
+              <option value="ABS">ABS</option>
+              <option value="TPU">TPU</option>
+              <option value="PLA-CF">PLA-CF</option>
+              <option value="Silk PLA">Silk PLA</option>
             </select>
           </div>
         </div>
@@ -1540,387 +1054,205 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Color Name <span class="req">*</span></label>
-            <input type="text" id="filament-color-name" class="form-control font-mono" placeholder="e.g. Signal Orange, Matte Black" required>
+            <input type="text" id="filament-color-name" class="form-control" placeholder="e.g. Jade White" required>
           </div>
           <div class="form-group">
-            <label class="form-label">HEX Swatch</label>
+            <label class="form-label">Hex Color Code</label>
             <div style="display: flex; gap: 0.5rem; align-items: center;">
-              <input type="color" id="filament-color-hex" value="#ff5500" style="width: 44px; height: 38px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); border-radius: 4px; cursor: pointer; background: transparent;">
-              <input type="text" id="filament-color-hex-text" class="form-control font-mono" value="#FF5500" style="text-transform: uppercase;">
+              <input type="color" id="filament-color-picker" value="#ffffff" style="width: 42px; height: 38px; border: none; border-radius: 8px; cursor: pointer;">
+              <input type="text" id="filament-color-hex" class="form-control font-mono" value="#ffffff" required>
             </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Remaining Weight (g) <span class="req">*</span></label>
+            <input type="number" id="filament-remaining-weight" class="form-control font-mono" value="1000" min="0" max="10000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Full Spool Weight (g) <span class="req">*</span></label>
+            <input type="number" id="filament-total-weight" class="form-control font-mono" value="1000" min="100" max="10000" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Spool Purchase Price (৳) <span class="req">*</span></label>
-            <input type="number" id="filament-spool-price" class="form-control font-mono" placeholder="e.g. 2400" min="1" step="10" required>
+            <input type="number" id="filament-cost-price" class="form-control font-mono" value="2200" min="0" step="50" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Spool Net Weight (g)</label>
-            <input type="number" id="filament-full-weight" class="form-control font-mono" value="1000" min="100" step="50">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Current Stock (g) <span class="req">*</span></label>
-            <input type="number" id="filament-current-stock" class="form-control font-mono" value="1000" min="0" max="10000" step="1" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Rack / Slot Location</label>
-            <input type="text" id="filament-location" class="form-control font-mono" placeholder="e.g. AMS Slot 1, Rack A-01">
+            <label class="form-label">Customer Selling Rate (৳/g) <span class="req">*</span></label>
+            <input type="number" id="filament-selling-rate" class="form-control font-mono" value="6.00" min="0" step="0.5" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Nozzle Temp (°C)</label>
-            <input type="text" id="filament-temp" class="form-control font-mono" placeholder="e.g. 210°C - 230°C" value="210°C - 230°C">
+            <input type="number" id="filament-temp-nozzle" class="form-control font-mono" value="215">
           </div>
           <div class="form-group">
-            <label class="form-label">Calculated Cost / Gram</label>
-            <div class="form-control font-mono" id="filament-calc-cost-gram" style="background-color: var(--nb-surface-alt); color: #0284c7; font-weight: 900;">
-              ৳ 2.40 / g
-            </div>
+            <label class="form-label">Bed Temp (°C)</label>
+            <input type="number" id="filament-temp-bed" class="form-control font-mono" value="60">
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline btn-sm" onclick="closeModal('modal-filament')">Cancel</button>
-        <button type="submit" class="btn btn-primary btn-sm">
-          <i data-lucide="save" style="width: 15px; height: 15px;"></i>
-          <span>SAVE SPOOL</span>
-        </button>
+        <button type="submit" class="btn btn-primary btn-sm">Save Filament</button>
       </div>
     </form>
   </div>
 </div>
 
-<!-- ====================================================================
-     MODAL 2: CREATE / EDIT 3D PRINT ORDER
-     ==================================================================== -->
+<!-- 2. Create / Edit Customer Order Modal -->
 <div class="modal-overlay" id="modal-order">
-  <div class="modal-container modal-lg">
+  <div class="modal-container">
     <div class="modal-header">
       <div class="modal-title">
-        <i data-lucide="cpu" style="color: var(--nb-text-main); width: 20px; height: 20px;"></i>
-        <span id="modal-order-title">CREATE 3D PRINT ORDER</span>
+        <span class="material-symbols-outlined" style="color: #0b57d0;">receipt_long</span>
+        <span id="modal-order-title">Create 3D Print Order</span>
       </div>
       <button class="modal-close-btn" onclick="closeModal('modal-order')">
-        <i data-lucide="x"></i>
+        <span class="material-symbols-outlined">close</span>
       </button>
     </div>
     <form id="form-order">
-      <input type="hidden" id="order-edit-id">
       <div class="modal-body">
-        <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-bottom: 0.75rem;">
-          ★ 01. CUSTOMER INFORMATION
-        </div>
+        <input type="hidden" id="order-id">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Customer / Company <span class="req">*</span></label>
-            <input type="text" id="order-customer-name" class="form-control font-mono" placeholder="e.g. Architect Tanvir Ahmed" required>
+            <label class="form-label">Customer Name <span class="req">*</span></label>
+            <input type="text" id="order-customer-name" class="form-control" placeholder="e.g. Tanvir Hossain" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Phone / WhatsApp <span class="req">*</span></label>
-            <input type="text" id="order-customer-phone" class="form-control font-mono" placeholder="e.g. +880 1711-223344" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email (Optional)</label>
-            <input type="email" id="order-customer-email" class="form-control font-mono" placeholder="tanvir@example.com">
-          </div>
-        </div>
-
-        <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-top: 0.75rem; margin-bottom: 0.75rem;">
-          ★ 02. 3D MODEL FABRICATION SPECS
-        </div>
-        <div class="form-row">
-          <div class="form-group" style="grid-column: span 2;">
-            <label class="form-label">Model Title / Project Description <span class="req">*</span></label>
-            <input type="text" id="order-model-name" class="form-control font-mono" placeholder="e.g. Custom Drone Arm V3 / Architectural Scale Model" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Dimensions (mm)</label>
-            <input type="text" id="order-model-size" class="form-control font-mono" placeholder="e.g. 140 x 95 x 180 mm" value="120 x 85 x 150 mm">
+            <label class="form-label">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="order-customer-phone" class="form-control font-mono" placeholder="017XXXXXXXX" required>
           </div>
         </div>
 
         <div class="form-row">
-          <div class="form-group" style="grid-column: span 2;">
-            <label class="form-label">Select Filament Cartridge <span class="req">*</span></label>
-            <select id="order-filament-select" class="form-control font-mono" required>
-              <!-- Populated dynamically with stock levels -->
+          <div class="form-group">
+            <label class="form-label">Filament Spool <span class="req">*</span></label>
+            <select id="order-filament-id" class="form-control" required>
+              <!-- Populated dynamically -->
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Model Net Weight (Grams) <span class="req">*</span></label>
-            <input type="number" id="order-model-weight" class="form-control font-mono" placeholder="e.g. 150" min="1" step="1" required>
+            <label class="form-label">Sliced Weight (Grams) <span class="req">*</span></label>
+            <input type="number" id="order-weight" class="form-control font-mono" value="100" min="1" required>
           </div>
         </div>
 
-        <div style="font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-top: 0.75rem; margin-bottom: 0.75rem;">
-          ★ 03. PRICING & 3 TK/G ALLOCATION
-        </div>
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Selling Rate / Gram (৳/g) <span class="req">*</span></label>
-            <input type="number" id="order-price-per-gram" class="form-control font-mono" value="7.00" min="3" step="0.25" required>
+            <label class="form-label">Selling Rate (৳/g)</label>
+            <input type="number" id="order-unit-price" class="form-control font-mono" value="6.00" step="0.5" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Post-Processing / Extras (৳)</label>
-            <input type="number" id="order-extra-fee" class="form-control font-mono" value="0" min="0" step="50">
+            <label class="form-label">Post-Processing Fee (৳)</label>
+            <input type="number" id="order-post-process-fee" class="form-control font-mono" value="0" min="0">
+          </div>
+        </div>
+
+        <!-- 3 Tk/g Company Pool Breakdown -->
+        <div style="background: #f2f4f7; padding: 0.95rem; border-radius: 12px; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+            <span>Total Order Price:</span>
+            <strong class="font-mono" id="order-calc-total">৳ 600</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #0b57d0; margin-bottom: 0.25rem;">
+            <span>Company Account Pool (3৳/g):</span>
+            <strong class="font-mono" id="order-calc-company">৳ 300</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #146c2e;">
+            <span>Salary Account Pool:</span>
+            <strong class="font-mono" id="order-calc-salary">৳ 300</strong>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Order Status</label>
+            <select id="order-status" class="form-control">
+              <option value="QUOTATION">Quotation</option>
+              <option value="SLICING">Slicing</option>
+              <option value="PRINTING">Printing</option>
+              <option value="POST_PROCESSING">Post-Processing</option>
+              <option value="COMPLETED">Completed</option>
+              <option value="CANCELLED">Cancelled</option>
+            </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Status</label>
-            <select id="order-status-select" class="form-control font-mono">
-              <option value="Quotation">Quotation / Draft</option>
-              <option value="Slicing">Slicing & Gcode</option>
-              <option value="Printing">Printing in Progress 🖨️</option>
-              <option value="Post-Processing">Post-Processing</option>
-              <option value="Delivered">Delivered</option>
-              <option value="Paid">Paid & Closed ✅</option>
+            <label class="form-label">Payment Status</label>
+            <select id="order-payment-status" class="form-control">
+              <option value="UNPAID">Unpaid</option>
+              <option value="PARTIAL">Partial Advance</option>
+              <option value="PAID">Paid in Full</option>
             </select>
           </div>
         </div>
 
-        <!-- Real-time Live Price & 3 Tk/g Company Split Breakdown -->
-        <div class="calculator-box">
-          <div style="font-weight: 900; font-size: 0.95rem; font-family: 'JetBrains Mono', monospace; color: var(--nb-text-main); margin-bottom: 0.65rem; display: flex; align-items: center; justify-content: space-between;">
-            <span>FINANCIAL SPLIT BREAKDOWN</span>
-            <span class="badge badge-paid" id="order-calc-unit-rate">RATE: ৳ 7.00/G</span>
-          </div>
-
-          <div class="calc-breakdown-row">
-            <span>Base Print (<span id="order-calc-weight-label">0</span>g × <span id="order-calc-rate-label">7.00</span>৳):</span>
-            <span class="font-mono" id="order-calc-base-subtotal">৳ 0</span>
-          </div>
-          <div class="calc-breakdown-row">
-            <span>Post-Processing & Extras:</span>
-            <span class="font-mono" id="order-calc-extra-display">৳ 0</span>
-          </div>
-          <div class="calc-breakdown-row total-row">
-            <span>Total Payable (৳):</span>
-            <span class="font-mono" id="order-calc-grand-total" style="color: var(--nb-orange);">৳ 0</span>
-          </div>
-
-          <div class="calc-split-highlight">
-            <div class="split-pill-calc company">
-              <span class="title">Company (3 ৳ / g)</span>
-              <span class="val font-mono" id="order-calc-company-total">৳ 0</span>
-              <span class="formula" id="order-calc-company-formula">0g × 3.00 ৳ (Machine Wear & Power)</span>
-            </div>
-            <div class="split-pill-calc salary">
-              <span class="title">Salary Remainder</span>
-              <span class="val font-mono" id="order-calc-salary-total">৳ 0</span>
-              <span class="formula" id="order-calc-salary-formula">To Maker Payroll</span>
-            </div>
-          </div>
+        <div class="form-group">
+          <label class="form-label">Order Description / Part Name</label>
+          <input type="text" id="order-description" class="form-control" placeholder="e.g. Drone Arm Mount V2 (4 pieces)">
         </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline btn-sm" onclick="closeModal('modal-order')">Cancel</button>
-        <button type="submit" class="btn btn-primary btn-sm">
-          <i data-lucide="check" style="width: 15px; height: 15px;"></i>
-          <span>SAVE ORDER</span>
-        </button>
+        <button type="submit" class="btn btn-primary btn-sm">Confirm Order</button>
       </div>
     </form>
   </div>
 </div>
 
-<!-- ====================================================================
-     MODAL 3: INVOICE VIEWER & PDF GENERATOR
-     ==================================================================== -->
+<!-- 3. Tax Invoice Preview Modal -->
 <div class="modal-overlay" id="modal-invoice">
-  <div class="modal-container modal-xl">
+  <div class="modal-container" style="max-width: 760px;">
     <div class="modal-header">
       <div class="modal-title">
-        <i data-lucide="file-text" style="color: var(--nb-text-main); width: 20px; height: 20px;"></i>
-        <span>INVOICE PREVIEW & PDF EXPORT</span>
+        <span class="material-symbols-outlined" style="color: #0b57d0;">description</span>
+        <span>Customer Tax Invoice Preview</span>
       </div>
-      <div style="display: flex; gap: 0.5rem; align-items: center;">
-        <button class="btn btn-secondary btn-sm" id="btn-print-invoice-modal">
-          <i data-lucide="printer" style="width: 15px; height: 15px;"></i>
-          <span>PRINT</span>
-        </button>
-        <button class="btn btn-primary btn-sm" id="btn-download-invoice-pdf">
-          <i data-lucide="download" style="width: 15px; height: 15px;"></i>
-          <span>DOWNLOAD PDF</span>
-        </button>
-        <button class="modal-close-btn" onclick="closeModal('modal-invoice')">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-    </div>
-    <div class="modal-body" style="background-color: var(--nb-bg); padding: 2rem;">
-      
-      <!-- Printable/Exportable Clean Invoice Card -->
-      <div class="invoice-wrapper" id="invoice-printable-node">
-        <div class="invoice-header">
-          <div class="invoice-logo-area">
-            <img src="brand_logo.png" alt="Studio Mistri" class="invoice-logo-img">
-            <div class="invoice-studio-details">
-              <div class="invoice-studio-name">Studio Mistri</div>
-              <div>Additive Manufacturing & Prototyping</div>
-              <div id="inv-preview-studio-phone">+880 1700-000000</div>
-              <div id="inv-preview-studio-address">Dhaka, Bangladesh</div>
-            </div>
-          </div>
-          <div class="invoice-meta-block">
-            <div class="invoice-badge-title">TAX INVOICE</div>
-            <div class="invoice-number-tag" id="inv-preview-invoice-num">#SM-2026-0001</div>
-            <div class="invoice-dates">
-              <div><strong>Date:</strong> <span id="inv-preview-date">17 Aug 2026</span></div>
-              <div><strong>Status:</strong> <span id="inv-preview-status-badge" style="color: #15803d; font-weight: 900;">PAID</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="invoice-parties-grid">
-          <div class="party-box">
-            <h4>Billed To (Client):</h4>
-            <div class="party-name" id="inv-preview-client-name">Architect Tanvir Ahmed</div>
-            <div class="party-info" id="inv-preview-client-phone">+880 1711-223344</div>
-            <div class="party-info" id="inv-preview-client-email">client@example.com</div>
-          </div>
-          <div class="party-box">
-            <h4>Fabrication Specs:</h4>
-            <div class="party-info"><strong>Project:</strong> <span id="inv-preview-project-name">Drone Arm V3</span></div>
-            <div class="party-info"><strong>Dimensions:</strong> <span id="inv-preview-dimensions">120 x 85 x 150 mm</span></div>
-            <div class="party-info"><strong>Material:</strong> <span id="inv-preview-filament-desc">PLA+ High Speed (Signal Orange)</span></div>
-          </div>
-        </div>
-
-        <table class="invoice-table">
-          <thead>
-            <tr>
-              <th style="width: 50%;">Fabrication Item & Service</th>
-              <th style="width: 15%; text-align: center;">Weight (g)</th>
-              <th style="width: 15%; text-align: right;">Rate / g (৳)</th>
-              <th style="width: 20%; text-align: right;">Amount (৳)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div style="font-weight: 800; color: var(--nb-text-main);" id="inv-item-title">Custom 3D Print Model</div>
-                <div style="font-size: 0.76rem; color: var(--nb-text-muted);" id="inv-item-desc">High Precision FDM 3D Printing • 0.20mm Layer Resolution</div>
-              </td>
-              <td style="text-align: center; font-family: 'JetBrains Mono', monospace;" id="inv-item-weight">150g</td>
-              <td style="text-align: right; font-family: 'JetBrains Mono', monospace;" id="inv-item-rate">৳ 7.00</td>
-              <td style="text-align: right; font-family: 'JetBrains Mono', monospace;" id="inv-item-subtotal">৳ 1,050.00</td>
-            </tr>
-            <tr id="inv-extra-row">
-              <td>
-                <div style="font-weight: 800; color: var(--nb-text-main);">Post-Processing & Finishing</div>
-                <div style="font-size: 0.76rem; color: var(--nb-text-muted);">Support removal, surface smoothing & inspection</div>
-              </td>
-              <td style="text-align: center;">-</td>
-              <td style="text-align: right;">-</td>
-              <td style="text-align: right; font-family: 'JetBrains Mono', monospace;" id="inv-item-extra">৳ 0.00</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="invoice-summary-grid">
-          <div class="payment-instructions-box">
-            <div class="pay-inst-title">
-              <i data-lucide="credit-card" style="width: 16px; height: 16px;"></i>
-              <span>Payment Instructions</span>
-            </div>
-            <div class="pay-inst-desc">
-              <div><strong>bKash / Nagad:</strong> <span id="inv-preview-bkash">01700-000000</span></div>
-              <div><strong>Bank Transfer:</strong> StudioMistri Studio Account</div>
-              <div>Please mention Invoice # as payment reference.</div>
-            </div>
-          </div>
-
-          <div>
-            <table class="invoice-totals-table">
-              <tr>
-                <td>Subtotal (Print Base):</td>
-                <td class="font-mono" id="inv-total-subtotal">৳ 1,050.00</td>
-              </tr>
-              <tr>
-                <td>Post-Processing / Extras:</td>
-                <td class="font-mono" id="inv-total-extra">৳ 0.00</td>
-              </tr>
-              <tr class="grand-total">
-                <td>Total Payable:</td>
-                <td class="font-mono" id="inv-total-grand">৳ 1,050.00</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-
-        <div class="invoice-footer">
-          <div>
-            <div>Thank you for creating with <strong>StudioMistri</strong>!</div>
-            <div>THINK • DESIGN • MAKE | Precision Guarantee</div>
-          </div>
-          <div class="invoice-seal-box">
-            <div class="invoice-seal-line"></div>
-            <div>Authorized Signature & Seal</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ====================================================================
-     MODAL 4: DELETE CONFIRMATION
-     ==================================================================== -->
-<div class="modal-overlay" id="modal-delete-confirm">
-  <div class="modal-container" style="max-width: 420px;">
-    <div class="modal-header" style="background-color: rgba(255, 0, 85, 0.2); color: var(--nb-red);">
-      <div class="modal-title" style="color: var(--nb-text-main);">
-        <i data-lucide="alert-triangle" style="width: 20px; height: 20px;"></i>
-        <span>CONFIRM DELETION</span>
-      </div>
-      <button class="modal-close-btn" onclick="closeModal('modal-delete-confirm')">
-        <i data-lucide="x"></i>
+      <button class="modal-close-btn" onclick="closeModal('modal-invoice')">
+        <span class="material-symbols-outlined">close</span>
       </button>
     </div>
-    <div class="modal-body">
-      <p id="delete-confirm-message" style="color: var(--nb-text-main); font-size: 0.92rem; font-weight: 600; line-height: 1.5;">
-        Are you sure you want to delete this item? This action cannot be undone.
-      </p>
+    <div class="modal-body" id="invoice-modal-content">
+      <!-- Invoice payload rendered dynamically -->
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline btn-sm" onclick="closeModal('modal-delete-confirm')">Cancel</button>
-      <button type="button" class="btn btn-danger btn-sm" id="btn-confirm-delete-action">
-        <i data-lucide="trash-2" style="width: 15px; height: 15px;"></i>
-        <span>DELETE PERMANENTLY</span>
+      <button type="button" class="btn btn-outline btn-sm" onclick="closeModal('modal-invoice')">Close</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-print-invoice-modal">
+        <span class="material-symbols-outlined">print</span>
+        <span>Print Invoice</span>
+      </button>
+      <button type="button" class="btn btn-primary btn-sm" id="btn-download-invoice-pdf">
+        <span class="material-symbols-outlined">download</span>
+        <span>Download PDF</span>
       </button>
     </div>
   </div>
 </div>
 
-<!-- ====================================================================
-     MODAL 5: ADMIN LOGIN (DJANGO AUTHENTICATION)
-     ==================================================================== -->
+<!-- 4. Admin Authentication Modal -->
 <div class="modal-overlay" id="modal-admin-login">
-  <div class="modal-container" style="max-width: 440px;">
-    <div class="modal-header" style="background-color: var(--nb-yellow);">
-      <div class="modal-title" style="color: var(--nb-text-main);">
-        <i data-lucide="shield" style="width: 22px; height: 22px;"></i>
-        <span>ADMIN LOGIN // STUDIO OS</span>
+  <div class="modal-container" style="max-width: 420px;">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="material-symbols-outlined" style="color: #0b57d0;">lock</span>
+        <span>Studio Admin Login</span>
       </div>
       <button class="modal-close-btn" onclick="closeModal('modal-admin-login')">
-        <i data-lucide="x"></i>
+        <span class="material-symbols-outlined">close</span>
       </button>
     </div>
     <form id="form-admin-login">
       <div class="modal-body">
-        <div style="background: var(--nb-surface-alt); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.75rem; border-radius: 4px; box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); margin-bottom: 1.25rem;">
-          <div style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--nb-text-main);">
-            ★ DJANGO ADMIN CREDENTIALS
-          </div>
-          <div style="font-size: 0.74rem; font-family: 'JetBrains Mono', monospace; color: var(--nb-text-muted); margin-top: 2px;">
+        <div style="background: #f2f4f7; padding: 0.75rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.8rem; color: #44474e;">
+          <div>Login with Django backend superuser credentials.</div>
+          <div style="font-size: 0.74rem; font-family: var(--font-family-mono); margin-top: 2px;">
             Default: <code>admin</code> / <code>adminpassword123</code>
           </div>
         </div>
@@ -1938,8 +1270,8 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-outline btn-sm" onclick="closeModal('modal-admin-login')">Cancel</button>
         <button type="submit" class="btn btn-primary btn-sm">
-          <i data-lucide="log-in" style="width: 15px; height: 15px;"></i>
-          <span>LOGIN NOW</span>
+          <span class="material-symbols-outlined">login</span>
+          <span>Login Now</span>
         </button>
       </div>
     </form>
@@ -1950,6 +1282,6 @@
 <div class="toast-container" id="toast-container"></div>
 
 <!-- Master Application Script (Cache-Busted) -->
-<script src="app.js?v=m3_dynamic_v3"></script>
+<script src="app.js?v=m3_strict_v4"></script>
 </body>
 </html>
