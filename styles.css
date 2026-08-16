@@ -1,113 +1,99 @@
 /* ==========================================================================
-   StudioMistri × Material Design 3 (M3) Strict Design System
-   Google Fonts: Roboto & Material Symbols Outlined
-   Palette: Surface #FAFAFB, Cards #FFFFFF (Elevation 0 1px 2px 0 rgba(0,0,0,0.1), No Borders)
-   Buttons: Pill 100px, Brand #0B57D0, White Text, No Borders
-   Brand Logo Header Fix: max-height: 40px; width: auto;
+   StudioMistri — Ultra-Professional Eye-Catching Dark Mode Design System
+   Sleek Obsidian & Graphite Surfaces, Translucent Glassmorphism, 
+   Vibrant Studio Flame Orange Accent (#FF5500), Smooth Elevation & Pill Radii
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 :root {
   /* ========================================================================
-     1. Strict M3 Color System Tokens
+     1. Professional Dark Mode Color Palette
      ======================================================================== */
   
-  /* Primary Brand (Google Material Blue) */
-  --md-sys-color-primary: #0b57d0;
+  /* Primary Signature Accent: Studio Flame Orange */
+  --md-sys-color-primary: #ff5500;
+  --md-sys-color-primary-hover: #ff6e26;
+  --md-sys-color-primary-container: rgba(255, 85, 0, 0.15);
+  --md-sys-color-on-primary-container: #ff9466;
   --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #d3e3fd;
-  --md-sys-color-on-primary-container: #041e49;
-  --md-sys-color-primary-hover: #0842a0;
-
-  /* Secondary Tonal Group (Neutral Slate) */
-  --md-sys-color-secondary: #535f70;
-  --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: #d7e3f8;
-  --md-sys-color-on-secondary-container: #101c2b;
-
-  /* Tertiary Brand Accent (Studio Mistri Orange) */
-  --md-sys-color-tertiary: #ea580c;
-  --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-tertiary-container: #ffede6;
-  --md-sys-color-on-tertiary-container: #7c2d12;
-  --md-sys-color-tertiary-hover: #c2410c;
-
-  /* Strict M3 Surface & Background Specifications */
-  --md-sys-color-background: #fafafb; /* Strict User Requested Surface */
-  --md-sys-color-surface: #fafafb;
-  --md-sys-color-on-surface: #1f1f1f;
-  --md-sys-color-on-surface-variant: #44474e;
   
-  /* Surface Containers */
-  --md-sys-color-surface-container-lowest: #ffffff; /* Strict User Requested Card Surface */
-  --md-sys-color-surface-container-low: #f2f4f7;
-  --md-sys-color-surface-container: #eaeff5;
-  --md-sys-color-surface-container-high: #e2e8f0;
-  --md-sys-color-surface-container-highest: #d9e2ec;
+  /* Secondary Accent: Deep Electric Cobalt Blue */
+  --md-sys-color-secondary: #3b82f6;
+  --md-sys-color-secondary-container: rgba(59, 130, 246, 0.15);
+  --md-sys-color-on-secondary-container: #93c5fd;
 
-  /* Outlines & Dividers */
-  --md-sys-color-outline: #74777f;
-  --md-sys-color-outline-variant: #e0e3e7;
-  --md-sys-color-divider: #edf0f4;
+  /* Tertiary Accent: Precision Emerald Green */
+  --md-sys-color-tertiary: #10b981;
+  --md-sys-color-tertiary-container: rgba(16, 185, 129, 0.15);
+  --md-sys-color-on-tertiary-container: #6ee7b7;
 
-  /* Semantic Feedback Colors */
-  --md-sys-color-success: #146c2e;
-  --md-sys-color-success-container: #c4eed0;
-  --md-sys-color-on-success-container: #072710;
+  /* Rich Obsidian & Slate Dark Surfaces */
+  --md-sys-color-background: #090c10;
+  --md-sys-color-surface: #090c10;
+  --md-sys-color-on-surface: #f0f6fc;
+  --md-sys-color-on-surface-variant: #94a3b8;
   
-  --md-sys-color-warning: #b45309;
-  --md-sys-color-warning-container: #fef3c7;
-  --md-sys-color-on-warning-container: #451a03;
+  /* Layered Dark Surface Containers */
+  --md-sys-color-surface-container-lowest: #0d1117;
+  --md-sys-color-surface-container-low: #131822;
+  --md-sys-color-surface-container: #171e2b;
+  --md-sys-color-surface-container-high: #1e2636;
+  --md-sys-color-surface-container-highest: #263042;
   
-  --md-sys-color-error: #ba1a1a;
-  --md-sys-color-error-container: #ffdad6;
-  --md-sys-color-on-error-container: #410002;
+  /* Precision Borders & Outlines */
+  --md-sys-color-outline: rgba(255, 255, 255, 0.12);
+  --md-sys-color-outline-variant: rgba(255, 255, 255, 0.07);
+  --md-sys-color-divider: rgba(255, 255, 255, 0.06);
 
-  --md-sys-color-info: #0284c7;
-  --md-sys-color-info-container: #e0f2fe;
+  /* Semantic Feedback States */
+  --md-sys-color-success: #10b981;
+  --md-sys-color-success-container: rgba(16, 185, 129, 0.14);
+  --md-sys-color-on-success-container: #34d399;
+  
+  --md-sys-color-warning: #f59e0b;
+  --md-sys-color-warning-container: rgba(245, 158, 11, 0.14);
+  --md-sys-color-on-warning-container: #fbbf24;
+  
+  --md-sys-color-error: #ef4444;
+  --md-sys-color-error-container: rgba(239, 68, 68, 0.14);
+  --md-sys-color-on-error-container: #f87171;
 
-  /* ========================================================================
-     2. Strict M3 Elevation (Card Shadow: 0 1px 2px 0 rgba(0,0,0,0.1))
-     ======================================================================== */
-  --md-sys-elevation-0: none;
-  --md-sys-elevation-card: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  --md-sys-elevation-card-hover: 0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --md-sys-elevation-dialog: 0 8px 28px 0 rgba(0, 0, 0, 0.12), 0 2px 6px 0 rgba(0, 0, 0, 0.06);
+  /* Ambient Dark Shadows */
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 30px -4px rgba(0, 0, 0, 0.7), 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  --shadow-glow-primary: 0 0 20px -3px rgba(255, 85, 0, 0.35);
+  --shadow-dialog: 0 20px 48px -6px rgba(0, 0, 0, 0.85), 0 4px 12px rgba(0, 0, 0, 0.5);
 
-  /* ========================================================================
-     3. Strict M3 Shapes (Buttons 100px Pill, Cards 20px–24px)
-     ======================================================================== */
-  --md-shape-corner-small: 8px;
-  --md-shape-corner-medium: 12px;
-  --md-shape-corner-large: 16px;
-  --md-shape-corner-card: 20px;
-  --md-shape-corner-extra-large: 24px;
-  --md-shape-corner-pill: 100px; /* Strict User Requested 100px Pill */
-  --md-shape-corner-full: 100px;
+  /* Corner Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-card: 22px;
+  --radius-pill: 100px;
 
   /* Typography */
-  --font-family-body: 'Roboto', sans-serif;
+  --font-family-brand: 'Plus Jakarta Sans', 'Roboto', sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
 
-  /* Layout */
-  --sidebar-width: 270px;
-  --header-height: 68px;
+  /* Dimensions */
+  --sidebar-width: 275px;
+  --header-height: 70px;
 
-  /* Aliases */
+  /* Backward Compatibility */
   --nb-bg: var(--md-sys-color-background);
-  --nb-surface: var(--md-sys-color-surface-container-lowest);
+  --nb-surface: var(--md-sys-color-surface-container-low);
   --nb-text-main: var(--md-sys-color-on-surface);
   --nb-text-muted: var(--md-sys-color-on-surface-variant);
-  --nb-orange: var(--md-sys-color-tertiary);
-  --nb-cyan: var(--md-sys-color-primary-container);
+  --nb-orange: var(--md-sys-color-primary);
+  --nb-cyan: var(--md-sys-color-secondary-container);
   --nb-mint: var(--md-sys-color-success-container);
   --nb-yellow: var(--md-sys-color-warning-container);
 }
 
 /* ==========================================================================
-   4. Global Reset & Body Typography
+   2. Reset & Global Dark Typography
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -120,13 +106,18 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--md-sys-color-background);
 }
 
 body {
-  font-family: var(--font-family-body);
-  background-color: var(--md-sys-color-background); /* Strict #FAFAFB */
+  font-family: var(--font-family-brand);
+  background-color: var(--md-sys-color-background);
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(255, 85, 0, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.04) 0%, transparent 40%);
+  background-attachment: fixed;
   color: var(--md-sys-color-on-surface);
-  line-height: 1.5;
+  line-height: 1.55;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -153,9 +144,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--md-sys-color-on-surface);
-  font-family: var(--font-family-body);
-  font-weight: 500;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1.25;
 }
 
@@ -166,39 +157,44 @@ p {
 a {
   color: var(--md-sys-color-primary);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 /* ==========================================================================
-   5. Strict M3 Material Cards (#FFFFFF, Elevation 0 1px 2px 0 rgba(0,0,0,0.1), NO Borders)
+   3. Dark Cards & Surfaces (Sleek Border + Ambient Shadow)
    ========================================================================== */
 .card, .metric-card, .data-table-card, .chart-card, .service-card, .printer-card, .step-card, .filament-card, .m3-estimator-card, .studio-status-card, .invoice-preview-card {
-  background-color: var(--md-sys-color-surface-container-lowest) !important; /* Strict #FFFFFF */
-  border: none !important; /* Strict No Borders */
-  box-shadow: var(--md-sys-elevation-card) !important; /* Strict box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1) */
-  border-radius: var(--md-shape-corner-card);
-  padding: 1.5rem;
-  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.65rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .card:hover, .metric-card:hover, .service-card:hover, .printer-card:hover, .filament-card:hover {
-  box-shadow: var(--md-sys-elevation-card-hover) !important;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
-   6. Strict M3 Pill Buttons (border-radius: 100px, Brand #0B57D0, White Text, NO Borders)
+   4. High-End Pill Buttons (Glowing Flame Orange & Tonal Dark)
    ========================================================================== */
 .btn, .m3-btn-action, .m3-btn-prominent {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-family: var(--font-family-body);
+  gap: 0.55rem;
+  font-family: var(--font-family-brand);
   font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: var(--md-shape-corner-pill) !important; /* Strict border-radius: 100px */
-  border: none !important; /* Strict Remove All Borders */
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border-radius: var(--radius-pill);
+  border: none;
   outline: none;
-  padding: 0.65rem 1.4rem;
+  padding: 0.65rem 1.45rem;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -206,16 +202,16 @@ a {
   line-height: 1.2;
 }
 
-/* Primary Brand Button (#0B57D0 & White Text) */
+/* Primary Flame Orange Button */
 .btn-primary, .m3-btn-prominent {
-  background-color: var(--md-sys-color-primary) !important; /* Strict #0B57D0 */
-  color: var(--md-sys-color-on-primary) !important; /* Strict White Text */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ff5500 0%, #e04400 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .btn-primary:hover, .m3-btn-prominent:hover {
-  background-color: var(--md-sys-color-primary-hover) !important;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #ff6e26 0%, #ff5500 100%);
+  box-shadow: 0 0 24px -1px rgba(255, 85, 0, 0.5);
   transform: translateY(-1px);
 }
 
@@ -223,148 +219,71 @@ a {
   transform: translateY(0);
 }
 
-/* M3 Tonal Button */
+/* Tonal Dark Button */
 .btn-secondary, .m3-btn-tonal {
-  background-color: var(--md-sys-color-primary-container) !important;
-  color: var(--md-sys-color-on-primary-container) !important;
-  border: none !important;
-  border-radius: var(--md-shape-corner-pill) !important;
+  background-color: var(--md-sys-color-surface-container-high);
+  color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .btn-secondary:hover, .m3-btn-tonal:hover {
-  background-color: #c2d7fc !important;
+  background-color: var(--md-sys-color-surface-container-highest);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
-/* M3 Outlined / Ghost Button */
+/* Outlined Glass Button */
 .btn-outline {
-  background-color: var(--md-sys-color-surface-container-low) !important;
-  color: var(--md-sys-color-primary) !important;
-  border: none !important;
-  border-radius: var(--md-shape-corner-pill) !important;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #f0f6fc;
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .btn-outline:hover {
-  background-color: var(--md-sys-color-primary-container) !important;
+  background-color: rgba(255, 85, 0, 0.12);
+  border-color: var(--md-sys-color-primary);
+  color: #ff9466;
 }
 
-/* M3 Danger Button */
+/* Danger Button */
 .btn-danger {
-  background-color: var(--md-sys-color-error-container) !important;
-  color: var(--md-sys-color-error) !important;
-  border: none !important;
-  border-radius: var(--md-shape-corner-pill) !important;
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+  background-color: rgba(239, 68, 68, 0.25);
 }
 
 .btn-sm {
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 1.05rem;
   font-size: 0.82rem;
 }
 
 .btn-lg {
   padding: 0.85rem 2rem;
   font-size: 1rem;
+  font-weight: 700;
 }
 
 .btn-icon-only {
   width: 38px;
   height: 38px;
   padding: 0;
-  border-radius: 50% !important;
+  border-radius: 50%;
 }
 
 /* ==========================================================================
-   7. Header & Brand Logo Max-Height 40px Fix
+   5. Sidebar / Navigation Drawer & Logo Max-Height 40px
    ========================================================================== */
 .sidebar-logo, .header-logo, .brand-logo-img {
-  max-height: 40px !important; /* Strict User Requested Fix */
+  max-height: 40px !important; /* Strict Logo Constraint */
   width: auto !important;
   object-fit: contain !important;
   display: block;
 }
 
-.top-header {
-  height: var(--header-height);
-  background-color: #ffffff;
-  border: none;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 90;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.mobile-menu-btn {
-  display: none;
-  background: transparent;
-  border: none;
-  color: var(--md-sys-color-on-surface);
-  cursor: pointer;
-  padding: 0.4rem;
-  border-radius: 50%;
-}
-
-.page-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--md-sys-color-outline);
-}
-
-.page-title-display {
-  color: var(--md-sys-color-on-surface);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.header-stat-pill {
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-pill);
-  padding: 0.45rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  border: none;
-}
-
-.header-stat-pill .label {
-  font-weight: 500;
-  color: var(--md-sys-color-outline);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.header-stat-pill .value {
-  font-weight: 700;
-  color: var(--md-sys-color-primary);
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-/* ==========================================================================
-   8. Navigation Drawer (Sidebar)
-   ========================================================================== */
 .app-container {
   display: flex;
   min-height: 100vh;
@@ -372,9 +291,8 @@ a {
 
 .sidebar {
   width: var(--sidebar-width);
-  background-color: #ffffff;
-  border: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-right: 1px solid var(--md-sys-color-divider);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -392,7 +310,7 @@ a {
   align-items: center;
   gap: 0.75rem;
   border-bottom: 1px solid var(--md-sys-color-divider);
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .sidebar-brand-text {
@@ -401,16 +319,18 @@ a {
 }
 
 .sidebar-brand-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
 .sidebar-brand-tagline {
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-primary);
   font-family: var(--font-family-mono);
+  letter-spacing: 0.5px;
 }
 
 .sidebar-nav {
@@ -425,8 +345,8 @@ a {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--md-sys-color-outline);
+  letter-spacing: 0.6px;
+  color: #64748b;
   padding: 0.85rem 1rem 0.35rem;
 }
 
@@ -435,35 +355,46 @@ a {
   align-items: center;
   gap: 0.85rem;
   padding: 0.75rem 1.25rem;
-  border-radius: var(--md-shape-corner-pill); /* 100px Pill */
+  border-radius: var(--radius-pill);
   color: var(--md-sys-color-on-surface-variant);
   font-size: 0.92rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   user-select: none;
-  border: none;
+  border: 1px solid transparent;
+}
+
+.nav-link i, .nav-link .material-symbols-outlined {
+  font-size: 20px;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  background-color: var(--md-sys-color-surface-container-low);
-  color: var(--md-sys-color-on-surface);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
 }
 
 .nav-link.active {
-  background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
+  background: var(--md-sys-color-primary-container);
+  border-color: rgba(255, 85, 0, 0.3);
+  color: #ff9466;
   font-weight: 700;
+}
+
+.nav-link.active .material-symbols-outlined {
+  color: var(--md-sys-color-primary);
 }
 
 .nav-badge {
   margin-left: auto;
-  background-color: var(--md-sys-color-tertiary);
+  background-color: var(--md-sys-color-primary);
   color: #ffffff;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   padding: 0.15rem 0.55rem;
-  border-radius: var(--md-shape-corner-pill);
+  border-radius: var(--radius-pill);
   font-family: var(--font-family-mono);
 }
 
@@ -475,6 +406,7 @@ a {
 
 .studio-status-card {
   padding: 0.85rem 1rem !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
 }
 
 .status-indicator-wrap {
@@ -493,6 +425,7 @@ a {
   border-radius: 50%;
   background-color: var(--md-sys-color-success);
   display: inline-block;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
 }
 
 .studio-status-desc {
@@ -501,7 +434,7 @@ a {
 }
 
 /* ==========================================================================
-   9. Content Layout & Views
+   6. Translucent Dark Top App Bar
    ========================================================================== */
 .main-wrapper {
   margin-left: var(--sidebar-width);
@@ -512,10 +445,90 @@ a {
   min-height: 100vh;
 }
 
+.top-header {
+  height: var(--header-height);
+  background-color: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--md-sys-color-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+}
+
+.page-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.page-title-display {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-stat-pill {
+  background-color: var(--md-sys-color-surface-container-high);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.header-stat-pill .label {
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.header-stat-pill .value {
+  font-weight: 800;
+  color: var(--md-sys-color-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .content-body {
-  padding: 2.25rem 2rem 4rem;
+  padding: 2.5rem 2.25rem 4rem;
   flex: 1;
-  max-width: 1400px;
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
 }
@@ -523,7 +536,7 @@ a {
 .view-section {
   display: none;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
 }
 
 .view-section.active {
@@ -532,18 +545,19 @@ a {
 }
 
 /* ==========================================================================
-   10. Landing Page & Hero Section
+   7. Dark Mode Hero Section
    ========================================================================== */
 .landing-hero {
   position: relative;
-  border-radius: var(--md-shape-corner-extra-large);
+  border-radius: var(--radius-card);
   overflow: hidden;
-  margin-bottom: 3rem;
-  box-shadow: var(--md-sys-elevation-card);
-  min-height: 400px;
+  margin-bottom: 3.5rem;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--shadow-card);
+  min-height: 440px;
   display: flex;
   align-items: center;
-  background: #111827;
+  background: linear-gradient(135deg, #111722 0%, #0d1117 100%);
 }
 
 .landing-hero-bg-cover {
@@ -553,14 +567,15 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.35;
+  opacity: 0.28;
+  filter: saturate(1.2);
 }
 
 .landing-hero-content {
   position: relative;
   z-index: 10;
-  padding: 3.5rem 3rem;
-  max-width: 780px;
+  padding: 3.75rem 3.25rem;
+  max-width: 820px;
   color: #ffffff;
 }
 
@@ -568,28 +583,31 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: var(--md-shape-corner-pill);
+  background-color: var(--md-sys-color-primary-container);
+  border: 1px solid rgba(255, 85, 0, 0.3);
+  border-radius: var(--radius-pill);
   padding: 0.35rem 0.95rem;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #ffffff;
+  letter-spacing: 0.5px;
+  color: #ff9466;
   margin-bottom: 1.25rem;
   font-family: var(--font-family-mono);
 }
 
 .landing-hero-title {
-  font-size: 2.75rem;
-  font-weight: 700;
+  font-size: 2.85rem;
+  font-weight: 800;
   line-height: 1.15;
   color: #ffffff;
+  letter-spacing: -0.03em;
   margin-bottom: 1rem;
 }
 
 .landing-hero-desc {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
+  color: #94a3b8;
   margin-bottom: 2rem;
 }
 
@@ -613,16 +631,23 @@ a {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.82rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.feature-ribbon-item .material-symbols-outlined {
+  color: var(--md-sys-color-primary);
+  font-size: 18px;
 }
 
 /* ==========================================================================
-   11. Strict M3 3D Print Cost Estimator
+   8. Eye-Catching Dark 3D Print Cost Estimator Card
    ========================================================================== */
 .m3-estimator-card {
-  padding: 2.5rem !important;
-  margin-bottom: 3rem;
+  padding: 2.75rem !important;
+  margin-bottom: 3.5rem;
+  background: linear-gradient(180deg, #131822 0%, #0f141c 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .m3-badge-pill {
@@ -630,26 +655,29 @@ a {
   align-items: center;
   gap: 0.5rem;
   background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
+  border: 1px solid rgba(255, 85, 0, 0.3);
+  color: #ff9466;
   padding: 0.35rem 0.95rem;
-  border-radius: var(--md-shape-corner-pill);
+  border-radius: var(--radius-pill);
   font-size: 0.74rem;
   font-weight: 700;
+  letter-spacing: 0.4px;
   font-family: var(--font-family-mono);
   margin-bottom: 0.75rem;
 }
 
 .m3-card-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  font-size: 2.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
   margin-bottom: 0.4rem;
 }
 
 .m3-card-subtitle {
   font-size: 0.95rem;
-  color: var(--md-sys-color-on-surface-variant);
-  max-width: 700px;
+  color: #94a3b8;
+  max-width: 720px;
 }
 
 .m3-quoter-layout {
@@ -663,13 +691,13 @@ a {
 .m3-form-container {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.35rem;
 }
 
 .m3-form-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .m3-text-field {
@@ -681,35 +709,38 @@ a {
 .m3-field-container {
   display: flex;
   align-items: center;
-  background-color: var(--md-sys-color-surface-container-low);
+  background-color: var(--md-sys-color-surface-container);
   border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-shape-corner-medium);
-  padding: 0.65rem 1rem;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-md);
+  padding: 0.68rem 1rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .m3-field-container:focus-within {
-  background-color: #ffffff;
+  background-color: var(--md-sys-color-surface-container-high);
   border-color: var(--md-sys-color-primary);
-  box-shadow: 0 0 0 3px rgba(11, 87, 208, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 85, 0, 0.2);
 }
 
 .m3-field-leading-icon {
   color: var(--md-sys-color-primary);
   margin-right: 0.75rem;
+  font-size: 20px;
 }
 
 .m3-field-content {
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width: 0;
 }
 
 .m3-floating-label {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--md-sys-color-outline);
+  letter-spacing: 0.4px;
+  color: #64748b;
   margin-bottom: 0.15rem;
 }
 
@@ -721,29 +752,37 @@ a {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--md-sys-color-on-surface);
+  color: #ffffff;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   width: 100%;
   font-family: inherit;
+  cursor: pointer;
+}
+
+.m3-select option {
+  background-color: #171e2b;
+  color: #ffffff;
 }
 
 .m3-number-input {
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 800;
+  color: #ffffff;
 }
 
 .m3-unit-suffix {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--md-sys-color-primary);
+  font-weight: 800;
+  color: #ff9466;
   background-color: var(--md-sys-color-primary-container);
+  border: 1px solid rgba(255, 85, 0, 0.25);
   padding: 0.25rem 0.65rem;
-  border-radius: var(--md-shape-corner-small);
+  border-radius: var(--radius-sm);
   font-family: var(--font-family-mono);
 }
 
-/* M3 Segmented Buttons */
+/* Segmented Buttons */
 .m3-segmented-button-bar {
   display: flex;
   align-items: center;
@@ -755,14 +794,15 @@ a {
 .m3-segment-label {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
   font-family: var(--font-family-mono);
 }
 
 .m3-segmented-buttons {
   display: inline-flex;
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-pill);
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-pill);
   padding: 3px;
   gap: 2px;
 }
@@ -773,10 +813,10 @@ a {
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: none !important;
-  border-radius: var(--md-shape-corner-pill) !important;
+  border: none;
+  border-radius: var(--radius-pill);
   padding: 0.35rem 0.95rem;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #94a3b8;
   cursor: pointer;
   transition: all 0.2s ease;
   line-height: 1.1;
@@ -784,7 +824,7 @@ a {
 
 .m3-seg-val {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   font-family: var(--font-family-mono);
 }
 
@@ -794,18 +834,21 @@ a {
 }
 
 .m3-segment-btn:hover {
-  background-color: var(--md-sys-color-surface-container-high);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
 .m3-segment-btn.active {
-  background-color: var(--md-sys-color-primary) !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #ff5500 0%, #e04400 100%);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 85, 0, 0.4);
 }
 
 .m3-contact-subcard {
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-large);
-  padding: 1.25rem;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
@@ -816,20 +859,21 @@ a {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 800;
   font-family: var(--font-family-mono);
-  color: var(--md-sys-color-primary);
+  color: #ff9466;
   text-transform: uppercase;
 }
 
-/* M3 Summary Card */
+/* Dark Summary Card */
 .m3-summary-card {
-  background-color: var(--md-sys-color-surface-container-low) !important;
-  border-radius: var(--md-shape-corner-card);
-  padding: 2rem !important;
+  background: linear-gradient(180deg, #18202d 0%, #121822 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--radius-card);
+  padding: 2.25rem !important;
   display: flex;
   flex-direction: column;
-  box-shadow: none !important;
+  box-shadow: var(--shadow-card);
 }
 
 .m3-summary-header {
@@ -844,16 +888,18 @@ a {
   text-transform: uppercase;
   font-family: var(--font-family-mono);
   font-weight: 700;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
+  letter-spacing: 0.5px;
 }
 
 .m3-rate-chip {
   font-size: 0.76rem;
-  color: var(--md-sys-color-primary);
+  color: #ff9466;
   background-color: var(--md-sys-color-primary-container);
+  border: 1px solid rgba(255, 85, 0, 0.25);
   padding: 0.25rem 0.85rem;
-  border-radius: var(--md-shape-corner-pill);
-  font-weight: 700;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
   font-family: var(--font-family-mono);
 }
 
@@ -862,17 +908,19 @@ a {
 }
 
 .m3-price-value {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  font-size: 3.15rem;
+  font-weight: 800;
+  color: #ffffff;
   line-height: 1;
+  letter-spacing: -0.03em;
   font-family: var(--font-family-mono);
   margin-bottom: 0.35rem;
+  text-shadow: 0 0 24px rgba(255, 85, 0, 0.25);
 }
 
 .m3-price-caption {
   font-size: 0.76rem;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #94a3b8;
   font-family: var(--font-family-mono);
 }
 
@@ -897,17 +945,22 @@ a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #94a3b8;
+}
+
+.m3-item-icon {
+  color: var(--md-sys-color-primary);
+  font-size: 18px;
 }
 
 .m3-company-pool-pill {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid rgba(59, 130, 246, 0.25);
   padding: 0.65rem 0.95rem;
-  border-radius: var(--md-shape-corner-medium);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-md);
   margin-top: 0.35rem;
 }
 
@@ -916,7 +969,7 @@ a {
   align-items: center;
   gap: 0.45rem;
   font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  color: #93c5fd;
 }
 
 .m3-payment-note {
@@ -926,13 +979,13 @@ a {
   gap: 0.45rem;
   font-size: 0.76rem;
   font-family: var(--font-family-mono);
-  color: var(--md-sys-color-outline);
+  color: #64748b;
   text-align: center;
   margin-top: 1rem;
 }
 
 /* ==========================================================================
-   12. Services, Hardware Fleet & Workflow
+   9. Services, Hardware & Workflow
    ========================================================================== */
 .section-header-block {
   text-align: center;
@@ -942,7 +995,7 @@ a {
 .section-tag-label {
   display: inline-block;
   font-size: 0.74rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.6px;
   color: var(--md-sys-color-primary);
   text-transform: uppercase;
@@ -951,16 +1004,17 @@ a {
 }
 
 .section-main-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  font-size: 2.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 
 .section-sub-desc {
   font-size: 0.95rem;
-  color: var(--md-sys-color-on-surface-variant);
-  max-width: 600px;
+  color: #94a3b8;
+  max-width: 620px;
   margin: 0 auto;
 }
 
@@ -972,10 +1026,11 @@ a {
 }
 
 .service-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--md-shape-corner-medium);
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
   background-color: var(--md-sys-color-primary-container);
+  border: 1px solid rgba(255, 85, 0, 0.25);
   color: var(--md-sys-color-primary);
   display: flex;
   align-items: center;
@@ -983,22 +1038,27 @@ a {
   margin-bottom: 1.25rem;
 }
 
+.service-icon-wrap .material-symbols-outlined {
+  font-size: 24px;
+}
+
 .service-title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .service-desc {
   font-size: 0.88rem;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #94a3b8;
+  line-height: 1.5;
 }
 
 .hardware-fleet-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
+  gap: 1.35rem;
   margin-bottom: 3.5rem;
 }
 
@@ -1012,27 +1072,27 @@ a {
 .printer-name {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  color: #ffffff;
 }
 
 .printer-type {
   font-size: 0.72rem;
   font-family: var(--font-family-mono);
-  color: var(--md-sys-color-outline);
+  color: #64748b;
 }
 
 .workflow-steps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+  gap: 1.35rem;
   margin-bottom: 3.5rem;
 }
 
 .step-number {
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--md-sys-color-primary);
-  opacity: 0.3;
+  opacity: 0.35;
   font-family: var(--font-family-mono);
   line-height: 1;
   margin-bottom: 0.5rem;
@@ -1041,17 +1101,17 @@ a {
 .step-title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  color: #ffffff;
   margin-bottom: 0.35rem;
 }
 
 .step-desc {
   font-size: 0.82rem;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #94a3b8;
 }
 
 /* ==========================================================================
-   13. Inventory & Filament System
+   10. Inventory Management & Cartridges
    ========================================================================== */
 .inventory-header-bar {
   display: flex;
@@ -1081,24 +1141,26 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-pill);
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-pill);
   padding: 0.4rem 0.95rem;
   font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--md-sys-color-on-surface-variant);
+  font-weight: 600;
+  color: #94a3b8;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: none;
 }
 
 .filter-chip:hover {
   background-color: var(--md-sys-color-surface-container-high);
+  color: #ffffff;
 }
 
 .filter-chip.active {
   background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
+  border-color: rgba(255, 85, 0, 0.35);
+  color: #ff9466;
   font-weight: 700;
 }
 
@@ -1125,20 +1187,20 @@ a {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px var(--md-sys-color-outline-variant);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
 }
 
 .filament-color-name {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  color: #ffffff;
 }
 
 .filament-brand-type {
   font-size: 0.74rem;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
   font-family: var(--font-family-mono);
 }
 
@@ -1152,40 +1214,41 @@ a {
 
 .stock-progress-track {
   height: 8px;
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-pill);
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--radius-pill);
   overflow: hidden;
   margin-bottom: 1rem;
 }
 
 .stock-progress-fill {
   height: 100%;
-  background-color: var(--md-sys-color-primary);
-  border-radius: var(--md-shape-corner-pill);
+  background: linear-gradient(90deg, #ff5500 0%, #ff8833 100%);
+  border-radius: var(--radius-pill);
   transition: width 0.3s ease;
 }
 
 .stock-progress-fill.low {
-  background-color: var(--md-sys-color-warning);
+  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
 }
 
 .stock-progress-fill.empty {
-  background-color: var(--md-sys-color-error);
+  background: #ef4444;
 }
 
 .filament-card-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-medium);
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-md);
   padding: 0.85rem;
   margin-bottom: 1rem;
 }
 
 .f-detail-label {
   font-size: 0.68rem;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -1193,7 +1256,7 @@ a {
 .f-detail-val {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  color: #ffffff;
 }
 
 .filament-card-actions {
@@ -1206,8 +1269,9 @@ a {
 
 .quick-stock-stepper {
   display: inline-flex;
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-pill);
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-pill);
   padding: 2px;
   gap: 2px;
 }
@@ -1218,19 +1282,19 @@ a {
   padding: 0.25rem 0.6rem;
   font-size: 0.74rem;
   font-weight: 700;
-  border-radius: var(--md-shape-corner-pill);
-  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--radius-pill);
+  color: #94a3b8;
   cursor: pointer;
   font-family: var(--font-family-mono);
 }
 
 .stepper-btn:hover {
   background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
+  color: #ff9466;
 }
 
 /* ==========================================================================
-   14. Tables & Badges
+   11. Dark Mode Tables & Status Badges
    ========================================================================== */
 .data-table-card {
   padding: 0 !important;
@@ -1250,7 +1314,8 @@ table {
 }
 
 thead {
-  background-color: var(--md-sys-color-surface-container-low);
+  background-color: var(--md-sys-color-surface-container);
+  border-bottom: 1px solid var(--md-sys-color-divider);
 }
 
 th {
@@ -1258,8 +1323,8 @@ th {
   font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--md-sys-color-outline);
-  border: none;
+  letter-spacing: 0.4px;
+  color: #64748b;
 }
 
 tbody tr {
@@ -1268,7 +1333,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background-color: var(--md-sys-color-surface-container-low);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 tbody tr:last-child {
@@ -1277,48 +1342,53 @@ tbody tr:last-child {
 
 td {
   padding: 0.9rem 1.15rem;
-  color: var(--md-sys-color-on-surface);
+  color: #f0f6fc;
   vertical-align: middle;
 }
 
+/* Badges */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   padding: 0.25rem 0.75rem;
-  border-radius: var(--md-shape-corner-pill);
+  border-radius: var(--radius-pill);
   font-size: 0.72rem;
   font-weight: 700;
-  border: none;
+  border: 1px solid transparent;
 }
 
 .badge-in-stock, .badge-paid, .badge-completed {
   background-color: var(--md-sys-color-success-container);
-  color: var(--md-sys-color-success);
+  color: var(--md-sys-color-on-success-container);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 .badge-low-stock, .badge-pending {
   background-color: var(--md-sys-color-warning-container);
-  color: var(--md-sys-color-warning);
+  color: var(--md-sys-color-on-warning-container);
+  border-color: rgba(245, 158, 11, 0.2);
 }
 
 .badge-out-stock {
   background-color: var(--md-sys-color-error-container);
-  color: var(--md-sys-color-error);
+  color: var(--md-sys-color-on-error-container);
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 .badge-printing {
   background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-primary);
+  color: #ff9466;
+  border-color: rgba(255, 85, 0, 0.25);
 }
 
 /* ==========================================================================
-   15. Metrics & Sales Analytics
+   12. Metrics & Financial Analytics
    ========================================================================== */
 .metric-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+  gap: 1.35rem;
   margin-bottom: 2rem;
 }
 
@@ -1333,12 +1403,13 @@ td {
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--md-sys-color-outline);
+  letter-spacing: 0.4px;
+  color: #64748b;
 }
 
 .metric-icon-wrap {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-primary);
@@ -1348,9 +1419,9 @@ td {
 }
 
 .metric-value {
-  font-size: 1.85rem;
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  font-size: 1.95rem;
+  font-weight: 800;
+  color: #ffffff;
   line-height: 1.1;
   font-family: var(--font-family-mono);
   margin-bottom: 0.25rem;
@@ -1358,7 +1429,7 @@ td {
 
 .metric-subtitle {
   font-size: 0.75rem;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
 }
 
 .charts-row-grid {
@@ -1381,9 +1452,10 @@ td {
 }
 
 .financial-split-banner {
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-corner-card);
-  padding: 1.35rem 1.65rem;
+  background: linear-gradient(135deg, #161e2b 0%, #111722 100%) !important;
+  border: 1px solid rgba(255, 85, 0, 0.2) !important;
+  border-radius: var(--radius-card);
+  padding: 1.5rem 1.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1396,18 +1468,18 @@ td {
   font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--md-sys-color-outline);
+  color: #94a3b8;
   margin-bottom: 0.2rem;
 }
 
 .split-amount {
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: 1.55rem;
+  font-weight: 800;
   font-family: var(--font-family-mono);
 }
 
 /* ==========================================================================
-   16. Modals & Forms
+   13. Dark Modals & Form Fields
    ========================================================================== */
 .modal-overlay {
   position: fixed;
@@ -1415,8 +1487,8 @@ td {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   z-index: 1000;
   display: none;
   align-items: center;
@@ -1429,12 +1501,12 @@ td {
 }
 
 .modal-container {
-  background-color: #ffffff;
-  border-radius: var(--md-shape-corner-extra-large);
+  background-color: #131822;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-card);
   width: 100%;
   max-width: 620px;
-  box-shadow: var(--md-sys-elevation-dialog);
-  border: none;
+  box-shadow: var(--shadow-dialog);
   overflow: hidden;
   max-height: 90vh;
   display: flex;
@@ -1446,6 +1518,7 @@ td {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--md-sys-color-divider);
 }
 
 .modal-title {
@@ -1453,21 +1526,26 @@ td {
   align-items: center;
   gap: 0.65rem;
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
+  font-weight: 800;
+  color: #ffffff;
 }
 
 .modal-close-btn {
   background: transparent;
   border: none;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
   cursor: pointer;
   padding: 0.35rem;
   border-radius: 50%;
 }
 
+.modal-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
 .modal-body {
-  padding: 0.5rem 1.75rem 1.5rem;
+  padding: 1.25rem 1.75rem 1.5rem;
   overflow-y: auto;
   flex: 1;
 }
@@ -1477,7 +1555,8 @@ td {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
-  background-color: var(--md-sys-color-surface-container-low);
+  background-color: #0e1218;
+  border-top: 1px solid var(--md-sys-color-divider);
 }
 
 .form-group {
@@ -1489,8 +1568,8 @@ td {
 
 .form-label {
   font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--md-sys-color-on-surface-variant);
+  font-weight: 600;
+  color: #94a3b8;
 }
 
 .form-label .req {
@@ -1501,18 +1580,23 @@ td {
   width: 100%;
   font-family: inherit;
   font-size: 0.92rem;
-  color: var(--md-sys-color-on-surface);
-  background-color: var(--md-sys-color-surface-container-low);
+  color: #ffffff;
+  background-color: var(--md-sys-color-surface-container);
   border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-shape-corner-medium);
+  border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
   outline: none;
 }
 
 .form-control:focus {
-  background-color: #ffffff;
+  background-color: var(--md-sys-color-surface-container-high);
   border-color: var(--md-sys-color-primary);
-  box-shadow: 0 0 0 3px rgba(11, 87, 208, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 85, 0, 0.2);
+}
+
+.form-control option {
+  background-color: #171e2b;
+  color: #ffffff;
 }
 
 .form-row {
@@ -1522,8 +1606,13 @@ td {
 }
 
 /* ==========================================================================
-   17. Toasts & Footer
+   14. Invoice Card & Toasts
    ========================================================================== */
+.invoice-preview-card {
+  background-color: #111620 !important;
+  color: #ffffff;
+}
+
 .toast-container {
   position: fixed;
   bottom: 2rem;
@@ -1537,21 +1626,30 @@ td {
 
 .toast {
   pointer-events: auto;
-  background-color: #1f1f1f;
+  background-color: #171e2b;
+  border: 1px solid var(--md-sys-color-outline);
   color: #ffffff;
   padding: 0.85rem 1.35rem;
-  border-radius: var(--md-shape-corner-pill);
-  box-shadow: var(--md-sys-elevation-card-hover);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-dialog);
   display: flex;
   align-items: center;
   gap: 0.75rem;
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.toast-success { background-color: var(--md-sys-color-success); color: #ffffff; }
-.toast-error { background-color: var(--md-sys-color-error); color: #ffffff; }
-.toast-info { background-color: var(--md-sys-color-primary); color: #ffffff; }
+.toast-success {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.toast-error {
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.toast-info {
+  border-color: rgba(255, 85, 0, 0.4);
+}
 
 .landing-footer {
   margin-top: 4rem;
@@ -1570,7 +1668,7 @@ td {
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
   margin-bottom: 1rem;
 }
 
@@ -1582,7 +1680,7 @@ td {
 }
 
 .footer-links-list a {
-  color: var(--md-sys-color-on-surface-variant);
+  color: #94a3b8;
   cursor: pointer;
 }
 
@@ -1596,11 +1694,11 @@ td {
   padding-top: 1.5rem;
   border-top: 1px solid var(--md-sys-color-divider);
   font-size: 0.78rem;
-  color: var(--md-sys-color-outline);
+  color: #64748b;
 }
 
 /* ==========================================================================
-   18. Responsive
+   15. Responsive Media Queries
    ========================================================================== */
 @media (max-width: 1024px) {
   .charts-row-grid, .m3-quoter-layout, .footer-top-grid {
@@ -1614,7 +1712,7 @@ td {
   }
   .sidebar.mobile-open {
     transform: translateX(0);
-    box-shadow: var(--md-sys-elevation-dialog);
+    box-shadow: var(--shadow-dialog);
   }
   .main-wrapper {
     margin-left: 0;
@@ -1635,6 +1733,6 @@ td {
     font-size: 2rem;
   }
   .m3-price-value {
-    font-size: 2.25rem;
+    font-size: 2.35rem;
   }
 }

@@ -1592,9 +1592,9 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
           label: 'Amount (৳)',
           data: [totalRevenue, totalInventoryCost, totalProfit],
           backgroundColor: [
-            '#ea580c', // M3 Brand Flame Orange
-            '#ba1a1a', // M3 Expense Red
-            '#146c2e'  // M3 Profit Green
+            '#ff5500', // Luminous Studio Flame Orange
+            '#ef4444', // Dark Red Expense
+            '#10b981'  // Emerald Profit Green
           ],
           borderRadius: 8,
           borderSkipped: false
@@ -1606,7 +1606,11 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#191c1f',
+            backgroundColor: '#131822',
+            borderColor: 'rgba(255, 255, 255, 0.1)',
+            borderWidth: 1,
+            titleColor: '#ffffff',
+            bodyColor: '#f0f6fc',
             titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
             bodyFont: { family: 'JetBrains Mono', size: 12 },
             padding: 10,
@@ -1618,16 +1622,16 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         },
         scales: {
           y: {
-            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            grid: { color: 'rgba(255, 255, 255, 0.06)' },
             ticks: {
-              color: '#77574e',
+              color: '#94a3b8',
               font: { family: 'JetBrains Mono', size: 11, weight: '600' },
               callback: (val) => `৳ ${val}`
             }
           },
           x: {
             grid: { display: false },
-            ticks: { color: '#191c1f', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
+            ticks: { color: '#f0f6fc', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
           }
         }
       }
@@ -1645,12 +1649,12 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         datasets: [{
           data: [totalCompanyPool, totalSalaryPool, totalInventoryCost],
           backgroundColor: [
-            '#00639b', // M3 Cobalt Blue
-            '#146c2e', // M3 Success Green
-            '#ea580c'  // M3 Brand Flame Orange
+            '#3b82f6', // Cobalt Blue
+            '#10b981', // Emerald Green
+            '#ff5500'  // Studio Orange
           ],
-          borderColor: '#ffffff',
-          borderWidth: 2
+          borderColor: '#131822',
+          borderWidth: 3
         }]
       },
       options: {
@@ -1659,10 +1663,14 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: '#191c1f', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' }, boxWidth: 12, padding: 12 }
+            labels: { color: '#f0f6fc', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' }, boxWidth: 12, padding: 12 }
           },
           tooltip: {
-            backgroundColor: '#191c1f',
+            backgroundColor: '#131822',
+            borderColor: 'rgba(255, 255, 255, 0.1)',
+            borderWidth: 1,
+            titleColor: '#ffffff',
+            bodyColor: '#f0f6fc',
             titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
             bodyFont: { family: 'JetBrains Mono', size: 12 },
             padding: 10,
@@ -1672,7 +1680,7 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
             }
           }
         },
-        cutout: '70%'
+        cutout: '72%'
       }
     });
   }
@@ -1697,7 +1705,7 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         datasets: [{
           label: 'Grams Printed (g)',
           data: data.length > 0 ? data : [530, 95, 0, 140, 185],
-          backgroundColor: '#ea580c',
+          backgroundColor: '#ff5500',
           borderRadius: 8,
           borderSkipped: false
         }]
@@ -1709,7 +1717,11 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#191c1f',
+            backgroundColor: '#131822',
+            borderColor: 'rgba(255, 255, 255, 0.1)',
+            borderWidth: 1,
+            titleColor: '#ffffff',
+            bodyColor: '#f0f6fc',
             titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: '700' },
             bodyFont: { family: 'JetBrains Mono', size: 12 },
             padding: 10,
@@ -1721,16 +1733,16 @@ function updateSalesCharts(totalRevenue, totalInventoryCost, totalProfit, totalC
         },
         scales: {
           x: {
-            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            grid: { color: 'rgba(255, 255, 255, 0.06)' },
             ticks: {
-              color: '#77574e',
+              color: '#94a3b8',
               font: { family: 'JetBrains Mono', size: 11, weight: '600' },
               callback: (val) => `${val}g`
             }
           },
           y: {
             grid: { display: false },
-            ticks: { color: '#191c1f', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
+            ticks: { color: '#f0f6fc', font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' } }
           }
         }
       }
