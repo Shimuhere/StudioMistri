@@ -449,6 +449,16 @@ function setQuickWeight(grams) {
   const input = document.getElementById('landing-quote-weight');
   if (input) {
     input.value = grams;
+    
+    // Update M3 Segmented Buttons Active State
+    document.querySelectorAll('.m3-segment-btn').forEach(btn => {
+      btn.classList.remove('active');
+      const valText = btn.querySelector('.m3-seg-val')?.textContent || btn.textContent;
+      if (valText.includes(String(grams))) {
+        btn.classList.add('active');
+      }
+    });
+
     recalculateLandingPageQuoter();
   }
 }
@@ -2045,6 +2055,10 @@ function setupEventListeners() {
   document.getElementById('landing-quote-weight')?.addEventListener('input', recalculateLandingPageQuoter);
   document.getElementById('landing-quote-quality')?.addEventListener('change', recalculateLandingPageQuoter);
   document.getElementById('landing-quote-finish')?.addEventListener('change', recalculateLandingPageQuoter);
+  document.getElementById('btn-recalculate-quote')?.addEventListener('click', () => {
+    recalculateLandingPageQuoter();
+    showToast('Estimate recalculated with live pricing telemetry.', 'info');
+  });
   document.getElementById('btn-submit-landing-order')?.addEventListener('click', handleLandingOrderSubmit);
 
   // Top header quick buttons

@@ -197,123 +197,224 @@
         </div>
 
         <!-- ==================================================================
-             NEOBRUTALIST INSTANT 3D PRINT QUOTER
+             MATERIAL DESIGN 3 (M3) INSTANT 3D PRINT ESTIMATOR
              ================================================================== -->
-        <div id="instant-quoter-section" class="instant-quoter-card">
-          <div class="section-header-block" style="margin-bottom: 2rem; text-align: left;">
-            <span class="section-tag-label">★ LIVE 3D QUOTE SYNTHESIZER ★</span>
-            <h2 class="section-main-heading">Instant 3D Print Cost Estimator</h2>
-            <p class="section-sub-desc">Enter part weight and engineering materials for real-time BDT pricing and 3 Tk/g company allocation.</p>
+        <div id="instant-quoter-section" class="m3-estimator-card">
+          <!-- Card Header -->
+          <div class="m3-card-header">
+            <div class="m3-badge-pill">
+              <i data-lucide="calculator" class="m3-badge-icon"></i>
+              <span>MATERIAL 3 // 3D FABRICATION ENGINE</span>
+            </div>
+            <h2 class="m3-card-title">Instant 3D Print Cost Estimator</h2>
+            <p class="m3-card-subtitle">
+              Configure your model specifications, engineering polymers, and finishing layers for instant real-time telemetry and 3 Tk/g company pool allocation.
+            </p>
           </div>
 
-          <div class="quoter-layout-grid">
-            <!-- Quoter Form Inputs -->
-            <div style="display: flex; flex-direction: column; gap: 1.15rem;">
-              <div class="form-row">
-                <div class="form-group" style="margin-bottom: 0;">
-                  <label class="form-label">Material / Filament <span class="req">*</span></label>
-                  <select id="landing-quote-material" class="form-control font-mono">
-                    <option value="PLA+" data-rate="7.00">PLA+ High Speed (৳ 7.00 / g) • Prototyping</option>
-                    <option value="PETG" data-rate="8.50">PETG Tough (৳ 8.50 / g) • Chemical & Heat</option>
-                    <option value="ABS" data-rate="9.00">ABS Industrial (৳ 9.00 / g) • High Impact</option>
-                    <option value="TPU 95A" data-rate="12.00">TPU 95A Flexible (৳ 12.00 / g) • Elastic</option>
-                    <option value="PLA-CF" data-rate="15.00">PLA-CF Carbon Fiber (৳ 15.00 / g) • Rigid</option>
-                    <option value="Silk PLA" data-rate="8.50">Silk PLA Shiny (৳ 8.50 / g) • Aesthetic</option>
-                  </select>
+          <div class="m3-quoter-layout">
+            <!-- Left Column: M3 Text Fields & Configuration -->
+            <div class="m3-form-container">
+              
+              <!-- Row 1: Material & Color -->
+              <div class="m3-form-grid-2">
+                <div class="m3-text-field">
+                  <div class="m3-field-container">
+                    <i data-lucide="box" class="m3-field-leading-icon"></i>
+                    <div class="m3-field-content">
+                      <label class="m3-floating-label" for="landing-quote-material">Material / Filament *</label>
+                      <select id="landing-quote-material" class="m3-input m3-select font-mono">
+                        <option value="PLA+" data-rate="7.00">PLA+ High Speed (৳ 7.00 / g) • Prototyping</option>
+                        <option value="PETG" data-rate="8.50">PETG Tough (৳ 8.50 / g) • Chemical & Heat</option>
+                        <option value="ABS" data-rate="9.00">ABS Industrial (৳ 9.00 / g) • High Impact</option>
+                        <option value="TPU 95A" data-rate="12.00">TPU 95A Flexible (৳ 12.00 / g) • Elastic</option>
+                        <option value="PLA-CF" data-rate="15.00">PLA-CF Carbon Fiber (৳ 15.00 / g) • Rigid</option>
+                        <option value="Silk PLA" data-rate="8.50">Silk PLA Shiny (৳ 8.50 / g) • Aesthetic</option>
+                      </select>
+                    </div>
+                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                  </div>
+                  <span class="m3-helper-text">High-precision FDM/FFF engineering spools</span>
                 </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                  <label class="form-label">Available Color <span class="req">*</span></label>
-                  <select id="landing-quote-color" class="form-control font-mono">
-                    <!-- Populated dynamically from inventory -->
-                  </select>
+
+                <div class="m3-text-field">
+                  <div class="m3-field-container">
+                    <i data-lucide="palette" class="m3-field-leading-icon"></i>
+                    <div class="m3-field-content">
+                      <label class="m3-floating-label" for="landing-quote-color">Available Color *</label>
+                      <select id="landing-quote-color" class="m3-input m3-select font-mono">
+                        <!-- Populated dynamically from inventory -->
+                      </select>
+                    </div>
+                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                  </div>
+                  <span class="m3-helper-text">Real-time studio inventory stock</span>
                 </div>
               </div>
 
-              <div>
-                <label class="form-label">Part Net Weight (Grams) <span class="req">*</span></label>
-                <div style="display: flex; gap: 0.65rem; margin-bottom: 0.65rem;">
-                  <input type="number" id="landing-quote-weight" class="form-control font-mono" value="150" min="5" max="5000" step="5" style="font-size: 1.25rem; font-weight: 900;">
-                  <!-- Quick Stepper Presets -->
-                  <div style="display: flex; gap: 0.35rem;">
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="setQuickWeight(30)" title="Miniature (~30g)">30g</button>
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="setQuickWeight(90)" title="Drone Arm (~90g)">90g</button>
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="setQuickWeight(150)" title="Standard Part (~150g)">150g</button>
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="setQuickWeight(300)" title="Enclosure (~300g)">300g</button>
+              <!-- Row 2: Part Weight + Segmented Presets -->
+              <div class="m3-text-field m3-weight-field">
+                <div class="m3-field-container">
+                  <i data-lucide="scale" class="m3-field-leading-icon"></i>
+                  <div class="m3-field-content">
+                    <label class="m3-floating-label" for="landing-quote-weight">Part Net Weight (Grams) *</label>
+                    <input type="number" id="landing-quote-weight" class="m3-input m3-number-input font-mono" value="150" min="5" max="5000" step="5">
+                  </div>
+                  <span class="m3-unit-suffix">GRAMS</span>
+                </div>
+
+                <!-- M3 Segmented Buttons for Presets -->
+                <div class="m3-segmented-button-bar">
+                  <span class="m3-segment-label">QUICK PRESETS:</span>
+                  <div class="m3-segmented-buttons">
+                    <button type="button" class="m3-segment-btn" onclick="setQuickWeight(30)">
+                      <span class="m3-seg-val">30g</span>
+                      <span class="m3-seg-desc">Mini</span>
+                    </button>
+                    <button type="button" class="m3-segment-btn" onclick="setQuickWeight(90)">
+                      <span class="m3-seg-val">90g</span>
+                      <span class="m3-seg-desc">Drone/Part</span>
+                    </button>
+                    <button type="button" class="m3-segment-btn active" onclick="setQuickWeight(150)">
+                      <span class="m3-seg-val">150g</span>
+                      <span class="m3-seg-desc">Standard</span>
+                    </button>
+                    <button type="button" class="m3-segment-btn" onclick="setQuickWeight(300)">
+                      <span class="m3-seg-val">300g</span>
+                      <span class="m3-seg-desc">Enclosure</span>
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group" style="margin-bottom: 0;">
-                  <label class="form-label">Layer Resolution</label>
-                  <select id="landing-quote-quality" class="form-control font-mono">
-                    <option value="0.20">0.20mm • Standard High-Speed (Default)</option>
-                    <option value="0.12">0.12mm • Ultra Fine Micro Detail</option>
-                    <option value="0.28">0.28mm • Fast Draft</option>
-                  </select>
+              <!-- Row 3: Layer Resolution & Post-Processing Finish -->
+              <div class="m3-form-grid-2">
+                <div class="m3-text-field">
+                  <div class="m3-field-container">
+                    <i data-lucide="layers" class="m3-field-leading-icon"></i>
+                    <div class="m3-field-content">
+                      <label class="m3-floating-label" for="landing-quote-quality">Layer Resolution</label>
+                      <select id="landing-quote-quality" class="m3-input m3-select font-mono">
+                        <option value="0.20">0.20mm • Standard High-Speed (Default)</option>
+                        <option value="0.12">0.12mm • Ultra Fine Micro Detail</option>
+                        <option value="0.28">0.28mm • Fast Draft</option>
+                      </select>
+                    </div>
+                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                  </div>
                 </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                  <label class="form-label">Post-Processing / Finish</label>
-                  <select id="landing-quote-finish" class="form-control font-mono">
-                    <option value="0">Standard Support Removal (+ ৳ 0)</option>
-                    <option value="150">Precision Sanding & Smoothing (+ ৳ 150)</option>
-                    <option value="300">Sanding + Primer Coat (+ ৳ 300)</option>
-                    <option value="200">Threaded Brass Heat Inserts (+ ৳ 200)</option>
-                  </select>
+
+                <div class="m3-text-field">
+                  <div class="m3-field-container">
+                    <i data-lucide="sparkles" class="m3-field-leading-icon"></i>
+                    <div class="m3-field-content">
+                      <label class="m3-floating-label" for="landing-quote-finish">Post-Processing & Finish</label>
+                      <select id="landing-quote-finish" class="m3-input m3-select font-mono">
+                        <option value="0">Standard Support Removal (+ ৳ 0)</option>
+                        <option value="150">Precision Sanding & Smoothing (+ ৳ 150)</option>
+                        <option value="300">Sanding + Primer Coat (+ ৳ 300)</option>
+                        <option value="200">Threaded Brass Heat Inserts (+ ৳ 200)</option>
+                      </select>
+                    </div>
+                    <i data-lucide="chevron-down" class="m3-field-trailing-icon"></i>
+                  </div>
                 </div>
               </div>
 
-              <!-- Client Info -->
-              <div style="background: var(--nb-surface-alt); border: var(--border-medium); border-radius: var(--radius-sm); padding: 1rem; box-shadow: var(--shadow-sm);">
-                <div style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main); text-transform: uppercase; margin-bottom: 0.5rem;">
-                  ★ CLIENT CONTACT & INVOICE DETAILS
+              <!-- Row 4: Client Contact Details Subcard -->
+              <div class="m3-contact-subcard">
+                <div class="m3-subcard-title">
+                  <i data-lucide="user-check" style="width: 16px; height: 16px; color: var(--nb-orange);"></i>
+                  <span>CLIENT CONTACT & INVOICE DETAILS</span>
                 </div>
-                <div class="form-row">
-                  <div class="form-group" style="margin-bottom: 0;">
-                    <input type="text" id="landing-quote-client-name" class="form-control font-mono" placeholder="Your Name / Studio *" required>
+                <div class="m3-form-grid-2">
+                  <div class="m3-text-field">
+                    <div class="m3-field-container">
+                      <i data-lucide="user" class="m3-field-leading-icon"></i>
+                      <div class="m3-field-content">
+                        <label class="m3-floating-label" for="landing-quote-client-name">Your Name / Studio *</label>
+                        <input type="text" id="landing-quote-client-name" class="m3-input" placeholder="e.g. Architect Tanvir" required>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-group" style="margin-bottom: 0;">
-                    <input type="text" id="landing-quote-client-phone" class="form-control font-mono" placeholder="WhatsApp / Phone Number *" required>
+
+                  <div class="m3-text-field">
+                    <div class="m3-field-container">
+                      <i data-lucide="phone" class="m3-field-leading-icon"></i>
+                      <div class="m3-field-content">
+                        <label class="m3-floating-label" for="landing-quote-client-phone">WhatsApp / Phone Number *</label>
+                        <input type="tel" id="landing-quote-client-phone" class="m3-input font-mono" placeholder="e.g. 01700-000000" required>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <!-- Action Row: Calculate Action Button -->
+              <div class="m3-action-row">
+                <button type="button" class="m3-btn-action m3-btn-tonal" id="btn-recalculate-quote">
+                  <i data-lucide="refresh-cw" class="m3-btn-icon"></i>
+                  <span>Recalculate Estimate</span>
+                </button>
+              </div>
+
             </div>
 
-            <!-- Quoter Live Summary & Order Button -->
-            <div class="quoter-summary-box">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 0.76rem; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--nb-text-main);">ESTIMATED TOTAL:</span>
-                <span class="quote-per-gram-badge" id="landing-quote-rate-badge">RATE: ৳ 7.00 / G</span>
+            <!-- Right Column: M3 Elevated Summary Card -->
+            <div class="m3-summary-card">
+              <div class="m3-summary-header">
+                <div class="m3-summary-overline">ESTIMATED TOTAL:</div>
+                <div class="m3-rate-chip" id="landing-quote-rate-badge">RATE: ৳ 7.00 / G</div>
               </div>
 
-              <div class="quote-price-display" id="landing-quote-total-price">৳ 1,050.00</div>
+              <div class="m3-price-hero">
+                <div class="m3-price-value" id="landing-quote-total-price">৳ 1,050.00</div>
+                <div class="m3-price-caption">BDT • Inclusive of Slicing & Machine Reserve</div>
+              </div>
 
-              <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 0.85rem;">
-                <div style="display: flex; justify-content: space-between;">
-                  <span>Net Part Weight:</span>
-                  <strong id="landing-quote-weight-display">150g</strong>
+              <div class="m3-breakdown-list">
+                <div class="m3-breakdown-item">
+                  <div class="m3-item-left">
+                    <i data-lucide="scale" class="m3-item-icon"></i>
+                    <span>Net Part Weight:</span>
+                  </div>
+                  <strong class="font-mono" id="landing-quote-weight-display">150g</strong>
                 </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span>Est. Print Time:</span>
-                  <strong id="landing-quote-time-display">~ 4h 30m</strong>
+
+                <div class="m3-breakdown-item">
+                  <div class="m3-item-left">
+                    <i data-lucide="clock" class="m3-item-icon"></i>
+                    <span>Est. Print Time:</span>
+                  </div>
+                  <strong class="font-mono" id="landing-quote-time-display">~ 4h 30m</strong>
                 </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span>Turnaround Lead Time:</span>
-                  <strong style="color: #15803d;">24-48 Hours Express</strong>
+
+                <div class="m3-breakdown-item">
+                  <div class="m3-item-left">
+                    <i data-lucide="zap" class="m3-item-icon" style="color: #22c55e;"></i>
+                    <span>Turnaround Lead Time:</span>
+                  </div>
+                  <strong style="color: #22c55e;">24-48 Hours Express</strong>
                 </div>
-                <div style="display: flex; justify-content: space-between; background: var(--nb-surface); padding: 0.4rem 0.6rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px;">
-                  <span style="font-weight: 800;">3 Tk/g Company Pool:</span>
-                  <strong style="color: #0284c7;" id="landing-quote-split-display">৳ 450 Co / ৳ 600 Sal</strong>
+
+                <div class="m3-company-pool-pill">
+                  <div class="m3-pool-header">
+                    <i data-lucide="shield-check" style="width: 15px; height: 15px; color: #00d2ff;"></i>
+                    <span>3 Tk/g Company Pool:</span>
+                  </div>
+                  <strong id="landing-quote-split-display" class="font-mono" style="color: #00d2ff;">৳ 450 Co / ৳ 600 Sal</strong>
                 </div>
               </div>
 
-              <button class="btn btn-primary btn-lg" id="btn-submit-landing-order" style="width: 100%;">
-                <i data-lucide="file-check"></i>
+              <!-- Prominent Rounded Action Button (Submit Order & PDF Invoice) -->
+              <button class="m3-btn-action m3-btn-prominent" id="btn-submit-landing-order">
+                <i data-lucide="file-check" class="m3-btn-icon"></i>
                 <span>SUBMIT ORDER & GET PDF INVOICE</span>
               </button>
 
-              <div style="font-size: 0.76rem; font-family: 'JetBrains Mono', monospace; color: var(--nb-text-main); font-weight: 800; text-align: center; margin-top: 0.75rem;">
-                [bKash / Nagad / Bank Transfer Accepted]
+              <div class="m3-payment-note">
+                <i data-lucide="check-circle" style="width: 14px; height: 14px; color: #22c55e;"></i>
+                <span>[bKash / Nagad / Bank Transfer Accepted]</span>
               </div>
             </div>
           </div>
