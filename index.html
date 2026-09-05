@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StudioMistri — Good ideas. Made real.</title>
+  <meta name="description" content="Discover finished 3D printed objects or bring your own idea to StudioMistri for a custom print.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=interactive2"><script src="app.js?v=interactive2" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="header wrap">
+  <a class="brand" href="#" aria-label="StudioMistri home"><span class="brand-mark" aria-hidden="true">m<span>•</span></span><span>StudioMistri<span class="brand-caption">THINK. DESIGN. MAKE.</span></span></a>
+  <nav aria-label="Main navigation"><a href="#objects">Printed objects</a><a href="#custom">Custom printing</a><a class="nav-cta" href="#custom">Let’s make something <span>↗</span></a></nav>
+</header>
+<main id="main">
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="tiny-cross">✳</span> A LITTLE IMAGINATION. A LOT OF LAYERS.</div>
+      <h1>Good ideas.<br>Made <span class="orange-word">real<svg viewBox="0 0 300 20" aria-hidden="true"><path d="M5 13 Q140 0 294 10"/></svg></span>.</h1>
+      <p>Objects with personality. Prints with purpose.<br class="desktop"> Discover something made for you, or bring<br class="desktop"> your own idea to life.</p>
+      <div class="hero-actions"><a class="button primary" href="#objects">Explore printed objects <span>↗</span></a><a class="text-link" href="#custom">Print your idea <span>↗</span></a></div>
+      <div class="hero-note"><span class="color-chips" aria-hidden="true"><i></i><i></i><i></i><i></i></span> SMALL DETAILS. BIG POSSIBILITIES.</div>
+    </div>
+    <div class="hero-art">
+      <div class="art-label"><span class="live-dot"></span> THE STUDIO PLAYGROUND <span>VOL. 01</span></div>
+      <div class="image-stage" role="button" tabindex="0" aria-label="Play with the artwork: move your pointer, tap, or press Enter"><img src="assets/studio-objects.png" alt="Illustrative orange ribbed vase, pink sculptural planter and cyan loop, showing the playful possibilities of 3D printing" width="1448" height="1086"><span class="art-sticker">Built up.<br>Layer by layer.<span>↗</span></span></div>
+      <div class="art-footer"><span>MOVE YOUR POINTER · TAP TO PLAY</span><button id="motion-toggle" type="button" aria-pressed="false">Ⅱ Pause motion</button></div>
+    </div>
+  </section>
+  <div class="statement-strip" aria-label="Think, design, make"><div>THINK <span>✳</span> DESIGN <span>✳</span> MAKE <span>✳</span> REPEAT <span>✳</span> THINK <span>✳</span> DESIGN <span>✳</span> MAKE <span>✳</span> REPEAT <span>✳</span></div></div>
+  <section class="paths wrap" id="objects">
+    <div class="section-heading"><div><div class="eyebrow">01 / FIND YOUR STARTING POINT</div><h2>Two ways to make it yours.</h2></div><p>Pick a finished piece.<br>Or start with a possibility.</p></div>
+    <div class="path-grid">
+      <article class="path-card objects-card"><div class="card-top"><span class="tag">THE OBJECT EDIT</span><span class="path-number">01</span></div><h3>Everyday things.<br>A little less ordinary.</h3><p>A place for playful desk pieces, thoughtful gifts, and objects that make a space feel like yours.</p><div class="category-row"><span>For your desk</span><span>For your space</span><span>Just for fun</span></div><button class="card-link" id="objects-open">Explore the object edit <span>↗</span></button></article>
+      <article class="path-card custom-card" id="custom"><div class="card-top"><span class="tag">YOUR IDEA, IN 3D</span><span class="path-number">02</span></div><h3>That thing in your head?<br>Let’s make it tangible.</h3><p>Have a 3D file, a sketch, or the beginnings of an idea? Start a conversation about your custom print.</p><div class="category-row"><span>Your design</span><span>Your dimensions</span><span>Your colors</span></div><button class="card-link" id="custom-open">Start a custom print <span>↗</span></button></article>
+    </div>
+  </section>
+  <section class="process wrap"><div class="process-intro"><div class="eyebrow">02 / FROM THOUGHT TO THING</div><h2>A simple start.<br> Something real.</h2><p>We’ll work out the details together.</p></div><ol><li><span>01</span><div><h3>Show us your idea</h3><p>A file, reference, or a few words about what you have in mind.</p></div></li><li><span>02</span><div><h3>Find the right fit</h3><p>Discuss size, color, finish, and the details of your print.</p></div></li><li><span>03</span><div><h3>Make it happen</h3><p>Confirm the plan and quote before your idea takes shape.</p></div></li></ol></section>
+  <section class="closing wrap"><span class="closing-star" aria-hidden="true">✳</span><h2>Less “what if.”<br>More “look at this.”</h2><a href="#custom" class="button primary">Let’s make something <span>↗</span></a></section>
+</main>
+<footer class="wrap"><a class="brand footer-brand" href="#">StudioMistri<span class="orange">✳</span></a><span>THINK. DESIGN. MAKE.</span></footer>
+<dialog id="objects-dialog" aria-labelledby="objects-title"><button class="dialog-close" aria-label="Close">×</button><div class="eyebrow">THE OBJECT EDIT</div><h2 id="objects-title">A little preview<br>of what’s possible.</h2><p>The objects in this demo are illustrations, not a live product catalog. Finished products, prices, and availability will appear here when the collection is added.</p><button class="button primary" id="switch-custom">Have something in mind? <span>↗</span></button></dialog>
+<dialog id="custom-dialog" aria-labelledby="custom-title"><button class="dialog-close" aria-label="Close">×</button><div class="eyebrow">YOUR IDEA, IN 3D</div><h2 id="custom-title">Tell us about<br>your next thing.</h2><p>Draft a short brief for your custom print. This preview lets you save it to your device; it doesn’t send an inquiry.</p><form id="brief-form"><label for="idea">What would you like to make?</label><textarea id="idea" required maxlength="2500" rows="4" placeholder="An idea, intended use, dimensions, colors…"></textarea><label for="file-status">Where are you starting?</label><select id="file-status"><option>I have an idea or reference</option><option>I have a sketch</option><option>I have a 3D model</option></select><button class="button primary" type="submit">Save my print brief <span>↓</span></button><p id="brief-status" role="status"></p></form></dialog>
+</body>
+</html>
