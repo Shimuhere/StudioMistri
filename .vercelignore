@@ -4,11 +4,6 @@
 .DS_Store
 README.md
 *.log
-assets/*.heic
-assets/*.HEIC
-assets/*.JPEG
-assets/*.JPG
-assets/225f6838-6a9b-459b-ab16-0f618cb7a3f7.jpeg
 
 .env*
 .gitignore
