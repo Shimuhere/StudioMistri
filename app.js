@@ -45,11 +45,12 @@ gallery.addEventListener('keydown', event => {
 preference.addEventListener('change', () => { if (preference.matches) paused = true; resetStageTilt(); syncPlayback(); });
 document.addEventListener('visibilitychange', syncPlayback);
 const stage = document.querySelector('.project-stage');
-function handleStageMove(event) {
+function clamp01(n) { return Math.min(1, Math.max(0, n)); }
+function handleStageMove(clientX, clientY) {
   if (preference.matches) return;
   const rect = stage.getBoundingClientRect();
-  const px = (event.clientX - rect.left) / rect.width;
-  const py = (event.clientY - rect.top) / rect.height;
+  const px = clamp01((clientX - rect.left) / rect.width);
+  const py = clamp01((clientY - rect.top) / rect.height);
   const rx = (px - 0.5) * 14;
   const ry = (0.5 - py) * 10;
   stage.style.transform = `rotateX(${ry}deg) rotateY(${rx}deg)`;
@@ -61,6 +62,12 @@ function resetStageTilt() {
   stage.style.transform = '';
   stage.classList.remove('is-glowing');
 }
-stage.addEventListener('mousemove', handleStageMove);
+stage.addEventListener('mousemove', event => handleStageMove(event.clientX, event.clientY));
 stage.addEventListener('mouseleave', resetStageTilt);
+stage.addEventListener('touchmove', event => {
+  const touch = event.touches[0];
+  if (touch) handleStageMove(touch.clientX, touch.clientY);
+}, { passive: true });
+stage.addEventListener('touchend', resetStageTilt);
+stage.addEventListener('touchcancel', resetStageTilt);
 syncPlayback();
