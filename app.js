@@ -1,69 +1,66 @@
+const gallery = document.querySelector('.project-gallery');
+const slides = [...gallery.querySelectorAll('.project-slide')];
+const dots = [...gallery.querySelectorAll('.slide-dot')];
 const motionButton = document.querySelector('#motion-toggle');
-const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-const artwork = document.querySelector('.hero-art');
-const artworkStage = document.querySelector('.image-stage');
-let settleTimer;
-let pose = 0;
-function setLook(x, y) {
-  artwork.style.setProperty('--look-x', x);
-  artwork.style.setProperty('--look-y', y);
+const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const captions = [["Mechanical walker", "A printed mechanism, assembled into something that moves."], ["Small scale. Big character.", "A red racing model, printed down to the details."], ["Room to imagine", "Architectural models that turn floor plans into form."], ["Made to play", "An articulated dragon with a little personality in every layer."], ["Characters, off the screen", "Familiar forms brought to life in print."], ["Light, layer by layer", "A sculptural lamp with a warm glow."], ["Held up to the light", "A portrait etched into plastic, ready for a shelf or a wall."], ["Backlit and beaming", "The same idea, warmed up with amber light."], ["Detail in every curl", "A dynamic figure print, straight off the plate before paint."], ["A stag, drawn in lattice", "Antlers and body built from a single branching pattern."], ["Small prints, sharp details", "A multi-color keychain, glow-in-the-dark eyes included."], ["Ready to smash", "A glow-in-the-dark Hulk, straight from the printer."], ["A stand for the setup", "A two-tone headset and controller stand, made to be used daily."], ["Texture with a purpose", "A honeycomb shell wrapped around an everyday object."], ["Two takes on light", "A pair of lamp designs, glowing side by side in the studio."], ["Form, just for its own sake", "A sculptural print exploring shape and color."], ["Under the gantry", "A building model, caught fresh off the print bed."]];
+let current = 0;
+let paused = preference.matches;
+let hovered = false;
+let timer;
+function syncPlayback() {
+  clearTimeout(timer);
+  const stopped = paused || preference.matches || hovered || document.hidden;
+  document.body.classList.toggle('motion-paused', stopped);
+  motionButton.setAttribute('aria-pressed', String(paused || preference.matches));
+  motionButton.querySelector('.motion-label').textContent = preference.matches ? 'Motion reduced' : paused ? 'Play slideshow' : 'Pause slideshow';
+  motionButton.disabled = preference.matches;
+  if (!stopped) timer = setTimeout(() => { showSlide(current + 1); }, 6500);
 }
-function resetLook() {
-  clearTimeout(settleTimer);
-  setLook(0, 0);
+function showSlide(index, manual = false) {
+  current = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) => { slide.hidden = i !== current; slide.classList.toggle('is-active', i === current); });
+  dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === current)));
+  document.querySelector('#slide-title').textContent = captions[current][0];
+  document.querySelector('#slide-description').textContent = captions[current][1];
+  document.querySelector('#slide-count').textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+  if (manual) {
+    paused = true;
+    document.querySelector('#slide-announcement').textContent = `Photo ${current + 1} of ${slides.length}: ${captions[current][0]}`;
+  }
+  syncPlayback();
 }
-let paused = motionPreference.matches;
-function syncMotion() {
-  if (paused) resetLook();
-  artworkStage.setAttribute('aria-disabled', String(paused));
-  document.body.classList.toggle('motion-paused', paused);
-  motionButton.setAttribute('aria-pressed', String(paused));
-  motionButton.textContent = motionPreference.matches ? 'Motion reduced' : paused ? '▶ Play motion' : 'Ⅱ Pause motion';
-  motionButton.disabled = motionPreference.matches;
-}
-motionButton.addEventListener('click', () => { paused = !paused; syncMotion(); });
-motionPreference.addEventListener('change', () => { paused = motionPreference.matches; syncMotion(); });
-syncMotion();
-artworkStage.addEventListener('pointermove', event => {
-  if (paused || event.pointerType === 'touch') return;
-  const rect = artworkStage.getBoundingClientRect();
-  const clamp = value => Math.max(-1, Math.min(1, value));
-  setLook(clamp((event.clientX - rect.left) / rect.width * 2 - 1), clamp((event.clientY - rect.top) / rect.height * 2 - 1));
-});
-artworkStage.addEventListener('pointerleave', resetLook);
-artworkStage.addEventListener('pointercancel', resetLook);
-artworkStage.addEventListener('blur', resetLook);
-function playArtwork() {
-  if (paused) return;
-  clearTimeout(settleTimer);
-  const poses = [[1, -.8], [-1, .6], [.7, 1], [-.7, -1]];
-  setLook(...poses[pose++ % poses.length]);
-  settleTimer = setTimeout(resetLook, 1100);
-}
-artworkStage.addEventListener('click', playArtwork);
-artworkStage.addEventListener('keydown', event => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    playArtwork();
+document.querySelector('#slide-prev').addEventListener('click', () => showSlide(current - 1, true));
+document.querySelector('#slide-next').addEventListener('click', () => showSlide(current + 1, true));
+dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i, true)));
+motionButton.addEventListener('click', () => { paused = !paused; syncPlayback(); });
+gallery.addEventListener('mouseenter', () => { hovered = true; syncPlayback(); });
+gallery.addEventListener('mouseleave', () => { hovered = false; syncPlayback(); });
+gallery.addEventListener('focusin', event => { if (event.target !== motionButton) { paused = true; syncPlayback(); } });
+gallery.addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault(); showSlide(current + (event.key === 'ArrowLeft' ? -1 : 1), true);
   }
 });
-const objectsDialog = document.querySelector('#objects-dialog');
-const customDialog = document.querySelector('#custom-dialog');
-document.querySelector('#objects-open').addEventListener('click', () => objectsDialog.showModal());
-document.querySelector('#custom-open').addEventListener('click', () => customDialog.showModal());
-document.querySelector('#switch-custom').addEventListener('click', () => { objectsDialog.close(); customDialog.showModal(); });
-document.querySelectorAll('dialog').forEach(dialog => {
-  dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close(); } });
-});
-document.querySelector('#brief-form').addEventListener('submit', event => {
-  event.preventDefault();
-  const idea = document.querySelector('#idea');
-  if (!idea.value.trim()) { idea.setCustomValidity('Please describe your idea.'); idea.reportValidity(); return; }
-  const text = `StudioMistri — Custom print brief\n\nStarting point: ${document.querySelector('#file-status').value}\n\n${idea.value.trim()}\n\nSaved from the landing-page demo. This brief has not been sent to the studio.\n`;
-  const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-  const link = document.createElement('a'); link.href = url; link.download = 'studiomistri-print-brief.txt'; link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.querySelector('#brief-status').textContent = 'Your brief is ready to save. Nothing has been sent to the studio.';
-});
-document.querySelector('#idea').addEventListener('input', event => event.target.setCustomValidity(''));
+preference.addEventListener('change', () => { if (preference.matches) paused = true; resetStageTilt(); syncPlayback(); });
+document.addEventListener('visibilitychange', syncPlayback);
+const stage = document.querySelector('.project-stage');
+function handleStageMove(event) {
+  if (preference.matches) return;
+  const rect = stage.getBoundingClientRect();
+  const px = (event.clientX - rect.left) / rect.width;
+  const py = (event.clientY - rect.top) / rect.height;
+  const rx = (px - 0.5) * 14;
+  const ry = (0.5 - py) * 10;
+  stage.style.transform = `rotateX(${ry}deg) rotateY(${rx}deg)`;
+  stage.style.setProperty('--mx', `${px * 100}%`);
+  stage.style.setProperty('--my', `${py * 100}%`);
+  stage.classList.add('is-glowing');
+}
+function resetStageTilt() {
+  stage.style.transform = '';
+  stage.classList.remove('is-glowing');
+}
+stage.addEventListener('mousemove', handleStageMove);
+stage.addEventListener('mouseleave', resetStageTilt);
+syncPlayback();
