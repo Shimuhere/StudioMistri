@@ -15,7 +15,7 @@ function syncPlayback() {
   motionButton.setAttribute('aria-pressed', String(paused || preference.matches));
   motionButton.querySelector('.motion-label').textContent = preference.matches ? 'Motion reduced' : paused ? 'Play slideshow' : 'Pause slideshow';
   motionButton.disabled = preference.matches;
-  if (!stopped) timer = setTimeout(() => { showSlide(current + 1); }, 6500);
+  if (!stopped) timer = setTimeout(() => { showSlide(current + 1); }, 3000);
 }
 function showSlide(index, manual = false) {
   current = (index + slides.length) % slides.length;
@@ -34,8 +34,11 @@ document.querySelector('#slide-prev').addEventListener('click', () => showSlide(
 document.querySelector('#slide-next').addEventListener('click', () => showSlide(current + 1, true));
 dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i, true)));
 motionButton.addEventListener('click', () => { paused = !paused; syncPlayback(); });
-gallery.addEventListener('mouseenter', () => { hovered = true; syncPlayback(); });
-gallery.addEventListener('mouseleave', () => { hovered = false; syncPlayback(); });
+const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (canHover) {
+  gallery.addEventListener('mouseenter', () => { hovered = true; syncPlayback(); });
+  gallery.addEventListener('mouseleave', () => { hovered = false; syncPlayback(); });
+}
 gallery.addEventListener('focusin', event => { if (event.target !== motionButton) { paused = true; syncPlayback(); } });
 gallery.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
